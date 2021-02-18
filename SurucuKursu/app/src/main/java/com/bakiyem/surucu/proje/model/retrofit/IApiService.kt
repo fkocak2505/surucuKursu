@@ -1,0 +1,48 @@
+package com.bakiyem.surucu.proje.model.retrofit
+
+import com.bakiyem.surucu.proje.base.model.ResResult
+import com.bakiyem.surucu.proje.base.model.ResResultArray
+import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
+import okhttp3.RequestBody
+import retrofit2.Response
+import retrofit2.http.*
+
+interface IApiService {
+
+    @Multipart
+    @POST("/KursumAPI/kurs/index.php")
+    fun getKurs(
+        @Part("token") token: RequestBody,
+    ): Observable<ResResult<Response4Kurs>>
+
+    @Multipart
+    @POST("/KursumAPI/duyurular/index.php")
+    fun getAnnouncements(
+        @Part("token") token: RequestBody,
+        @Part("kursiyer") kursiyer: RequestBody,
+        @Part("grup") grup: RequestBody
+    ): Observable<ResResultArray<Response4Announcements>>
+
+    @Multipart
+    @POST("/KursumAPI/duyuru-detay/index.php")
+    fun getDuyuruDetay(
+        @Part("token") token: RequestBody,
+        @Part("duyuru") kursiyer: RequestBody
+    ): Observable<ResResultArray<Response4DuyuruDetay>>
+
+
+
+
+    /* @Multipart
+     @POST("/KursumAPI/duyurular/index.php")
+     fun getAnnouncements(
+         @Part("token") token: RequestBody,
+         @Part("kursiyer") kursiyer: RequestBody,
+         @Part("grup") grup: RequestBody
+     ): Single<Response<Response4Announcements>>*/
+
+}

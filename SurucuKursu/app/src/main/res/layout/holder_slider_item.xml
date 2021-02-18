@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp">
+
+
+    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+         android:id="@+id/ic_slider"
+         android:layout_width="match_parent"
+         android:layout_height="200dp"
+         android:layout_weight="1"
+         app:carouselBackground="@color/white"
+         app:carouselType="BLOCK"
+         app:imageViewId="@id/image_view"
+         app:itemLayout="@layout/custom_item_layout"
+         app:nextButtonId="@id/custom_btn_next"
+         app:nextButtonLayout="@layout/custom_next_button_layout"
+         app:nextButtonMargin="24dp"
+         app:previousButtonId="@id/custom_btn_previous"
+         app:previousButtonLayout="@layout/custom_previous_button_layout"
+         app:previousButtonMargin="24dp"
+         app:scaleOnScroll="false"
+         app:showBottomShadow="false"
+         app:showCaption="false"
+         app:showIndicator="true"
+         app:showNavigationButtons="false"
+         app:showTopShadow="false"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
