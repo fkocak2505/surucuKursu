@@ -13,4 +13,5 @@
     <color name="orange">#FF7B52</color>
     <color name="fiveEgrey">#5e5e5e</color>
     <color name="titleBackground">#F2F4FA</color>
+    <color name="line">#ececec</color>
 </resources>

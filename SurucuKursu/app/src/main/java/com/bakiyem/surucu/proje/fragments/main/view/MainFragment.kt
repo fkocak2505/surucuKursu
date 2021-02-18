@@ -37,22 +37,25 @@ class MainFragment : Fragment(), CListener<Any> {
         return viewP
     }
 
-    private fun initVM(){
+    private fun initVM() {
         mainFragmentVM = ViewModelProviders.of(this).get(MainFragmentVM::class.java)
 
         prepareVMListener()
 
-        mainFragmentVM.getKurs()
+        if (!Hawk.contains("token"))
+            mainFragmentVM.getKurs()
+        else
+            mainFragmentVM.getAnnouncements()
     }
 
-    private fun prepareVMListener(){
+    private fun prepareVMListener() {
         mainFragmentVM.kursLD.observe(this, {
             it?.let {
                 Hawk.put("token", it.key)
 
                 mainFragmentVM.getAnnouncements()
 
-            }?: run{
+            } ?: run {
                 Toast.makeText(requireContext(), "Error Kurs Token", Toast.LENGTH_SHORT).show()
             }
         })
@@ -60,7 +63,7 @@ class MainFragment : Fragment(), CListener<Any> {
         mainFragmentVM.announcementsLD.observe(this, {
             it?.let {
                 initEpoxyController(it)
-            }?: run{
+            } ?: run {
                 Toast.makeText(requireContext(), "Error Announcement", Toast.LENGTH_SHORT).show()
             }
         })
@@ -98,7 +101,7 @@ class MainFragment : Fragment(), CListener<Any> {
     }
 
     override fun onSelected(data: Any) {
-        when(data){
+        when (data) {
             is Response4Announcements -> {
                 DuyuruDetayActivity.start(requireContext(), data.keyi)
             }

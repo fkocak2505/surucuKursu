@@ -5,6 +5,7 @@ import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
+import com.bakiyem.surucu.proje.model.login.Response4Login
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.RequestBody
@@ -34,7 +35,14 @@ interface IApiService {
         @Part("duyuru") kursiyer: RequestBody
     ): Observable<ResResultArray<Response4DuyuruDetay>>
 
-
+    @Multipart
+    @POST("/KursumAPI/giris/index.php")
+    fun doLogin(
+        @Part("token") token: RequestBody,
+        @Part("Fcm") fcm: RequestBody,
+        @Part("Cihaz") cihaz: RequestBody,
+        @Part("TCno") tckn: RequestBody
+    ): Observable<ResResult<Response4Login>>
 
 
     /* @Multipart

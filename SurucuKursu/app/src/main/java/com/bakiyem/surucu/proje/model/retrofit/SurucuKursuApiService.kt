@@ -5,6 +5,7 @@ import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
+import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.orhanobut.hawk.Hawk
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -50,6 +51,18 @@ class SurucuKursuApiService {
         val duyuruBody = RequestBody.create(MediaType.parse("text/plain"), key)
 
         return api.getDuyuruDetay(tokenBody, duyuruBody)
+
+    }
+
+    fun doLogin(tcNo: String): Observable<ResResult<Response4Login>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val fcmBody = RequestBody.create(MediaType.parse("text/plain"), "1213213")
+        val cihazBody = RequestBody.create(MediaType.parse("text/plain"), "1")
+        val tcknBody = RequestBody.create(MediaType.parse("text/plain"), tcNo)
+
+        return api.doLogin(tokenBody, fcmBody, cihazBody, tcknBody)
 
     }
 

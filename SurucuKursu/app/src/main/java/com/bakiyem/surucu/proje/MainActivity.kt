@@ -1,20 +1,23 @@
 package com.bakiyem.surucu.proje
 
-import android.view.MenuItem
+import android.content.Intent
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
 import com.bakiyem.surucu.proje.fragments.course.CourseFragment
 import com.bakiyem.surucu.proje.fragments.main.view.MainFragment
-import com.google.android.material.navigation.NavigationView
+import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.left_menu_without_login.*
 
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(){
 
     override fun getLayoutID(): Int = R.layout.activity_main
 
@@ -38,9 +41,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         prepareLeftAndBottomMenu()
 
+        handleClickListener()
+
+        handleisLoginandDrawUI()
+
     }
 
-    private fun prepareLeftAndBottomMenu(){
+    private fun prepareLeftAndBottomMenu() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
@@ -54,8 +61,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        nav_view.setNavigationItemSelectedListener(this)
+    }
 
+    private fun handleClickListener() {
         val firstFragment = MainFragment()
         val secondFragment = CourseFragment()
         val thirdFragment = ContactFragment()
@@ -71,6 +79,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
             true
         }
+
+        btn_login.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+    }
+
+    private fun handleisLoginandDrawUI() {
+        if (Hawk.contains("loginResponse")) {
+            nav_without_login.visibility = View.GONE
+            nav_with_login.visibility = View.VISIBLE
+        } else {
+            nav_without_login.visibility = View.VISIBLE
+            nav_with_login.visibility = View.GONE
+        }
+
     }
 
     private fun setCurrentFragment(fragment: Fragment) =
@@ -87,18 +111,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    /*override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        val id = item.itemId
+        *//*when (item.itemId) {
+            R.id.description -> {
 
-        if (id == R.id.description) {
+            }
+            R.id.transactions -> {
 
-        } else if (id == R.id.transactions) {
-        } else if (id == R.id.reports) {
-        }
+            }
+            R.id.reports -> {
+
+            }
+        }*//*
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
-    }
+    }*/
 
 }

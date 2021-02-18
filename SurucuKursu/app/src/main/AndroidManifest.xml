@@ -25,6 +25,10 @@
         <activity
             android:name=".activity.duyuruDetay.DuyuruDetayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
