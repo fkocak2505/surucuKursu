@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.MainActivity
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.utils.TCKNValidate
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -33,7 +34,7 @@ class LoginActivity : BaseActivity() {
                 Hawk.put("loginResponse", it)
                 startActivity(Intent(this, MainActivity::class.java))
             } ?: run {
-                Toast.makeText(applicationContext, "Error Login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Kursiyer Bulunamadı", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -46,7 +47,18 @@ class LoginActivity : BaseActivity() {
         btn_login.setOnClickListener {
             val tckn = et_tckn.text.toString()
 
-            loginVM.doLogin(tckn)
+            when (TCKNValidate.isTCKN(tckn)) {
+                true -> {
+                    loginVM.doLogin(tckn)
+                }
+                false -> {
+                    Toast.makeText(
+                        applicationContext,
+                        "Geçerli bir TC Kimlik numarası giriniz..!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 }
