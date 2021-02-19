@@ -4,6 +4,7 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
+import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.orhanobut.hawk.Hawk
@@ -66,16 +67,12 @@ class SurucuKursuApiService {
 
     }
 
-    /*fun getAnnouncements(): Single<Response<Response4Announcements>> {
-        val tokenBody = RequestBody.create(
-            MediaType.parse("text/plain"),
-            "7CDC9E4213DDD7B5044B39A9E5F35F8A"
-        )
-        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), "2")
-        val grup = RequestBody.create(MediaType.parse("text/plain"), "4")
+    fun getHakkimizda(): Observable<ResResult<Response4Hakkimizda>> {
+        val token = Hawk.get<String>("token")
 
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
 
-        return api.getAnnouncements(tokenBody,kursiyerBody,grup)
-    }*/
+        return api.getHakkimizda(tokenBody)
+    }
 
 }

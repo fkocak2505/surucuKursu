@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
-import com.bakiyem.surucu.proje.utils.renderHtml
+import com.bakiyem.surucu.proje.utils.ext.renderHtml
 import kotlinx.android.synthetic.main.activity_duyuru_detay.*
 
 class DuyuruDetayActivity : BaseActivity() {

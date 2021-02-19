@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
-import com.bakiyem.surucu.proje.fragments.course.CourseFragment
+import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
 import com.bakiyem.surucu.proje.fragments.main.view.MainFragment
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_main.*

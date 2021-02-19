@@ -4,6 +4,7 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
+import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import io.reactivex.rxjava3.core.Observable
@@ -43,6 +44,12 @@ interface IApiService {
         @Part("Cihaz") cihaz: RequestBody,
         @Part("TCno") tckn: RequestBody
     ): Observable<ResResult<Response4Login>>
+
+    @Multipart
+    @POST("/KursumAPI/hakkinda/index.php")
+    fun getHakkimizda(
+        @Part("token") token: RequestBody,
+    ): Observable<ResResult<Response4Hakkimizda>>
 
 
     /* @Multipart

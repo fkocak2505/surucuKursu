@@ -1,4 +1,4 @@
-package com.bakiyem.surucu.proje.utils
+package com.bakiyem.surucu.proje.utils.ext
 
 import android.os.Build
 import android.text.Html
