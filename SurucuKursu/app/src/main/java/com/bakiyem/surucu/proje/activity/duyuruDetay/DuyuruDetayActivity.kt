@@ -2,10 +2,13 @@ package com.bakiyem.surucu.proje.activity.duyuruDetay
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.text.Html
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
+import com.bakiyem.surucu.proje.utils.renderHtml
 import kotlinx.android.synthetic.main.activity_duyuru_detay.*
 
 class DuyuruDetayActivity : BaseActivity() {
@@ -30,7 +33,7 @@ class DuyuruDetayActivity : BaseActivity() {
         duyuruDetayVM.duyuruDetayLD.observe(this, {
             it?.let {
                 prepareDuyuruDetayData(it[0])
-            }?: run{
+            } ?: run {
 
             }
         })
@@ -44,7 +47,8 @@ class DuyuruDetayActivity : BaseActivity() {
 
     private fun prepareDuyuruDetayData(response4DuyuruDetay: Response4DuyuruDetay){
         tv_date.text = response4DuyuruDetay.tarih
-        tv_duyuruDetay.text = response4DuyuruDetay.detay
+
+        tv_duyuruDetay renderHtml response4DuyuruDetay.detay!!
     }
 
     companion object {
