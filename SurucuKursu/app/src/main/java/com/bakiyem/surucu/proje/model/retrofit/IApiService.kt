@@ -3,6 +3,7 @@ package com.bakiyem.surucu.proje.model.retrofit
 import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
@@ -50,6 +51,12 @@ interface IApiService {
     fun getHakkimizda(
         @Part("token") token: RequestBody,
     ): Observable<ResResult<Response4Hakkimizda>>
+
+    @Multipart
+    @POST("/KursumAPI/araclar/index.php")
+    fun getAraclar(
+        @Part("token") token: RequestBody,
+    ): Observable<ResResultArray<Response4Araclar>>
 
 
     /* @Multipart

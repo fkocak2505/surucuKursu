@@ -3,6 +3,7 @@ package com.bakiyem.surucu.proje.model.retrofit
 import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
@@ -73,6 +74,14 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
 
         return api.getHakkimizda(tokenBody)
+    }
+
+    fun getAraclar(): Observable<ResResultArray<Response4Araclar>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+
+        return api.getAraclar(tokenBody)
     }
 
 }

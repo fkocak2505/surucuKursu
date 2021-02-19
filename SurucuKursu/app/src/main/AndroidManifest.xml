@@ -32,6 +32,9 @@
 
         <activity android:name=".activity.hakkimizda.HakkimizdaActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".activity.araclarimiz.view.AraclarimizActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

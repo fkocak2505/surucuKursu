@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.araclarimiz.view.AraclarimizActivity
 import com.bakiyem.surucu.proje.activity.hakkimizda.HakkimizdaActivity
 import com.bakiyem.surucu.proje.fragments.course.controller.CourseController
 import com.bakiyem.surucu.proje.fragments.course.dataModel.CourseItem
@@ -46,7 +46,7 @@ class CourseFragment : Fragment(), CListener<Any> {
                         startActivity(Intent(requireContext(), HakkimizdaActivity::class.java))
                     }
                     "2" -> {
-
+                        startActivity(Intent(requireContext(), AraclarimizActivity::class.java))
                     }
                     "3" -> {
 
