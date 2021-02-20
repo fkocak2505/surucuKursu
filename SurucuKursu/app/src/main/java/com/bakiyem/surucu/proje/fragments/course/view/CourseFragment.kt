@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.araclarimiz.view.AraclarimizActivity
+import com.bakiyem.surucu.proje.activity.galeri.GaleriActivity
 import com.bakiyem.surucu.proje.activity.hakkimizda.HakkimizdaActivity
 import com.bakiyem.surucu.proje.fragments.course.controller.CourseController
 import com.bakiyem.surucu.proje.fragments.course.dataModel.CourseItem
@@ -49,7 +50,7 @@ class CourseFragment : Fragment(), CListener<Any> {
                         startActivity(Intent(requireContext(), AraclarimizActivity::class.java))
                     }
                     "3" -> {
-
+                        startActivity(Intent(requireContext(), GaleriActivity::class.java))
                     }
                     "4" -> {
 
