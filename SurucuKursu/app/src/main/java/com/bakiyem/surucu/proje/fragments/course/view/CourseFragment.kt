@@ -10,6 +10,7 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.araclarimiz.view.AraclarimizActivity
 import com.bakiyem.surucu.proje.activity.galeri.GaleriActivity
 import com.bakiyem.surucu.proje.activity.hakkimizda.HakkimizdaActivity
+import com.bakiyem.surucu.proje.activity.kadromuz.KadromuzActivity
 import com.bakiyem.surucu.proje.fragments.course.controller.CourseController
 import com.bakiyem.surucu.proje.fragments.course.dataModel.CourseItem
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
@@ -53,7 +54,7 @@ class CourseFragment : Fragment(), CListener<Any> {
                         startActivity(Intent(requireContext(), GaleriActivity::class.java))
                     }
                     "4" -> {
-
+                        startActivity(Intent(requireContext(), KadromuzActivity::class.java))
                     }
                 }
             }

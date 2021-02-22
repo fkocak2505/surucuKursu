@@ -7,6 +7,7 @@ import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
+import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import io.reactivex.rxjava3.core.Observable
@@ -65,13 +66,11 @@ interface IApiService {
         @Part("token") token: RequestBody,
     ): Observable<ResResultArray<Response4Galeri>>
 
+    @Multipart
+    @POST("/KursumAPI/kadro/index.php")
+    fun getKadromuz(
+        @Part("token") token: RequestBody,
+    ): Observable<ResResultArray<Response4Kadromuz>>
 
-    /* @Multipart
-     @POST("/KursumAPI/duyurular/index.php")
-     fun getAnnouncements(
-         @Part("token") token: RequestBody,
-         @Part("kursiyer") kursiyer: RequestBody,
-         @Part("grup") grup: RequestBody
-     ): Single<Response<Response4Announcements>>*/
 
 }
