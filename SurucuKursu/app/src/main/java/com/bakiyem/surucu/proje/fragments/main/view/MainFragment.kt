@@ -105,6 +105,23 @@ class MainFragment : Fragment(), CListener<Any> {
             is Response4Announcements -> {
                 DuyuruDetayActivity.start(requireContext(), data.keyi)
             }
+            is String -> {
+                if (!Hawk.contains("loginResponse"))
+                    Toast.makeText(requireContext(), "Login olun", Toast.LENGTH_SHORT).show()
+                else {
+                    when (data) {
+                        "Derslerim" -> {
+                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                        }
+                        "Sınavlar" -> {
+                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                        }
+                        "Randevu" -> {
+                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
         }
     }
 }

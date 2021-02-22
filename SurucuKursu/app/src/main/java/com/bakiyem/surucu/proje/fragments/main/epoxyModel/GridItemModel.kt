@@ -3,12 +3,14 @@ package com.bakiyem.surucu.proje.fragments.main.epoxyModel
 import android.view.View
 import com.airbnb.epoxy.*
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.data.DummyData
 import com.bakiyem.surucu.proje.fragments.main.epoxyModel.subController.GridController
+import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 
 @EpoxyModelClass(layout = R.layout.holder_grid_item)
-abstract class GridItemModel : EpoxyModelWithHolder<GridItemModel.GridHolder>(){
+abstract class GridItemModel : EpoxyModelWithHolder<GridItemModel.GridHolder>(), CListener<Any>{
 
     @EpoxyAttribute
     lateinit var listener: (String) -> Unit
@@ -17,7 +19,7 @@ abstract class GridItemModel : EpoxyModelWithHolder<GridItemModel.GridHolder>(){
     override fun bind(holder: GridHolder) {
         super.bind(holder)
 
-        val controller = GridController()
+        val controller = GridController(this)
         holder.ervGrid.setController(controller)
         holder.ervGrid.addItemDecoration(EpoxyItemSpacingDecorator(10))
         controller.gridData = DummyData.gridData
@@ -33,5 +35,11 @@ abstract class GridItemModel : EpoxyModelWithHolder<GridItemModel.GridHolder>(){
         }
     }
 
-
+    override fun onSelected(data: Any) {
+        when (data) {
+            is String -> {
+                listener.invoke(data)
+            }
+        }
+    }
 }

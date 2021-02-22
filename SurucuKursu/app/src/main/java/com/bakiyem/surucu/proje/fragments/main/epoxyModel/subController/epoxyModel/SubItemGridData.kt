@@ -14,7 +14,7 @@ import com.bakiyem.surucu.proje.fragments.main.dataModel.StaticData
 import com.google.android.material.card.MaterialCardView
 
 @EpoxyModelClass(layout = R.layout.holder_sub_grid_item)
-abstract class SubItemGridData: EpoxyModelWithHolder<SubItemGridData.GridHolder>()  {
+abstract class SubItemGridData : EpoxyModelWithHolder<SubItemGridData.GridHolder>() {
 
     @EpoxyAttribute
     lateinit var subStaticData: StaticData
@@ -31,7 +31,7 @@ abstract class SubItemGridData: EpoxyModelWithHolder<SubItemGridData.GridHolder>
         }
 
         holder.cl.setOnClickListener {
-            listener.invoke("message")
+            listener.invoke(subStaticData.title)
         }
     }
 

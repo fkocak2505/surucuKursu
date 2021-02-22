@@ -5,7 +5,7 @@ import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.dataModel.StaticData
 import com.bakiyem.surucu.proje.fragments.main.epoxyModel.subController.epoxyModel.subItemGridData
 
-class GridController: AsyncEpoxyController() {
+class GridController(private val listener: CListener<Any>): AsyncEpoxyController() {
 
     var gridData: List<StaticData> = emptyList()
         set(value) {
@@ -18,7 +18,9 @@ class GridController: AsyncEpoxyController() {
             subItemGridData {
                 id(it.id)
                 subStaticData(it)
-
+                listener {
+                    listener.onSelected(it)
+                }
             }
         }
     }

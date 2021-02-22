@@ -41,6 +41,9 @@ class MainFragmentController(private val listener: CListener<Any>) : AsyncEpoxyC
 
         singleItem {
             id("3")
+            listener {
+                listener.onSelected(it)
+            }
         }
 
         headerItem {
