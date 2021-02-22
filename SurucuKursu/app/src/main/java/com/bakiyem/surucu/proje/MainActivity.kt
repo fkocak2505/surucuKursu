@@ -10,14 +10,17 @@ import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
 import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
 import com.bakiyem.surucu.proje.fragments.main.view.MainFragment
+import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.left_menu_with_login.*
 import kotlinx.android.synthetic.main.left_menu_without_login.*
 
 
-class MainActivity : BaseActivity(){
+class MainActivity : BaseActivity() {
 
     override fun getLayoutID(): Int = R.layout.activity_main
 
@@ -90,11 +93,20 @@ class MainActivity : BaseActivity(){
         if (Hawk.contains("loginResponse")) {
             nav_without_login.visibility = View.GONE
             nav_with_login.visibility = View.VISIBLE
+
+            prepareLoginData()
+
         } else {
             nav_without_login.visibility = View.VISIBLE
             nav_with_login.visibility = View.GONE
         }
+    }
 
+    private fun prepareLoginData() {
+        val loginData = Hawk.get<Response4Login>("loginResponse")
+
+        iv_userImage.loadImage(loginData.resim)
+        tv_userName.text = loginData.adSoyad
     }
 
     private fun setCurrentFragment(fragment: Fragment) =

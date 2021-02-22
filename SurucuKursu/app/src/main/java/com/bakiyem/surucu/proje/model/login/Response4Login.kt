@@ -16,5 +16,9 @@ data class Response4Login(
     var adSoyad: String? = null,
     @SerializedName("TcKimlik")
     var tckn: String? = null,
+    @SerializedName("Resim")
+    var resim: String? = null,
+
+
 
 )
