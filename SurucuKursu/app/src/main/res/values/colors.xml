@@ -15,4 +15,6 @@
     <color name="titleBackground">#F2F4FA</color>
     <color name="line">#ececec</color>
     <color name="cardBackground">#F5F5F5</color>
+
+    <color name="transparentGreyColor">#CC000000</color>
 </resources>

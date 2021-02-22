@@ -1,16 +1,21 @@
 package com.bakiyem.surucu.proje.activity.galeri
 
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
+import com.stfalcon.frescoimageviewer.ImageViewer
 import kotlinx.android.synthetic.main.activity_galeri.*
+
 
 class GaleriActivity : BaseActivity() {
 
     lateinit var galeriVM: GaleriVM
+
+    lateinit var listOfGaleri: MutableList<Response4Galeri>
 
     override fun getLayoutID(): Int = R.layout.activity_galeri
 
@@ -29,6 +34,8 @@ class GaleriActivity : BaseActivity() {
     override fun initVMListener() {
         galeriVM.galeriLD.observe(this, {
             it?.let {
+                listOfGaleri = mutableListOf()
+                listOfGaleri = it
                 prepareGaleriData(it)
             } ?: run {
                 Toast.makeText(applicationContext, "awfawf", Toast.LENGTH_SHORT).show()
@@ -44,12 +51,41 @@ class GaleriActivity : BaseActivity() {
         val layoutManager = GridLayoutManager(context, 10)
         recycler_view?.layoutManager = layoutManager
         val adapter = GalleryAdapter(context) {
-            Toast.makeText(applicationContext, it.resim, Toast.LENGTH_SHORT).show()
+            clickImage(it)
         }
         recycler_view?.adapter = adapter
         layoutManager.spanSizeLookup = adapter.spanSizeLookup
 
         adapter.setItems(prepareGaleriDataWithColumns(listOfGaleriData))
+    }
+
+    private fun clickImage(currentDataModel: DataModel) {
+        val strOfGaleriList: MutableList<String> = mutableListOf()
+
+        var index = 0
+        listOfGaleri.forEachIndexed { i, response4Galeri ->
+            if(currentDataModel.resim == response4Galeri.resim)
+                index = i
+        }
+
+        for(i in index until listOfGaleri.size){
+            strOfGaleriList.add(listOfGaleri[i].resim!!)
+        }
+
+        for(i in 0 until index){
+            strOfGaleriList.add(listOfGaleri[i].resim!!)
+        }
+
+
+        ImageViewer.Builder(this, strOfGaleriList)
+            .setStartPosition(0)
+            .setBackgroundColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.transparentGreyColor
+                )
+            )
+            .show()
     }
 
     private fun prepareGaleriDataWithColumns(listOfGaleriData: MutableList<Response4Galeri>): MutableList<DataModel> {
@@ -76,16 +112,16 @@ class GaleriActivity : BaseActivity() {
                 }
 
             }
-        }else {
+        } else {
             listOfGaleriData.forEachIndexed { index, response4Galeri ->
-                if(index % 2 == 0){
+                if (index % 2 == 0) {
                     finalData.add(
                         DataModel(
                             response4Galeri.resim!!,
                             3
                         )
                     )
-                }else {
+                } else {
                     finalData.add(
                         DataModel(
                             response4Galeri.resim!!,
