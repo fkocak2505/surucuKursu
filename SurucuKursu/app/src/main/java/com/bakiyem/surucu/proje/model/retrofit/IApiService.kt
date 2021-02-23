@@ -4,6 +4,7 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
@@ -94,6 +95,13 @@ interface IApiService {
         @Part("token") token: RequestBody,
         @Part("kategori") kategori: RequestBody
     ): Observable<ResResultArray<Response4DersListesi>>
+
+    @Multipart
+    @POST("/KursumAPI/ders-icerik/index.php")
+    fun getDersIcerik(
+        @Part("token") token: RequestBody,
+        @Part("derskey") derskey: RequestBody
+    ): Observable<ResResultArray<Response4DersIcerik>>
 
 
 }

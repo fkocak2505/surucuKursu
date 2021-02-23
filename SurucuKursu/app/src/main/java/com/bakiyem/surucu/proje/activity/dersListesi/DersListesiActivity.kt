@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.dersIcerik.DersIcerikActivity
 import com.bakiyem.surucu.proje.activity.dersListesi.epoxy.controller.DersListesiController
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
@@ -25,7 +26,7 @@ class DersListesiActivity : BaseActivity(), CListener<Response4DersListesi> {
         dersKategoriItem?.let {
             tv_hugeTitle.text = it.dersAdi
             tv_dersAdiDetail.text = "${it.dersAdi} Konuları"
-        }?: run{
+        } ?: run {
             tv_hugeTitle.text = "Detaylar"
             tv_dersAdiDetail.text = "Detaylar"
         }
@@ -85,6 +86,6 @@ class DersListesiActivity : BaseActivity(), CListener<Response4DersListesi> {
     }
 
     override fun onSelected(response4DersListesi: Response4DersListesi) {
-        
+        DersIcerikActivity.start(this, dersKategoriItem, response4DersListesi)
     }
 }

@@ -57,6 +57,9 @@
         <activity android:name=".activity.dersListesi.DersListesiActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".activity.dersIcerik.DersIcerikActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
