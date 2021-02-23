@@ -2,10 +2,13 @@ package com.bakiyem.surucu.proje
 
 import android.content.Intent
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.bakiyem.surucu.proje.activity.derslerim.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
+import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
 import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
@@ -87,6 +90,48 @@ class MainActivity : BaseActivity() {
             drawer_layout.closeDrawer(GravityCompat.START)
             startActivity(Intent(this, LoginActivity::class.java))
         }
+
+        cl_profilim.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            startActivity(Intent(this, ProfilimActivity::class.java))
+        }
+
+        cl_derslerim.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            startActivity(Intent(this, DerslerimActivity::class.java))
+        }
+
+        cl_sinavlarim.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toast("Profilim")
+        }
+
+        cl_sinavSonuclarim.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toast("Profilim")
+        }
+
+        cl_odemeBilgilerim.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toast("Profilim")
+        }
+
+        cl_Randevularim.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toast("Profilim")
+        }
+
+        cl_faydaliBilgiler.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toast("Profilim")
+        }
+
+        cl_guvenliCikis.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toast("Profilim")
+        }
+
+
     }
 
     private fun handleisLoginandDrawUI() {

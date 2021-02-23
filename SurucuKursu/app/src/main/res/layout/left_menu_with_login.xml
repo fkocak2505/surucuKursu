@@ -45,6 +45,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_profilim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -73,6 +74,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_derslerim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -101,6 +103,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_sinavlarim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -129,6 +132,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_sinavSonuclarim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -157,6 +161,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_odemeBilgilerim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -185,6 +190,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_Randevularim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -212,6 +218,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_faydaliBilgiler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -239,6 +246,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_guvenliCikis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

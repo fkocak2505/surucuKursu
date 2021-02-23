@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_hugeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        android:background="@color/titleBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_left_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_hugeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="Profilim"
+            android:textSize="@dimen/hugeTitleTextSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_hugeTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titleTextSize"
+                android:text="Genel Bilgiler"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iv_profilImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_userNameAndSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="awfafawf"
+                    android:textSize="@dimen/descTextSize"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="@+id/cardView"
+                    app:layout_constraintVertical_bias="0.3" />
+
+                <TextView
+                    android:id="@+id/tv_userPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="awfafawf"
+                    android:textSize="@dimen/descTextSize"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="@+id/cardView"
+                    app:layout_constraintVertical_bias="0.7" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_adayNoInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Aday No: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_adayNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="01"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_adiInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Adı: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_adi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_soyAdiInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Soyadı: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_soyAdi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_sgrupInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Grubu: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_grup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_tcInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="T.C. Kimlik No: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_tc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_dogumInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Doğum Tarihi: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_dogum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_kayitTarihiInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Kayıt Tarihi: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_kayitTarihi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_ehliyetSinifiInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Ehliyet Sınıfı: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_ehliyetSinifi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_dilInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Dil: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_dil"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_cinsiyetInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Cinsiyet: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_cinsiyet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_kanGrubuInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Kan Grubu: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_kanGrubu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_onlineDersInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Online Ders Linki: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_onlineDers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titleTextSize"
+                android:text="İletişim Bilgileri"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_adresInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Adres: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_adres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_cepTelInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Cep Telefonu: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_cepTel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_evTelInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Ev Telefonu: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_evTel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_acilErisimTelInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="Acil Erişim Tel.: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_acilErisimTel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_epostaInfo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:text="E-Posta: "
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_eposta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/descTextSize"
+                    android:background="@drawable/bg_tckn"
+                    android:text="Fatih"
+                    android:padding="10dp"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

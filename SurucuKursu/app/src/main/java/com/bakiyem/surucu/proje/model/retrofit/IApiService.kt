@@ -4,12 +4,14 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.RequestBody
@@ -71,6 +73,19 @@ interface IApiService {
     fun getKadromuz(
         @Part("token") token: RequestBody,
     ): Observable<ResResultArray<Response4Kadromuz>>
+
+    @Multipart
+    @POST("/KursumAPI/kursiyer/index.php")
+    fun getProfilim(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") kursiyerKey: RequestBody
+    ): Observable<ResResult<Response4Profilim>>
+
+    @Multipart
+    @POST("/KursumAPI/dersgruplar/index.php")
+    fun getDersKategori(
+        @Part("token") token: RequestBody,
+    ): Observable<ResResultArray<Response4Derslerim>>
 
 
 }

@@ -43,7 +43,15 @@
             android:name=".activity.galeri.GaleriActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.kadromuz.KadromuzActivity"
+        <activity
+            android:name=".activity.kadromuz.KadromuzActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.profil.ProfilimActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.derslerim.DerslerimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

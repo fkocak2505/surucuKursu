@@ -4,12 +4,15 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.google.gson.Gson
 import com.orhanobut.hawk.Hawk
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -100,6 +103,24 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
 
         return api.getKadromuz(tokenBody)
+    }
+
+    fun getProfilim(): Observable<ResResult<Response4Profilim>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+
+        return api.getProfilim(tokenBody, kursiyerBody)
+    }
+
+    fun getDersKategori(): Observable<ResResultArray<Response4Derslerim>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+
+        return api.getDersKategori(tokenBody)
     }
 
 }

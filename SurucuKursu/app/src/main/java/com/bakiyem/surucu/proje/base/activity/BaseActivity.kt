@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -111,6 +112,10 @@ abstract class BaseActivity: AppCompatActivity() {
 
     private fun getColorById(colorId: Int): Int {
         return ContextCompat.getColor(context, colorId)
+    }
+
+    fun toast(message: String){
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
 }

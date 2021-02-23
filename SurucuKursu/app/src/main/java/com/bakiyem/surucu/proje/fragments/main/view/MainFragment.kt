@@ -1,5 +1,6 @@
 package com.bakiyem.surucu.proje.fragments.main.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.derslerim.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.controller.MainFragmentController
@@ -111,7 +113,7 @@ class MainFragment : Fragment(), CListener<Any> {
                 else {
                     when (data) {
                         "Derslerim" -> {
-                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(requireContext(), DerslerimActivity::class.java))
                         }
                         "Sınavlar" -> {
                             Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
