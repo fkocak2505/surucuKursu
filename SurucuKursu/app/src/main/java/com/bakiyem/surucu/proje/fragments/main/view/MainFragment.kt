@@ -9,11 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
-import com.bakiyem.surucu.proje.activity.derslerim.DerslerimActivity
+import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.controller.MainFragmentController
-import com.bakiyem.surucu.proje.fragments.main.data.DummyData
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.orhanobut.hawk.Hawk

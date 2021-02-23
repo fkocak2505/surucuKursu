@@ -2,11 +2,10 @@ package com.bakiyem.surucu.proje
 
 import android.content.Intent
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.bakiyem.surucu.proje.activity.derslerim.DerslerimActivity
+import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity

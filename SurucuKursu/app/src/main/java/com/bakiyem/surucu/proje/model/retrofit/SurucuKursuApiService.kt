@@ -4,6 +4,7 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
@@ -122,5 +123,15 @@ class SurucuKursuApiService {
 
         return api.getDersKategori(tokenBody)
     }
+
+    fun getDersListesi(kategoriId: String): Observable<ResResultArray<Response4DersListesi>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kategori = RequestBody.create(MediaType.parse("text/plain"), kategoriId)
+
+        return api.getDersListesi(tokenBody, kategori)
+    }
+
 
 }

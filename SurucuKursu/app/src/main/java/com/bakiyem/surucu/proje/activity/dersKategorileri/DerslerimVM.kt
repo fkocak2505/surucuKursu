@@ -1,4 +1,4 @@
-package com.bakiyem.surucu.proje.activity.derslerim
+package com.bakiyem.surucu.proje.activity.dersKategorileri
 
 import androidx.lifecycle.MutableLiveData
 import com.bakiyem.surucu.proje.base.vm.BaseVM

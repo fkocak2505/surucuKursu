@@ -1,4 +1,4 @@
-package com.bakiyem.surucu.proje.activity.derslerim.epoxy.mdoel
+package com.bakiyem.surucu.proje.activity.dersKategorileri.epoxy.model
 
 import android.view.View
 import android.widget.TextView

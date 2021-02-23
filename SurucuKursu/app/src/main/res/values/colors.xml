@@ -17,4 +17,5 @@
     <color name="cardBackground">#F5F5F5</color>
 
     <color name="transparentGreyColor">#CC000000</color>
+    <color name="purpleColor">#6B6086</color>
 </resources>

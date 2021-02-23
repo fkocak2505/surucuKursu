@@ -1,8 +1,9 @@
-package com.bakiyem.surucu.proje.activity.derslerim
+package com.bakiyem.surucu.proje.activity.dersKategorileri
 
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
-import com.bakiyem.surucu.proje.activity.derslerim.epoxy.controller.DerslerimController
+import com.bakiyem.surucu.proje.activity.dersKategorileri.epoxy.controller.DerslerimController
+import com.bakiyem.surucu.proje.activity.dersListesi.DersListesiActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
@@ -53,6 +54,6 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
     }
 
     override fun onSelected(response4Derslerim: Response4Derslerim) {
-
+        DersListesiActivity.start(this, response4Derslerim)
     }
 }
