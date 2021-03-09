@@ -78,6 +78,8 @@ dependencies {
 
     implementation 'com.github.f0ris.sweetalert:library:1.5.1'
 
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+
 
     implementation 'com.kaopiz:kprogresshud:1.2.0'
 

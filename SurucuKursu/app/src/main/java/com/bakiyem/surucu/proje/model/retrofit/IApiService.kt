@@ -4,6 +4,8 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
+import com.bakiyem.surucu.proje.model.denemeSinavi.Response4SinavSonuc
 import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
@@ -102,6 +104,34 @@ interface IApiService {
         @Part("token") token: RequestBody,
         @Part("derskey") derskey: RequestBody
     ): Observable<ResResultArray<Response4DersIcerik>>
+
+    @Multipart
+    @POST("/KursumAPI/deneme-sinavlar/index.php")
+    fun getDenemeSinavi(
+        @Part("token") token: RequestBody
+    ): Observable<ResResultArray<Response4DenemeSinavi>>
+
+    @Multipart
+    @POST("/KursumAPI/sonuc-gonder/index.php")
+    fun postSinavSonuc(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") kursiyerKey: RequestBody,
+        @Part("IlkYrdmDogru") ilkYrdmDogru: RequestBody,
+        @Part("IlkYrdmYanlis") ilkYrdmYanlis: RequestBody,
+        @Part("IlkYrdmBos") ilkYrdmBos: RequestBody,
+        @Part("TrafikDogru") trafikDogru: RequestBody,
+        @Part("TrafikYanlis") trafikYanlis: RequestBody,
+        @Part("TrafikBos") trafikBos: RequestBody,
+        @Part("MotorDogru") motorDogru: RequestBody,
+        @Part("MotorYanlis") motorYanlis: RequestBody,
+        @Part("MotorBos") motorBos: RequestBody,
+        @Part("AdapDogru") adapDogru: RequestBody,
+        @Part("AdapYanlis") adapYanlis: RequestBody,
+        @Part("AdapBos") adapBos: RequestBody,
+        @Part("Sure") sure: RequestBody,
+    ): Observable<ResResult<Response4SinavSonuc>>
+
+
 
 
 }

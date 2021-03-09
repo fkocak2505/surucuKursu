@@ -2,7 +2,7 @@ package com.bakiyem.surucu.proje.activity.sinavlarim
 
 import android.content.Intent
 import com.bakiyem.surucu.proje.R
-import com.bakiyem.surucu.proje.activity.denemeSinavlarim.DenemeSinavlarimActivity
+import com.bakiyem.surucu.proje.activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.epoxy.controller.SinavlarimController
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
@@ -53,7 +53,7 @@ class SinavlarimActivity: BaseActivity(), CListener<String> {
     override fun onSelected(data: String) {
         when(data){
             "Deneme Sınavları" -> {
-                startActivity(Intent(this, DenemeSinavlarimActivity::class.java))
+                startActivity(Intent(this, DenemeSinavlarimKlavuzActivity::class.java))
             }
         }
     }

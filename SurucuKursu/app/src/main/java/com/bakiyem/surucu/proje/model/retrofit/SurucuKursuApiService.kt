@@ -4,6 +4,8 @@ import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
+import com.bakiyem.surucu.proje.model.denemeSinavi.Response4SinavSonuc
 import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
@@ -141,6 +143,68 @@ class SurucuKursuApiService {
         val dersKey = RequestBody.create(MediaType.parse("text/plain"), dersKeyId)
 
         return api.getDersIcerik(tokenBody, dersKey)
+    }
+
+    fun getDenemeSinavi(): Observable<ResResultArray<Response4DenemeSinavi>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+
+        return api.getDenemeSinavi(tokenBody)
+    }
+
+    fun postSinavSonuc(
+        iyDogru: String,
+        iyYanlis: String,
+        iyBos: String,
+        tDogru: String,
+        tYanlis: String,
+        tBos: String,
+        mDogru: String,
+        mYanlis: String,
+        mBos: String,
+        aDogru: String,
+        aYanlis: String,
+        aBos: String,
+        sure: String
+    ): Observable<ResResult<Response4SinavSonuc>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+
+        val iyDogruBody = RequestBody.create(MediaType.parse("text/plain"), iyDogru)
+        val iyYanlisBody = RequestBody.create(MediaType.parse("text/plain"), iyYanlis)
+        val iyBosBody = RequestBody.create(MediaType.parse("text/plain"), iyBos)
+        val tDogruBody = RequestBody.create(MediaType.parse("text/plain"), tDogru)
+        val tYanlisBody = RequestBody.create(MediaType.parse("text/plain"), tYanlis)
+        val tBosBody = RequestBody.create(MediaType.parse("text/plain"), tBos)
+        val mDogruBody = RequestBody.create(MediaType.parse("text/plain"), mDogru)
+        val mYanlisBody = RequestBody.create(MediaType.parse("text/plain"), mYanlis)
+        val mBosBody = RequestBody.create(MediaType.parse("text/plain"), mBos)
+        val aDogruBody = RequestBody.create(MediaType.parse("text/plain"), aDogru)
+        val aYanlisBody = RequestBody.create(MediaType.parse("text/plain"), aYanlis)
+        val aBosBody = RequestBody.create(MediaType.parse("text/plain"), aBos)
+        val sureBody = RequestBody.create(MediaType.parse("text/plain"), sure)
+
+        return api.postSinavSonuc(
+            tokenBody,
+            kursiyerBody,
+            iyDogruBody,
+            iyYanlisBody,
+            iyBosBody,
+            tDogruBody,
+            tYanlisBody,
+            tBosBody,
+            mDogruBody,
+            mYanlisBody,
+            mBosBody,
+            aDogruBody,
+            aYanlisBody,
+            aBosBody,
+            sureBody
+        )
     }
 
 

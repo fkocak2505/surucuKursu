@@ -65,7 +65,10 @@
         <activity android:name=".activity.sinavlarim.SinavlarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.denemeSinavlarim.DenemeSinavlarimActivity"
+        <activity android:name=".activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.denemeSinavi.DenemeSinaviActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
