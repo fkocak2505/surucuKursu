@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/toolbar_layout"
@@ -49,12 +49,12 @@
         android:id="@+id/tv_dersAdiDetail"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:textSize="@dimen/titleTextSize"
         android:layout_margin="10dp"
         android:gravity="start"
+        android:textSize="@dimen/titleTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_hugeTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/cl_hugeTitle" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -73,38 +73,96 @@
                 android:id="@+id/tv_dersiDinleInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/titleTextSize"
+                android:layout_margin="10dp"
                 android:text="Dersi Dinle"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/titleTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_playDers"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/bg_tckn"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_dersiDinleInfo"
+                android:background="@drawable/bg_tckn"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/tv_dersiDinleInfo">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/iv_play"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/ic_play"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_songTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="0:00/0:00"
+                                android:textSize="13sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/iv_play"
+                                app:layout_constraintStart_toEndOf="@+id/iv_play"
+                                app:layout_constraintTop_toTopOf="@+id/iv_play" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <SeekBar
+                            android:id="@+id/sb_song"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/tv_dersIcerik"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/descTextSize"
+                android:layout_margin="10dp"
                 android:text="awfawfawf"
-                app:layout_constraintTop_toBottomOf="@+id/cl_playDers"
+                android:textSize="@dimen/descTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/cl_playDers" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

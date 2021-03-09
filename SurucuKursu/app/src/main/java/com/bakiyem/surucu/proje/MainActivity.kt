@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
+import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
 import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
@@ -102,7 +103,7 @@ class MainActivity : BaseActivity() {
 
         cl_sinavlarim.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toast("Profilim")
+            startActivity(Intent(this, SinavlarimActivity::class.java))
         }
 
         cl_sinavSonuclarim.setOnClickListener {

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
+import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.controller.MainFragmentController
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
@@ -115,7 +116,7 @@ class MainFragment : Fragment(), CListener<Any> {
                             startActivity(Intent(requireContext(), DerslerimActivity::class.java))
                         }
                         "Sınavlar" -> {
-                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(requireContext(), SinavlarimActivity::class.java))
                         }
                         "Randevu" -> {
                             Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
