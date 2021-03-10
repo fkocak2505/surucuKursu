@@ -29,6 +29,7 @@ class DenemeSinaviVM : BaseVM() {
     }
 
     var sinavSonucLD = MutableLiveData<Response4SinavSonuc>()
+    var cevapNumberLD = MutableLiveData<String>()
     fun postSinavSonuc(sure :String, resultQuestions: MutableList<QuestionsResultModel>) {
         var iyDogru = 0
         var iyYanlis = 0
@@ -116,13 +117,16 @@ class DenemeSinaviVM : BaseVM() {
             ).subscribe({ rr ->
 
                 checkServiceStatus(rr)?.let {
+                    cevapNumberLD.value = "${iyDogru + tDogru + mDogru + aDogru}&${iyYanlis + tYanlis + mYanlis + aYanlis}&${iyBos + tBos + mBos + aBos}"
                     sinavSonucLD.value = it
                 }?: run{
-                    denemeSinaviLD.value = null
+                    cevapNumberLD.value = null
+                    sinavSonucLD.value = null
                 }
 
             }, {
-                denemeSinaviLD.value = null
+                cevapNumberLD.value = null
+                sinavSonucLD.value = null
             })
         )
     }

@@ -55,8 +55,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_root"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/tv_userName"
@@ -133,6 +136,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_midRoot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,6 +150,7 @@
                     android:layout_margin="10dp"
                     android:textColor="@color/orange"
                     android:textSize="@dimen/hugeTitleTextSize"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -156,6 +161,7 @@
                     android:layout_height="wrap_content"
                     android:max="50"
                     android:padding="8dp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_seekbarValue" />
@@ -166,6 +172,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="İlk Yardım"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sb_questionsLength" />
@@ -177,6 +184,7 @@
                     android:textSize="@dimen/hugeTitleTextSize"
                     android:text="İlk Yardım"
                     android:gravity="center"
+                    android:visibility="visible"
                     android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -189,6 +197,7 @@
                     android:textSize="@dimen/hugeTitleTextSize"
                     android:text="İlk Yardım"
                     android:gravity="center"
+                    android:visibility="visible"
                     android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -202,6 +211,7 @@
                     app:cardCornerRadius="5dp"
                     app:cardElevation="5dp"
                     android:layout_marginTop="10dp"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/titleBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -250,6 +260,7 @@
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="5dp"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/titleBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -298,6 +309,7 @@
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="5dp"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/titleBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -346,6 +358,7 @@
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="5dp"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/titleBackground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -394,6 +407,7 @@
                     app:cardCornerRadius="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/beforeAfter"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cv_seceneklerD">
@@ -427,6 +441,7 @@
                     app:cardCornerRadius="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="5dp"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/beforeAfter"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cv_seceneklerD">
@@ -451,6 +466,186 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_answerQuiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_sonrakiSoru"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_sinavSonuc"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:cardCornerRadius="10dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_correctNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:textSize="30sp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="40dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tv_correctNumberInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Doğru"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_correctNumber"
+                            app:layout_constraintStart_toStartOf="@+id/tv_correctNumber"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_correctNumber" />
+
+                        <ImageView
+                            android:id="@+id/iv_greenTick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/ic_green_tick"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_correctNumberInfo"
+                            app:layout_constraintStart_toStartOf="@+id/tv_correctNumberInfo"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_correctNumberInfo"/>
+
+                        <TextView
+                            android:id="@+id/tv_wrongNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:textSize="30sp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tv_wrongNumberInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Yanlış"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_wrongNumber"
+                            app:layout_constraintStart_toStartOf="@+id/tv_wrongNumber"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_wrongNumber" />
+
+                        <ImageView
+                            android:id="@+id/iv_redCross"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/ic_red_cross"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_wrongNumberInfo"
+                            app:layout_constraintStart_toStartOf="@+id/tv_wrongNumberInfo"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_wrongNumberInfo"/>
+
+                        <TextView
+                            android:id="@+id/tv_emptyNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:textSize="30sp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="40dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_emptyNumberInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Boş"
+                            android:textSize="15sp"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_emptyNumber"
+                            app:layout_constraintStart_toStartOf="@+id/tv_emptyNumber"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_emptyNumber" />
+
+                        <ImageView
+                            android:id="@+id/iv_emptyAnswer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/ic_empty_answer"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_emptyNumberInfo"
+                            app:layout_constraintStart_toStartOf="@+id/tv_emptyNumberInfo"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_emptyNumberInfo"/>
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_sinavSonucPuan"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:cardElevation="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="#EEEEEE"
+                    app:strokeWidth="1dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_sinavSonuc"
+                    app:layout_constraintBottom_toBottomOf="@+id/cv_sinavSonuc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_sinav_sonuc_puan"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/tv_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30dp"
+                            android:text="46"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tv_scoreInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="22dp"
+                            android:text="Puan"
+                            android:textColor="@color/white"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_score"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

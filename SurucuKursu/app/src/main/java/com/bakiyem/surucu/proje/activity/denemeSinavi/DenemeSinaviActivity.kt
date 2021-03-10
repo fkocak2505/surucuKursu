@@ -3,12 +3,16 @@ package com.bakiyem.surucu.proje.activity.denemeSinavi
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.text.Html
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.model.denemeSinavi.AnswerModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.QuestionsResultModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
 import com.bakiyem.surucu.proje.model.login.Response4Login
@@ -16,7 +20,6 @@ import com.bakiyem.surucu.proje.utils.ext.renderHtml
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.*
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.iv_back
-import kotlinx.android.synthetic.main.activity_ders_icerik.*
 
 class DenemeSinaviActivity : BaseActivity() {
 
@@ -33,7 +36,13 @@ class DenemeSinaviActivity : BaseActivity() {
     private lateinit var resultQuestions: MutableList<QuestionsResultModel>
 
     var isQuizFinished = false
-    var isClickSecenek = false
+
+    lateinit var mAdapter: DenemeSinaviQuizAnswerAdapter
+
+    lateinit var listOfAnswers: MutableList<AnswerModel>
+
+    var resultStrData = ""
+
 
     override fun getLayoutID(): Int = R.layout.activity_deneme_sinavi
 
@@ -53,20 +62,32 @@ class DenemeSinaviActivity : BaseActivity() {
         denemeSinaviVM.denemeSinaviLD.observe(this, {
             it?.let {
                 prepareDenemeSinavi(it)
+                cl_root.visibility = View.VISIBLE
+                generateAnswerGridFirstData(it.size)
             } ?: run {
                 toast("Error Deneme Sinavi")
                 onBackPressed()
             }
         })
 
+        denemeSinaviVM.cevapNumberLD.observe(this, {
+            it?.let {
+                resultStrData = it
+            }?: run{
+                resultStrData = "0&0&0"
+            }
+        })
+
         denemeSinaviVM.sinavSonucLD.observe(this, {
             it?.let {
                 toast(it.detay!!)
-            }?: run{
+            } ?: run {
                 toast("Error Sinav Sonuc Post")
             }
 
-            onBackPressed()
+            changeVisibility()
+            changeConstraint()
+            calculateSinavSonuc()
 
         })
     }
@@ -119,7 +140,7 @@ class DenemeSinaviActivity : BaseActivity() {
 
         val htmlData = Html.fromHtml(questions[num].soruAciklama!!).toString()
         tv_qSoruAciklama renderHtml htmlData
-        
+
         tv_secenekA.text = questions[num].secenekler!![0]?.cevap
         tv_secenekB.text = questions[num].secenekler!![1]?.cevap
         tv_secenekC.text = questions[num].secenekler!![2]?.cevap
@@ -129,24 +150,29 @@ class DenemeSinaviActivity : BaseActivity() {
             if (it?.dogru == "1")
                 answer = it.cevap
         }
+    }
 
+    private fun prepareAllAnswersGrid() {
+        rv_answerQuiz.layoutManager = GridLayoutManager(this, 6)
+        mAdapter = DenemeSinaviQuizAnswerAdapter(applicationContext, listOfAnswers.toList())
+        rv_answerQuiz.adapter = mAdapter
     }
 
     private fun handleSecenekClickListener() {
         cv_seceneklerA.setOnClickListener {
-            checkIfCorrectAnswer(tv_secenekA)
+            checkIfCorrectAnswer(tv_secenekA, "A")
         }
 
         cv_seceneklerB.setOnClickListener {
-            checkIfCorrectAnswer(tv_secenekB)
+            checkIfCorrectAnswer(tv_secenekB, "B")
         }
 
         cv_seceneklerC.setOnClickListener {
-            checkIfCorrectAnswer(tv_secenekC)
+            checkIfCorrectAnswer(tv_secenekC, "C")
         }
 
         cv_seceneklerD.setOnClickListener {
-            checkIfCorrectAnswer(tv_secenekD)
+            checkIfCorrectAnswer(tv_secenekD, "D")
         }
 
         cv_oncekiSoru.setOnClickListener {
@@ -162,29 +188,39 @@ class DenemeSinaviActivity : BaseActivity() {
             if (currentQuizIndex + 1 == questionLength) {
                 Toast.makeText(applicationContext, "Sona geldi", Toast.LENGTH_SHORT).show()
             } else {
+                notifyAnswerAdapter("-")
                 currentQuizIndex++
                 NextQuestion(currentQuizIndex)
             }
         }
     }
 
-    private fun checkIfCorrectAnswer(view: TextView) {
+    private fun checkIfCorrectAnswer(view: TextView, secenek: String) {
         if (currentQuizIndex + 1 == questionLength) {
             isQuizFinished = true
         }
 
-        if (view.text.toString() == answer)
+        if (view.text.toString() == answer) {
             resultQuestions[currentQuizIndex].answer = 1
-        else
+        } else {
             resultQuestions[currentQuizIndex].answer = -1
+        }
 
-                if (!isQuizFinished) {
-                    currentQuizIndex++
-                    NextQuestion(currentQuizIndex)
-                } else {
-                    finishQuiz()
-                }
+        notifyAnswerAdapter(secenek)
 
+
+        if (!isQuizFinished) {
+            currentQuizIndex++
+            NextQuestion(currentQuizIndex)
+        } else {
+            finishQuiz()
+        }
+
+    }
+
+    private fun notifyAnswerAdapter(secenek: String) {
+        listOfAnswers[currentQuizIndex].questionAnswe = secenek
+        mAdapter.notifyItemChanged(currentQuizIndex)
     }
 
     private fun finishQuiz() {
@@ -195,7 +231,10 @@ class DenemeSinaviActivity : BaseActivity() {
         pDialog.setConfirmButton(
             "Sınavı Bitir"
         ) {
-            denemeSinaviVM.postSinavSonuc("${cdv_remainingTime.minute}:${cdv_remainingTime.second}", resultQuestions)
+            denemeSinaviVM.postSinavSonuc(
+                "${cdv_remainingTime.minute}:${cdv_remainingTime.second}",
+                resultQuestions
+            )
             pDialog.dismissWithAnimation()
         }
         pDialog.show()
@@ -214,6 +253,58 @@ class DenemeSinaviActivity : BaseActivity() {
         cdv_remainingTime.setOnCountdownEndListener {
             toast("Bitti")
         }
+    }
+
+    private fun generateAnswerGridFirstData(size: Int) {
+        listOfAnswers = mutableListOf()
+        for (i in 0 until size) {
+            listOfAnswers.add(
+                AnswerModel(
+                    i + 1,
+                    ""
+                )
+            )
+        }
+
+        prepareAllAnswersGrid()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun calculateSinavSonuc(){
+        val dogruCevap = resultStrData.split("&")[0]
+        val yanlisCevap = resultStrData.split("&")[1]
+        val bosCevap = resultStrData.split("&")[2]
+
+        tv_correctNumber.text = dogruCevap
+        tv_wrongNumber.text = yanlisCevap
+        tv_emptyNumber.text = bosCevap
+
+        tv_score.text = "${dogruCevap.toInt() * 2}"
+        tv_sinavAdi.text = "Sınav Sonuçları"
+    }
+
+    private fun changeVisibility(){
+        tv_seekbarValue.visibility = View.GONE
+        sb_questionsLength.visibility = View.GONE
+        tv_qKategoriName.visibility = View.GONE
+        tv_qSoruAciklama.visibility = View.GONE
+        tv_qSoru.visibility = View.GONE
+        cv_seceneklerA.visibility = View.GONE
+        cv_seceneklerB.visibility = View.GONE
+        cv_seceneklerC.visibility = View.GONE
+        cv_seceneklerD.visibility = View.GONE
+        cv_oncekiSoru.visibility = View.GONE
+        cv_sonrakiSoru.visibility = View.GONE
+
+        cv_sinavSonuc.visibility = View.VISIBLE
+        cv_sinavSonucPuan.visibility = View.VISIBLE
+    }
+
+    private fun changeConstraint(){
+        val constraintSet =  ConstraintSet()
+        constraintSet.clone(cl_midRoot)
+        constraintSet.connect(R.id.rv_answerQuiz, ConstraintSet.TOP, R.id.cv_sinavSonucPuan, ConstraintSet.BOTTOM)
+        constraintSet.applyTo(cl_midRoot)
     }
 
     @SuppressLint("ClickableViewAccessibility")

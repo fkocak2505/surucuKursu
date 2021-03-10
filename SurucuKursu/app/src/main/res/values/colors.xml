@@ -20,4 +20,5 @@
     <color name="purpleColor">#6B6086</color>
 
     <color name="beforeAfter">#6E6E6E</color>
+    <color name="answer_bg">#F0F0F0</color>
 </resources>
