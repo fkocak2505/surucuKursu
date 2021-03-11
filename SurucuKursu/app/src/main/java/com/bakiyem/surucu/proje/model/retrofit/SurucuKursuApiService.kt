@@ -207,5 +207,22 @@ class SurucuKursuApiService {
         )
     }
 
+    fun getOzelSinav(
+        ilkYardimCount: String,
+        trafikCount: String,
+        motorCount: String,
+        adapCount: String
+    ): Observable<ResResultArray<Response4DenemeSinavi>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val ilkYardimCountBody = RequestBody.create(MediaType.parse("text/plain"), ilkYardimCount)
+        val trafikCountBody = RequestBody.create(MediaType.parse("text/plain"), trafikCount)
+        val motorCountBody = RequestBody.create(MediaType.parse("text/plain"), motorCount)
+        val adapCountBody = RequestBody.create(MediaType.parse("text/plain"), adapCount)
+
+        return api.getOzelSinav(tokenBody, ilkYardimCountBody, trafikCountBody, motorCountBody, adapCountBody)
+    }
+
 
 }

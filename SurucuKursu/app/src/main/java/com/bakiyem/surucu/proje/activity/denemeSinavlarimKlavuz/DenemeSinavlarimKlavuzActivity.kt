@@ -33,7 +33,7 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
         handleClickListener()
     }
 
-    private fun goBack(){
+    private fun goBack() {
         iv_back.setOnClickListener {
             onBackPressed()
         }
@@ -49,7 +49,8 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
                 pDialog.setCancelable(false)
                 pDialog.show()
             } else
-                startActivity(Intent(this, DenemeSinaviActivity::class.java))
+            //startActivity(Intent(this, DenemeSinaviActivity::class.java))
+                DenemeSinaviActivity.start(this, false, mutableListOf())
         }
     }
 }

@@ -131,7 +131,15 @@ interface IApiService {
         @Part("Sure") sure: RequestBody,
     ): Observable<ResResult<Response4SinavSonuc>>
 
-
+    @Multipart
+    @POST("/KursumAPI/ozel-sinavlar/index.php")
+    fun getOzelSinav(
+        @Part("token") token: RequestBody,
+        @Part("IlkYardimSoru") ilkYardimSoru: RequestBody,
+        @Part("TrafikSoru") trafikSoru: RequestBody,
+        @Part("MotorSoru") motorSoru: RequestBody,
+        @Part("AdapSoru") adapSoru: RequestBody,
+    ): Observable<ResResultArray<Response4DenemeSinavi>>
 
 
 }

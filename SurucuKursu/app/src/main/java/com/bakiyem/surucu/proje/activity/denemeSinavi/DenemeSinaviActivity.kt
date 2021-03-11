@@ -1,11 +1,15 @@
 package com.bakiyem.surucu.proje.activity.denemeSinavi
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 import android.text.Html
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
@@ -58,13 +62,26 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     }
 
     override fun initReq() {
-        denemeSinaviVM.getDenemeSinavi()
+        if (isComingOzelSinav){
+            questions = ozelSinavData
+            questionLength = ozelSinavData.size
+            prepareDenemeSinavi()
+            cl_root.visibility = View.VISIBLE
+            btn_finisExam.visibility = View.VISIBLE
+            generateAnswerGridFirstData(ozelSinavData.size)
+
+        } else{
+            questions = mutableListOf()
+            denemeSinaviVM.getDenemeSinavi()
+        }
     }
 
     override fun initVMListener() {
         denemeSinaviVM.denemeSinaviLD.observe(this, {
             it?.let {
-                prepareDenemeSinavi(it)
+                questions = it
+                questionLength = it.size
+                prepareDenemeSinavi()
                 cl_root.visibility = View.VISIBLE
                 btn_finisExam.visibility = View.VISIBLE
                 generateAnswerGridFirstData(it.size)
@@ -115,10 +132,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     }
 
-    private fun prepareDenemeSinavi(listOfQuestions: MutableList<Response4DenemeSinavi>) {
-        questionLength = listOfQuestions.size
-        questions = listOfQuestions
-
+    private fun prepareDenemeSinavi() {
         resultQuestions = mutableListOf()
         questions.forEach { itemQuestion ->
             resultQuestions.add(
@@ -177,15 +191,30 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                         )
                     )
 
-                    when(questionsAnswer){
+                    when (questionsAnswer) {
                         "B" -> {
-                            cv_seceneklerB.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "C" -> {
-                            cv_seceneklerC.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "D" -> {
-                            cv_seceneklerD.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "-" -> {
                             goFirstColorBGForSecenek()
@@ -201,15 +230,30 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                         )
                     )
 
-                    when(questionsAnswer){
+                    when (questionsAnswer) {
                         "A" -> {
-                            cv_seceneklerA.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "C" -> {
-                            cv_seceneklerC.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "D" -> {
-                            cv_seceneklerD.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "-" -> {
                             goFirstColorBGForSecenek()
@@ -225,15 +269,30 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                         )
                     )
 
-                    when(questionsAnswer){
+                    when (questionsAnswer) {
                         "A" -> {
-                            cv_seceneklerA.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "B" -> {
-                            cv_seceneklerB.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "D" -> {
-                            cv_seceneklerD.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "-" -> {
                             goFirstColorBGForSecenek()
@@ -249,15 +308,30 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                         )
                     )
 
-                    when(questionsAnswer){
+                    when (questionsAnswer) {
                         "A" -> {
-                            cv_seceneklerA.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "B" -> {
-                            cv_seceneklerB.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "C" -> {
-                            cv_seceneklerC.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
                         }
                         "-" -> {
                             goFirstColorBGForSecenek()
@@ -267,13 +341,12 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             }
 
 
-
         } else {
             goFirstColorBGForSecenek()
         }
     }
 
-    private fun goFirstColorBGForSecenek(){
+    private fun goFirstColorBGForSecenek() {
         cv_seceneklerA.setCardBackgroundColor(
             ContextCompat.getColor(
                 applicationContext,
@@ -497,6 +570,25 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             NextQuestion(currentQuizIndex, true, answerModel.questionAnswe)
         } else {
             toast("Önce sınavı bitiriniz..")
+        }
+    }
+
+    companion object {
+
+        var isComingOzelSinav: Boolean = false
+        var ozelSinavData: MutableList<Response4DenemeSinavi> = mutableListOf()
+
+
+        fun start(
+            activity: AppCompatActivity?,
+            isComingOzelSinav: Boolean,
+            ozelSinavData: MutableList<Response4DenemeSinavi>
+        ) {
+            val starter = Intent(activity, DenemeSinaviActivity::class.java)
+            this.isComingOzelSinav = isComingOzelSinav
+            this.ozelSinavData = ozelSinavData
+
+            activity!!.startActivity(starter)
         }
     }
 }
