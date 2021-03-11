@@ -16,12 +16,12 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_answer"
         android:layout_width="50dp"
         android:layout_height="40dp"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
         app:cardElevation="1dp"
-        app:cardBackgroundColor="@color/answer_bg"
         app:layout_constraintTop_toBottomOf="@+id/tv_questionNumber"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

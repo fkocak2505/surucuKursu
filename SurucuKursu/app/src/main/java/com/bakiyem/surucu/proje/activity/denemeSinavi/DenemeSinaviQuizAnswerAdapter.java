@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bakiyem.surucu.proje.R;
@@ -19,11 +21,15 @@ public class DenemeSinaviQuizAnswerAdapter extends RecyclerView.Adapter<DenemeSi
     private List<AnswerModel> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private Boolean isShownAnswer;
+    private Context context;
 
     // data is passed into the constructor
-    DenemeSinaviQuizAnswerAdapter(Context context, List<AnswerModel> data) {
+    DenemeSinaviQuizAnswerAdapter(Context context, List<AnswerModel> data, Boolean isShownAnswer) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.context = context;
+        this.isShownAnswer = isShownAnswer;
     }
 
     // inflates the cell layout from xml when needed
@@ -39,6 +45,21 @@ public class DenemeSinaviQuizAnswerAdapter extends RecyclerView.Adapter<DenemeSi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.questionNumber.setText(String.valueOf(mData.get(position).getQuestionNumber()));
         holder.answer.setText(mData.get(position).getQuestionAnswe());
+
+        if (isShownAnswer) {
+            if (mData.get(position).isCorrectAnswe() != null) {
+                if (mData.get(position).isCorrectAnswe()) {
+                    holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.correct_answer));
+                } else {
+                    holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.wrong_answer));
+                }
+            } else {
+                holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.answer_bg));
+            }
+        } else
+            holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.answer_bg));
+
+
     }
 
     // total number of cells
@@ -52,17 +73,19 @@ public class DenemeSinaviQuizAnswerAdapter extends RecyclerView.Adapter<DenemeSi
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView answer;
         TextView questionNumber;
+        CardView cv_answer;
 
         ViewHolder(View itemView) {
             super(itemView);
             answer = itemView.findViewById(R.id.tv_answer);
             questionNumber = itemView.findViewById(R.id.tv_questionNumber);
+            cv_answer = itemView.findViewById(R.id.cv_answer);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) mClickListener.onItemClick(mData.get(getAdapterPosition()), getAdapterPosition());
         }
     }
 
@@ -78,6 +101,6 @@ public class DenemeSinaviQuizAnswerAdapter extends RecyclerView.Adapter<DenemeSi
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(AnswerModel view, int position);
     }
 }

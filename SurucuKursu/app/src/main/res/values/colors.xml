@@ -21,4 +21,7 @@
 
     <color name="beforeAfter">#6E6E6E</color>
     <color name="answer_bg">#F0F0F0</color>
+
+    <color name="correct_answer">#76CE6F</color>
+    <color name="wrong_answer">#F45B5B</color>
 </resources>

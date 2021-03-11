@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -21,7 +22,7 @@ import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.*
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.iv_back
 
-class DenemeSinaviActivity : BaseActivity() {
+class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemClickListener {
 
     lateinit var denemeSinaviVM: DenemeSinaviVM
 
@@ -43,6 +44,8 @@ class DenemeSinaviActivity : BaseActivity() {
 
     var resultStrData = ""
 
+    var isFinishExam = false
+
 
     override fun getLayoutID(): Int = R.layout.activity_deneme_sinavi
 
@@ -63,6 +66,7 @@ class DenemeSinaviActivity : BaseActivity() {
             it?.let {
                 prepareDenemeSinavi(it)
                 cl_root.visibility = View.VISIBLE
+                btn_finisExam.visibility = View.VISIBLE
                 generateAnswerGridFirstData(it.size)
             } ?: run {
                 toast("Error Deneme Sinavi")
@@ -73,7 +77,7 @@ class DenemeSinaviActivity : BaseActivity() {
         denemeSinaviVM.cevapNumberLD.observe(this, {
             it?.let {
                 resultStrData = it
-            }?: run{
+            } ?: run {
                 resultStrData = "0&0&0"
             }
         })
@@ -85,9 +89,13 @@ class DenemeSinaviActivity : BaseActivity() {
                 toast("Error Sinav Sonuc Post")
             }
 
-            changeVisibility()
-            changeConstraint()
+            isFinishExam = true
+
+            changeVisibility(View.GONE, View.VISIBLE)
+            changeConstraint(R.id.tv_chooseAgain)
             calculateSinavSonuc()
+
+            prepareAllAnswersGrid(true)
 
         })
     }
@@ -125,7 +133,11 @@ class DenemeSinaviActivity : BaseActivity() {
         NextQuestion(currentQuizIndex)
     }
 
-    private fun NextQuestion(num: Int) {
+    private fun NextQuestion(
+        num: Int,
+        isShowBGColor: Boolean = false,
+        questionsAnswer: String = ""
+    ) {
         sb_questionsLength.max = 0
         sb_questionsLength.max = questions.size
         sb_questionsLength.progress = num + 1
@@ -146,16 +158,157 @@ class DenemeSinaviActivity : BaseActivity() {
         tv_secenekC.text = questions[num].secenekler!![2]?.cevap
         tv_secenekD.text = questions[num].secenekler!![3]?.cevap
 
-        questions[num].secenekler?.forEach {
-            if (it?.dogru == "1")
-                answer = it.cevap
+        var correctAnswerIndex = -1
+        questions[num].secenekler?.forEachIndexed { index, seceneklerItem ->
+            if (seceneklerItem?.dogru == "1") {
+                answer = seceneklerItem.cevap
+                correctAnswerIndex = index
+            }
+
+        }
+
+        if (isShowBGColor) {
+            when (correctAnswerIndex) {
+                0 -> {
+                    cv_seceneklerA.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.correct_answer
+                        )
+                    )
+
+                    when(questionsAnswer){
+                        "B" -> {
+                            cv_seceneklerB.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "C" -> {
+                            cv_seceneklerC.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "D" -> {
+                            cv_seceneklerD.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
+                    }
+
+                }
+                1 -> {
+                    cv_seceneklerB.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.correct_answer
+                        )
+                    )
+
+                    when(questionsAnswer){
+                        "A" -> {
+                            cv_seceneklerA.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "C" -> {
+                            cv_seceneklerC.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "D" -> {
+                            cv_seceneklerD.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
+                    }
+
+                }
+                2 -> {
+                    cv_seceneklerC.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.correct_answer
+                        )
+                    )
+
+                    when(questionsAnswer){
+                        "A" -> {
+                            cv_seceneklerA.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "B" -> {
+                            cv_seceneklerB.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "D" -> {
+                            cv_seceneklerD.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
+                    }
+
+                }
+                3 -> {
+                    cv_seceneklerD.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.correct_answer
+                        )
+                    )
+
+                    when(questionsAnswer){
+                        "A" -> {
+                            cv_seceneklerA.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "B" -> {
+                            cv_seceneklerB.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "C" -> {
+                            cv_seceneklerC.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.wrong_answer))
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
+                    }
+                }
+            }
+
+
+
+        } else {
+            goFirstColorBGForSecenek()
         }
     }
 
-    private fun prepareAllAnswersGrid() {
+    private fun goFirstColorBGForSecenek(){
+        cv_seceneklerA.setCardBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                R.color.titleBackground
+            )
+        )
+        cv_seceneklerB.setCardBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                R.color.titleBackground
+            )
+        )
+        cv_seceneklerC.setCardBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                R.color.titleBackground
+            )
+        )
+        cv_seceneklerC.setCardBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                R.color.titleBackground
+            )
+        )
+    }
+
+    private fun prepareAllAnswersGrid(isShowAnswer: Boolean) {
         rv_answerQuiz.layoutManager = GridLayoutManager(this, 6)
-        mAdapter = DenemeSinaviQuizAnswerAdapter(applicationContext, listOfAnswers.toList())
+        mAdapter =
+            DenemeSinaviQuizAnswerAdapter(applicationContext, listOfAnswers.toList(), isShowAnswer)
         rv_answerQuiz.adapter = mAdapter
+
+        mAdapter.setClickListener(this)
+
+
     }
 
     private fun handleSecenekClickListener() {
@@ -193,6 +346,12 @@ class DenemeSinaviActivity : BaseActivity() {
                 NextQuestion(currentQuizIndex)
             }
         }
+
+        btn_finisExam.setOnClickListener {
+            finishQuiz()
+        }
+
+
     }
 
     private fun checkIfCorrectAnswer(view: TextView, secenek: String) {
@@ -202,11 +361,11 @@ class DenemeSinaviActivity : BaseActivity() {
 
         if (view.text.toString() == answer) {
             resultQuestions[currentQuizIndex].answer = 1
+            notifyAnswerAdapter(secenek, true)
         } else {
             resultQuestions[currentQuizIndex].answer = -1
+            notifyAnswerAdapter(secenek, false)
         }
-
-        notifyAnswerAdapter(secenek)
 
 
         if (!isQuizFinished) {
@@ -218,8 +377,9 @@ class DenemeSinaviActivity : BaseActivity() {
 
     }
 
-    private fun notifyAnswerAdapter(secenek: String) {
+    private fun notifyAnswerAdapter(secenek: String, isCorrect: Boolean? = null) {
         listOfAnswers[currentQuizIndex].questionAnswe = secenek
+        listOfAnswers[currentQuizIndex].isCorrectAnswe = isCorrect
         mAdapter.notifyItemChanged(currentQuizIndex)
     }
 
@@ -261,16 +421,16 @@ class DenemeSinaviActivity : BaseActivity() {
             listOfAnswers.add(
                 AnswerModel(
                     i + 1,
-                    ""
+                    "-"
                 )
             )
         }
 
-        prepareAllAnswersGrid()
+        prepareAllAnswersGrid(false)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun calculateSinavSonuc(){
+    private fun calculateSinavSonuc() {
         val dogruCevap = resultStrData.split("&")[0]
         val yanlisCevap = resultStrData.split("&")[1]
         val bosCevap = resultStrData.split("&")[2]
@@ -283,27 +443,36 @@ class DenemeSinaviActivity : BaseActivity() {
         tv_sinavAdi.text = "Sınav Sonuçları"
     }
 
-    private fun changeVisibility(){
-        tv_seekbarValue.visibility = View.GONE
-        sb_questionsLength.visibility = View.GONE
-        tv_qKategoriName.visibility = View.GONE
-        tv_qSoruAciklama.visibility = View.GONE
-        tv_qSoru.visibility = View.GONE
-        cv_seceneklerA.visibility = View.GONE
-        cv_seceneklerB.visibility = View.GONE
-        cv_seceneklerC.visibility = View.GONE
-        cv_seceneklerD.visibility = View.GONE
-        cv_oncekiSoru.visibility = View.GONE
-        cv_sonrakiSoru.visibility = View.GONE
+    private fun changeVisibility(isQuestionVisible: Int, isResultVisible: Int) {
+        tv_seekbarValue.visibility = isQuestionVisible
+        sb_questionsLength.visibility = isQuestionVisible
+        tv_qKategoriName.visibility = isQuestionVisible
+        tv_qSoruAciklama.visibility = isQuestionVisible
+        tv_qSoru.visibility = isQuestionVisible
+        cv_seceneklerA.visibility = isQuestionVisible
+        cv_seceneklerB.visibility = isQuestionVisible
+        cv_seceneklerC.visibility = isQuestionVisible
+        cv_seceneklerD.visibility = isQuestionVisible
+        cv_oncekiSoru.visibility = isQuestionVisible
+        cv_sonrakiSoru.visibility = isQuestionVisible
+        cdv_remainingTime.visibility = isQuestionVisible
 
-        cv_sinavSonuc.visibility = View.VISIBLE
-        cv_sinavSonucPuan.visibility = View.VISIBLE
+        cv_sinavSonuc.visibility = isResultVisible
+        cv_sinavSonucPuan.visibility = isResultVisible
+        tv_chooseAgain.visibility = isResultVisible
+
+        cdv_remainingTime.stop()
     }
 
-    private fun changeConstraint(){
-        val constraintSet =  ConstraintSet()
+    private fun changeConstraint(topConstraintID: Int) {
+        val constraintSet = ConstraintSet()
         constraintSet.clone(cl_midRoot)
-        constraintSet.connect(R.id.rv_answerQuiz, ConstraintSet.TOP, R.id.cv_sinavSonucPuan, ConstraintSet.BOTTOM)
+        constraintSet.connect(
+            R.id.rv_answerQuiz,
+            ConstraintSet.TOP,
+            topConstraintID,
+            ConstraintSet.BOTTOM
+        )
         constraintSet.applyTo(cl_midRoot)
     }
 
@@ -315,6 +484,19 @@ class DenemeSinaviActivity : BaseActivity() {
     private fun goBack() {
         iv_back.setOnClickListener {
             onBackPressed()
+        }
+    }
+
+    override fun onItemClick(answerModel: AnswerModel, position: Int) {
+        if (isFinishExam) {
+            currentQuizIndex = position
+
+            changeVisibility(View.VISIBLE, View.GONE)
+            changeConstraint(R.id.cv_sonrakiSoru)
+            goFirstColorBGForSecenek()
+            NextQuestion(currentQuizIndex, true, answerModel.questionAnswe)
+        } else {
+            toast("Önce sınavı bitiriniz..")
         }
     }
 }
