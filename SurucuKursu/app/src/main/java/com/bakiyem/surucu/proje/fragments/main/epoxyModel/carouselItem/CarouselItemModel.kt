@@ -9,6 +9,8 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_carousel_item)
 abstract class CarouselItemModel: EpoxyModelWithHolder<CarouselItemModel.Holder>()  {
@@ -28,6 +30,9 @@ abstract class CarouselItemModel: EpoxyModelWithHolder<CarouselItemModel.Holder>
             holder.cvDuyuru.setOnClickListener {
                 listener.invoke(this)
             }
+
+            holder.tvDate.regular()
+            holder.tvAnnouncementsTitle.semibold()
         }
     }
 

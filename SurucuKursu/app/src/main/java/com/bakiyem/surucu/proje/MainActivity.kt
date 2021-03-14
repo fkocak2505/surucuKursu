@@ -1,7 +1,11 @@
 package com.bakiyem.surucu.proje
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -15,6 +19,8 @@ import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
 import com.bakiyem.surucu.proje.fragments.main.view.MainFragment
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -32,7 +38,18 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
+        setBottomNavigationViewTypeface(bottomNavigationView)
 
+        tv_userName.semibold()
+        tv_login.semibold()
+        tv_navLeftProfilim.regular()
+        tv_navLeftDerslerim.regular()
+        tv_navLeftSinavlar.regular()
+        tv_navLeftSinavSonuclarim.regular()
+        tv_navLeftOdemeBilgilerim.regular()
+        tv_navLeftRandevularim.regular()
+        tv_navLeftFaydaliBilgiler.regular()
+        tv_navLeftGuvenliCikis.regular()
     }
 
     override fun initReq() {
@@ -159,6 +176,23 @@ class MainActivity : BaseActivity() {
             replace(R.id.content_frame, fragment)
             commit()
         }
+
+    private fun setBottomNavigationViewTypeface(v: View) {
+        try {
+            if (v is ViewGroup) {
+                for (i in 0 until v.childCount) {
+                    val child: View = v.getChildAt(i)
+                    setBottomNavigationViewTypeface(child)
+                }
+            } else if (v is TextView) {
+                v.typeface = Typeface.createFromAsset(
+                    context.assets,
+                    "montserrat_regular.otf"
+                )
+            }
+        } catch (e: Exception) {
+        }
+    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

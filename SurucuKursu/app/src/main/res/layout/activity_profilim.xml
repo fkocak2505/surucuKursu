@@ -40,6 +40,7 @@
             android:layout_marginStart="60dp"
             android:text="Profilim"
             android:textSize="@dimen/hugeTitleTextSize"
+            android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,9 +60,11 @@
             android:layout_margin="10dp">
 
             <TextView
+                android:id="@+id/tv_generalInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
+                android:textColor="@color/textColor"
                 android:text="Genel Bilgiler"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,7 +100,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="awfafawf"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="@dimen/titleTextSize"
+                    android:textColor="@color/textColor"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/cardView"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -109,7 +113,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="awfafawf"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="@dimen/titleTextSize"
+                    android:textColor="@color/textColor"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/cardView"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -128,6 +133,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
+                    android:textColor="@color/textColor"
                     android:text="Aday No: "
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -139,6 +145,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="01"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -156,6 +163,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Adı: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -167,6 +175,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -183,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Soyadı: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -193,6 +203,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -205,10 +216,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_sgrupInfo"
+                    android:id="@+id/tv_grupInfo"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
+                    android:textColor="@color/textColor"
                     android:text="Grubu: "
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -218,6 +230,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
+                    android:textColor="@color/textColor"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
@@ -236,6 +249,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
+                    android:textColor="@color/textColor"
                     android:text="T.C. Kimlik No: "
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -247,6 +261,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -264,6 +279,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Doğum Tarihi: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -274,6 +290,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -291,6 +308,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Kayıt Tarihi: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -301,6 +319,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -318,6 +337,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Ehliyet Sınıfı: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -328,6 +348,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -345,6 +366,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Dil: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -356,6 +378,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -372,6 +395,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Cinsiyet: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -382,6 +406,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -399,6 +424,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Kan Grubu: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -409,6 +435,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -426,6 +453,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Online Ders Linki: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -437,6 +465,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -458,6 +487,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
+                    android:textColor="@color/textColor"
                     android:text="Adres: "
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -470,6 +500,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -487,6 +518,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:text="Cep Telefonu: "
                     android:layout_marginTop="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_marginBottom="10dp" />
 
                 <TextView
@@ -497,6 +529,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -513,6 +546,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Ev Telefonu: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -523,6 +557,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
@@ -540,6 +575,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Acil Erişim Tel.: "
+                    android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
 
@@ -551,6 +587,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -566,6 +603,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
+                    android:textColor="@color/textColor"
                     android:text="E-Posta: "
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
@@ -577,6 +615,7 @@
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
+                    android:textColor="@color/textColor"
                     android:padding="10dp"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"

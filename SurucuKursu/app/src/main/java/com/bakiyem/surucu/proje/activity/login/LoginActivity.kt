@@ -7,6 +7,8 @@ import com.bakiyem.surucu.proje.MainActivity
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.utils.TCKNValidate
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -21,7 +23,8 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
-
+        et_tckn.regular()
+        tv_login.semibold()
     }
 
     override fun initReq() {

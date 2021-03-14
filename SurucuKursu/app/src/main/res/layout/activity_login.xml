@@ -58,6 +58,7 @@
                 android:hint="T.C. Kimlik Numaranız"
                 android:maxLength="11"
                 android:inputType="number"
+                android:textSize="@dimen/titleTextSize"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cl_tckn">
 
         <TextView
+            android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/cardview_compat_inset_shadow"

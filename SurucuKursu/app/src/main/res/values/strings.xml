@@ -14,4 +14,7 @@
 
     <string name="open">Açık</string>
     <string name="close">Kapalı</string>
+
+    <string name="app_new_font_semibold" translatable="false">montserrat_semibold.ttf</string>
+    <string name="app_new_font_regular" translatable="false">montserrat_regular.ttf</string>
 </resources>

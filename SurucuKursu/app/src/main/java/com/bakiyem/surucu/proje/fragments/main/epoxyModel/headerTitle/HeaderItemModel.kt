@@ -7,6 +7,7 @@ import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_header_item)
 abstract class HeaderItemModel: EpoxyModelWithHolder<HeaderItemModel.Holder>()  {
@@ -17,6 +18,8 @@ abstract class HeaderItemModel: EpoxyModelWithHolder<HeaderItemModel.Holder>()  
     override fun bind(holder: Holder) {
         super.bind(holder)
         holder.title.text = title
+
+        holder.title.semibold()
     }
 
     class Holder : EpoxyHolder() {

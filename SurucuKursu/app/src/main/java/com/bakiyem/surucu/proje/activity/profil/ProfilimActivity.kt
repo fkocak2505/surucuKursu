@@ -6,6 +6,8 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_profilim.*
 
 class ProfilimActivity : BaseActivity() {
@@ -19,7 +21,45 @@ class ProfilimActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
+        tv_hugeTitle.semibold()
+        tv_generalInfo.semibold()
+        tv_userNameAndSurname.semibold()
+        tv_userPhone.regular()
 
+        tv_adayNoInfo.semibold()
+        tv_adayNo.regular()
+        tv_adiInfo.semibold()
+        tv_adi.regular()
+        tv_soyAdiInfo.semibold()
+        tv_soyAdi.regular()
+        tv_grupInfo.semibold()
+        tv_grup.regular()
+        tv_tcInfo.semibold()
+        tv_tc.regular()
+        tv_dogumInfo.semibold()
+        tv_dogum.regular()
+        tv_kayitTarihiInfo.semibold()
+        tv_kayitTarihi.regular()
+        tv_ehliyetSinifiInfo.semibold()
+        tv_ehliyetSinifi.regular()
+        tv_dilInfo.semibold()
+        tv_dil.regular()
+        tv_cinsiyetInfo.semibold()
+        tv_cinsiyet.regular()
+        tv_kanGrubuInfo.semibold()
+        tv_kanGrubu.regular()
+        tv_onlineDersInfo.semibold()
+        tv_onlineDers.regular()
+        tv_adresInfo.semibold()
+        tv_adres.regular()
+        tv_cepTelInfo.semibold()
+        tv_cepTel.regular()
+        tv_evTelInfo.semibold()
+        tv_evTel.regular()
+        tv_acilErisimTelInfo.semibold()
+        tv_acilErisimTel.regular()
+        tv_epostaInfo.semibold()
+        tv_eposta.regular()
     }
 
     override fun initReq() {

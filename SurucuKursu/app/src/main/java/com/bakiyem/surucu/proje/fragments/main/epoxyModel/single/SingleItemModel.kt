@@ -11,6 +11,8 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.fragments.main.data.DummyData
 import com.bakiyem.surucu.proje.fragments.main.dataModel.StaticData
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_single_item)
 abstract class SingleItemModel : EpoxyModelWithHolder<SingleItemModel.SingleHolder>() {
@@ -25,6 +27,10 @@ abstract class SingleItemModel : EpoxyModelWithHolder<SingleItemModel.SingleHold
             holder.ivSingleItemImage.setImageResource(image)
             holder.tvSingleItemTitle.text = title
             holder.tvSingleItemDesc.text = desc
+
+            holder.tvSingleItemTitle.semibold()
+            holder.tvSingleItemDesc.regular()
+            holder.tvStart.semibold()
         }
 
         holder.cvSingleItem.setOnClickListener {
@@ -38,6 +44,7 @@ abstract class SingleItemModel : EpoxyModelWithHolder<SingleItemModel.SingleHold
         lateinit var tvSingleItemTitle: TextView
         lateinit var tvSingleItemDesc: TextView
         lateinit var cvSingleItem: CardView
+        lateinit var tvStart: TextView
 
 
         override fun bindView(itemView: View) {
@@ -45,6 +52,8 @@ abstract class SingleItemModel : EpoxyModelWithHolder<SingleItemModel.SingleHold
             tvSingleItemTitle = itemView.findViewById(R.id.tv_singleItemTitle)
             tvSingleItemDesc = itemView.findViewById(R.id.tv_singleItemDesc)
             cvSingleItem = itemView.findViewById(R.id.cv_singleItem)
+            tvStart = itemView.findViewById(R.id.tv_start)
+
 
 
         }
