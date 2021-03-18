@@ -74,6 +74,9 @@
         <activity android:name=".activity.ozelSinavlarim.OzelSinavlarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".activity.sinifSinavlari.SinifSinavlari"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

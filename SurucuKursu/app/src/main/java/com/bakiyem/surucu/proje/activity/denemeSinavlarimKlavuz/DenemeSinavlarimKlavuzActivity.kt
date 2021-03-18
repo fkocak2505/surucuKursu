@@ -50,7 +50,7 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
                 pDialog.show()
             } else
             //startActivity(Intent(this, DenemeSinaviActivity::class.java))
-                DenemeSinaviActivity.start(this, false, mutableListOf())
+                DenemeSinaviActivity.start(this, "2", "", mutableListOf())
         }
     }
 }

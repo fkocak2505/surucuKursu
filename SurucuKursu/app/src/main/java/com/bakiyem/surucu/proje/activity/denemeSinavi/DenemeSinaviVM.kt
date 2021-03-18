@@ -30,7 +30,12 @@ class DenemeSinaviVM : BaseVM() {
 
     var sinavSonucLD = MutableLiveData<Response4SinavSonuc>()
     var cevapNumberLD = MutableLiveData<String>()
-    fun postSinavSonuc(sure :String, resultQuestions: MutableList<QuestionsResultModel>) {
+    fun postSinavSonuc(
+        sure: String,
+        tur: String,
+        sinav: String? = null,
+        resultQuestions: MutableList<QuestionsResultModel>
+    ) {
         var iyDogru = 0
         var iyYanlis = 0
         var iyBos = 0
@@ -100,6 +105,7 @@ class DenemeSinaviVM : BaseVM() {
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.postSinavSonuc(
+                    tur,
                     iyDogru.toString(),
                     iyYanlis.toString(),
                     iyBos.toString(),
@@ -112,14 +118,16 @@ class DenemeSinaviVM : BaseVM() {
                     aDogru.toString(),
                     aYanlis.toString(),
                     aBos.toString(),
+                    sinav,
                     sure
                 )
             ).subscribe({ rr ->
 
                 checkServiceStatus(rr)?.let {
-                    cevapNumberLD.value = "${iyDogru + tDogru + mDogru + aDogru}&${iyYanlis + tYanlis + mYanlis + aYanlis}&${iyBos + tBos + mBos + aBos}"
+                    cevapNumberLD.value =
+                        "${iyDogru + tDogru + mDogru + aDogru}&${iyYanlis + tYanlis + mYanlis + aYanlis}&${iyBos + tBos + mBos + aBos}"
                     sinavSonucLD.value = it
-                }?: run{
+                } ?: run {
                     cevapNumberLD.value = null
                     sinavSonucLD.value = null
                 }

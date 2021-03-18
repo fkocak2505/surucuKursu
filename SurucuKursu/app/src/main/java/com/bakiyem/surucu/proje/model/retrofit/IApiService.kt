@@ -16,6 +16,7 @@ import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.RequestBody
@@ -116,6 +117,7 @@ interface IApiService {
     fun postSinavSonuc(
         @Part("token") token: RequestBody,
         @Part("kursiyerKey") kursiyerKey: RequestBody,
+        @Part("Tur") tur: RequestBody,
         @Part("IlkYrdmDogru") ilkYrdmDogru: RequestBody,
         @Part("IlkYrdmYanlis") ilkYrdmYanlis: RequestBody,
         @Part("IlkYrdmBos") ilkYrdmBos: RequestBody,
@@ -128,7 +130,8 @@ interface IApiService {
         @Part("AdapDogru") adapDogru: RequestBody,
         @Part("AdapYanlis") adapYanlis: RequestBody,
         @Part("AdapBos") adapBos: RequestBody,
-        @Part("Sure") sure: RequestBody,
+        @Part("Sinav") sinav: RequestBody,
+        @Part("Sure") sure: RequestBody
     ): Observable<ResResult<Response4SinavSonuc>>
 
     @Multipart
@@ -139,6 +142,20 @@ interface IApiService {
         @Part("TrafikSoru") trafikSoru: RequestBody,
         @Part("MotorSoru") motorSoru: RequestBody,
         @Part("AdapSoru") adapSoru: RequestBody,
+    ): Observable<ResResultArray<Response4DenemeSinavi>>
+
+    @Multipart
+    @POST("/KursumAPI/kursiyer-sinavlar/index.php")
+    fun getSinifSinavi(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") kursiyerKey: RequestBody
+    ): Observable<ResResultArray<Response4SinifSinavi>>
+
+    @Multipart
+    @POST("/KursumAPI/sinif-sinavlar/index.php")
+    fun getSinifSinaviQuiz(
+        @Part("token") token: RequestBody,
+        @Part("sinav") sinavKey: RequestBody
     ): Observable<ResResultArray<Response4DenemeSinavi>>
 
 

@@ -62,7 +62,19 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     }
 
     override fun initReq() {
-        if (isComingOzelSinav){
+        when(sinavTur){
+            "3" -> {
+                prepareAnotherSinav()
+            }
+            "2" -> {
+                prepareDenemeSinaviFirst()
+            }
+            "1" -> {
+                prepareAnotherSinav()
+            }
+        }
+
+        /*if (isComingOzelSinav) {
             questions = ozelSinavData
             questionLength = ozelSinavData.size
             prepareDenemeSinavi()
@@ -70,10 +82,24 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             btn_finisExam.visibility = View.VISIBLE
             generateAnswerGridFirstData(ozelSinavData.size)
 
-        } else{
+        } else {
             questions = mutableListOf()
             denemeSinaviVM.getDenemeSinavi()
-        }
+        }*/
+    }
+
+    private fun prepareAnotherSinav(){
+        questions = sinavData
+        questionLength = sinavData.size
+        prepareDenemeSinavi()
+        cl_root.visibility = View.VISIBLE
+        btn_finisExam.visibility = View.VISIBLE
+        generateAnswerGridFirstData(sinavData.size)
+    }
+
+    private fun prepareDenemeSinaviFirst(){
+        questions = mutableListOf()
+        denemeSinaviVM.getDenemeSinavi()
     }
 
     override fun initVMListener() {
@@ -466,6 +492,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         ) {
             denemeSinaviVM.postSinavSonuc(
                 "${cdv_remainingTime.minute}:${cdv_remainingTime.second}",
+                sinavTur!!,
+                sinavId,
                 resultQuestions
             )
             pDialog.dismissWithAnimation()
@@ -528,7 +556,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         cv_seceneklerD.visibility = isQuestionVisible
         cv_oncekiSoru.visibility = isQuestionVisible
         cv_sonrakiSoru.visibility = isQuestionVisible
-        cdv_remainingTime.visibility = isQuestionVisible
+        cv_remainingTime.visibility = isQuestionVisible
+        btn_finisExam.visibility = isQuestionVisible
 
         cv_sinavSonuc.visibility = isResultVisible
         cv_sinavSonucPuan.visibility = isResultVisible
@@ -575,18 +604,21 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     companion object {
 
-        var isComingOzelSinav: Boolean = false
-        var ozelSinavData: MutableList<Response4DenemeSinavi> = mutableListOf()
+        var sinavTur: String? = ""
+        var sinavId: String? = ""
+        var sinavData: MutableList<Response4DenemeSinavi> = mutableListOf()
 
 
         fun start(
             activity: AppCompatActivity?,
-            isComingOzelSinav: Boolean,
-            ozelSinavData: MutableList<Response4DenemeSinavi>
+            sinavTur: String,
+            sinavId: String?,
+            sinavData: MutableList<Response4DenemeSinavi>
         ) {
             val starter = Intent(activity, DenemeSinaviActivity::class.java)
-            this.isComingOzelSinav = isComingOzelSinav
-            this.ozelSinavData = ozelSinavData
+            this.sinavTur = sinavTur
+            this.sinavId = sinavId
+            this.sinavData = sinavData
 
             activity!!.startActivity(starter)
         }

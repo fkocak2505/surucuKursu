@@ -16,6 +16,7 @@ import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import com.google.gson.Gson
 import com.orhanobut.hawk.Hawk
 import io.reactivex.rxjava3.core.Observable
@@ -154,6 +155,7 @@ class SurucuKursuApiService {
     }
 
     fun postSinavSonuc(
+        aTur: String,
         iyDogru: String,
         iyYanlis: String,
         iyBos: String,
@@ -166,6 +168,7 @@ class SurucuKursuApiService {
         aDogru: String,
         aYanlis: String,
         aBos: String,
+        aSinav: String? = "",
         sure: String
     ): Observable<ResResult<Response4SinavSonuc>> {
         val token = Hawk.get<String>("token")
@@ -174,6 +177,8 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
 
+
+        val turBody = RequestBody.create(MediaType.parse("text/plain"), aTur)
         val iyDogruBody = RequestBody.create(MediaType.parse("text/plain"), iyDogru)
         val iyYanlisBody = RequestBody.create(MediaType.parse("text/plain"), iyYanlis)
         val iyBosBody = RequestBody.create(MediaType.parse("text/plain"), iyBos)
@@ -186,11 +191,13 @@ class SurucuKursuApiService {
         val aDogruBody = RequestBody.create(MediaType.parse("text/plain"), aDogru)
         val aYanlisBody = RequestBody.create(MediaType.parse("text/plain"), aYanlis)
         val aBosBody = RequestBody.create(MediaType.parse("text/plain"), aBos)
+        val sinavBody = RequestBody.create(MediaType.parse("text/plain"), aSinav)
         val sureBody = RequestBody.create(MediaType.parse("text/plain"), sure)
 
         return api.postSinavSonuc(
             tokenBody,
             kursiyerBody,
+            turBody,
             iyDogruBody,
             iyYanlisBody,
             iyBosBody,
@@ -203,6 +210,7 @@ class SurucuKursuApiService {
             aDogruBody,
             aYanlisBody,
             aBosBody,
+            sinavBody,
             sureBody
         )
     }
@@ -223,6 +231,27 @@ class SurucuKursuApiService {
 
         return api.getOzelSinav(tokenBody, ilkYardimCountBody, trafikCountBody, motorCountBody, adapCountBody)
     }
+
+    fun getSinifSinavi(): Observable<ResResultArray<Response4SinifSinavi>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+
+        return api.getSinifSinavi(tokenBody, kursiyerBody)
+    }
+
+    fun getSinifSinaviQuiz(sinavId: String): Observable<ResResultArray<Response4DenemeSinavi>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val sinavBody = RequestBody.create(MediaType.parse("text/plain"), sinavId)
+
+        return api.getSinifSinaviQuiz(tokenBody, sinavBody)
+    }
+
+
 
 
 }
