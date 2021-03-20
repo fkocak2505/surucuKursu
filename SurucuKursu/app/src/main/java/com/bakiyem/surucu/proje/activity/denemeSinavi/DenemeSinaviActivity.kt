@@ -64,7 +64,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     }
 
     override fun initReq() {
-        when(sinavTur){
+        when (sinavTur) {
             "3" -> {
                 prepareAnotherSinav()
             }
@@ -90,7 +90,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         }*/
     }
 
-    private fun prepareAnotherSinav(){
+    private fun prepareAnotherSinav() {
         questions = sinavData
         questionLength = sinavData.size
         prepareDenemeSinavi()
@@ -99,7 +99,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         generateAnswerGridFirstData(sinavData.size)
     }
 
-    private fun prepareDenemeSinaviFirst(){
+    private fun prepareDenemeSinaviFirst() {
         questions = mutableListOf()
         denemeSinaviVM.getDenemeSinavi()
     }
@@ -222,7 +222,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         }
     }
 
-    private fun changeBackgroundColor4Secenek(questionsAnswer: String){
+    private fun changeBackgroundColor4Secenek(questionsAnswer: String) {
         when (correctAnswerIndex) {
             0 -> {
                 cv_seceneklerA.setCardBackgroundColor(
@@ -401,7 +401,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                 R.color.titleBackground
             )
         )
-        cv_seceneklerC.setCardBackgroundColor(
+        cv_seceneklerD.setCardBackgroundColor(
             ContextCompat.getColor(
                 applicationContext,
                 R.color.titleBackground
@@ -411,8 +411,11 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     private fun prepareAllAnswersGrid(isShowAnswer: Boolean) {
         rv_answerQuiz.layoutManager = GridLayoutManager(this, 6)
-        mAdapter =
-            DenemeSinaviQuizAnswerAdapter(applicationContext, listOfAnswers.toList(), isShowAnswer)
+
+        mAdapter = if (isComingHaziCevap!!)
+            DenemeSinaviQuizAnswerAdapter(applicationContext, listOfAnswers.toList(), true)
+        else
+            DenemeSinaviQuizAnswerAdapter(applicationContext, listOfAnswers.toList(), false)
         rv_answerQuiz.adapter = mAdapter
 
         mAdapter.setClickListener(this)
@@ -450,7 +453,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             if (currentQuizIndex + 1 == questionLength) {
                 Toast.makeText(applicationContext, "Sona geldi", Toast.LENGTH_SHORT).show()
             } else {
-                notifyAnswerAdapter("-")
+                if (!isComingHaziCevap!!)
+                    notifyAnswerAdapter("-")
                 currentQuizIndex++
                 NextQuestion(currentQuizIndex)
             }
@@ -476,14 +480,16 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             notifyAnswerAdapter(secenek, false)
         }
 
-
-        if (!isQuizFinished) {
-            currentQuizIndex++
-            NextQuestion(currentQuizIndex)
-        } else {
-            finishQuiz()
+        if (isComingHaziCevap!!)
+            changeBackgroundColor4Secenek(secenek)
+        else {
+            if (!isQuizFinished) {
+                currentQuizIndex++
+                NextQuestion(currentQuizIndex)
+            } else {
+                finishQuiz()
+            }
         }
-
     }
 
     private fun notifyAnswerAdapter(secenek: String, isCorrect: Boolean? = null) {
@@ -616,21 +622,21 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
         var sinavTur: String? = ""
         var sinavId: String? = ""
-        var isShowAnswer: Boolean? = false
         var sinavData: MutableList<Response4DenemeSinavi> = mutableListOf()
+        var isComingHaziCevap: Boolean? = false
 
 
         fun start(
             activity: AppCompatActivity?,
             sinavTur: String,
             sinavId: String?,
-            isShowAnswer: Boolean,
+            isComingHaziCevap: Boolean,
             sinavData: MutableList<Response4DenemeSinavi>
         ) {
             val starter = Intent(activity, DenemeSinaviActivity::class.java)
             this.sinavTur = sinavTur
             this.sinavId = sinavId
-            this.isShowAnswer = isShowAnswer
+            this.isComingHaziCevap = isComingHaziCevap
             this.sinavData = sinavData
 
             activity!!.startActivity(starter)
