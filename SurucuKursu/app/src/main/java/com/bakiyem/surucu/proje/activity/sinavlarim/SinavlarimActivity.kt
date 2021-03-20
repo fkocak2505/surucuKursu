@@ -2,6 +2,7 @@ package com.bakiyem.surucu.proje.activity.sinavlarim
 
 import android.content.Intent
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity
 import com.bakiyem.surucu.proje.activity.ozelSinavlarim.OzelSinavlarimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.epoxy.controller.SinavlarimController
@@ -62,6 +63,9 @@ class SinavlarimActivity: BaseActivity(), CListener<String> {
             }
             "Sınıf Sınavları" -> {
                 startActivity(Intent(this, SinifSinavlari::class.java))
+            }
+            "Hazır Cevap Sınavlar" -> {
+                DenemeSinaviActivity.start(this, "2", "", mutableListOf())
             }
         }
     }
