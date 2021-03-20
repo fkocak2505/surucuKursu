@@ -16,6 +16,7 @@ import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import com.google.gson.Gson
 import com.orhanobut.hawk.Hawk
@@ -249,6 +250,15 @@ class SurucuKursuApiService {
         val sinavBody = RequestBody.create(MediaType.parse("text/plain"), sinavId)
 
         return api.getSinifSinaviQuiz(tokenBody, sinavBody)
+    }
+
+    fun getSinavSonuclarim(): Observable<ResResult<Response4SinavSonuclarim>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        return api.getSinavSonuclarim(tokenBody, kursiyerBody)
     }
 
 

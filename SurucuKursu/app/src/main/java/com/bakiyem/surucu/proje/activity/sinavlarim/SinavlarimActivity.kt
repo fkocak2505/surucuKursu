@@ -6,7 +6,7 @@ import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity
 import com.bakiyem.surucu.proje.activity.ozelSinavlarim.OzelSinavlarimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.epoxy.controller.SinavlarimController
-import com.bakiyem.surucu.proje.activity.sinifSinavlari.SinifSinavlari
+import com.bakiyem.surucu.proje.activity.sinifSinavlari.SinifSinavlariActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import kotlinx.android.synthetic.main.activity_sinavlarim.*
@@ -62,7 +62,7 @@ class SinavlarimActivity: BaseActivity(), CListener<String> {
                 startActivity(Intent(this, OzelSinavlarimActivity::class.java))
             }
             "Sınıf Sınavları" -> {
-                startActivity(Intent(this, SinifSinavlari::class.java))
+                startActivity(Intent(this, SinifSinavlariActivity::class.java))
             }
             "Hazır Cevap Sınavlar" -> {
                 DenemeSinaviActivity.start(this, "2", "", true, "Hazır Cevap Sınavlar", mutableListOf())

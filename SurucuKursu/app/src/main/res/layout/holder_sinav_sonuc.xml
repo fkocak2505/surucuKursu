@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_sinifSinav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/tv_sumQuizNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="30"
+                android:textSize="20sp"
+                android:layout_marginStart="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_sumQuizNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Toplam Sınav"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_sumQuizNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_sumQuizNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sumQuizNumber" />
+
+            <ImageView
+                android:id="@+id/iv_sumQuizIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_sum_quiz"
+                app:layout_constraintEnd_toEndOf="@+id/tv_sumQuizNumberInfo"
+                app:layout_constraintStart_toStartOf="@+id/tv_sumQuizNumberInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sumQuizNumberInfo"/>
+
+            <TextView
+                android:id="@+id/tv_sumQuiestionNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="30"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_sumQuiestionNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Toplam Soru"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_sumQuiestionNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_sumQuiestionNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sumQuiestionNumber" />
+
+            <ImageView
+                android:id="@+id/iv_sumQuestionIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_questions_icon"
+                app:layout_constraintEnd_toEndOf="@+id/tv_sumQuiestionNumberInfo"
+                app:layout_constraintStart_toStartOf="@+id/tv_sumQuiestionNumberInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sumQuiestionNumberInfo"/>
+
+            <TextView
+                android:id="@+id/tv_correcntNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:textSize="20sp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_correcntNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Toplam Doğru"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_correcntNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_correcntNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_correcntNumber" />
+
+            <ImageView
+                android:id="@+id/iv_correctAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_green_tick"
+                app:layout_constraintEnd_toEndOf="@+id/tv_correcntNumberInfo"
+                app:layout_constraintStart_toStartOf="@+id/tv_correcntNumberInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_correcntNumberInfo"/>
+
+            <TextView
+                android:id="@+id/tv_wrongNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:textSize="20sp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_sumQuestionIcon" />
+
+            <TextView
+                android:id="@+id/tv_wrongNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Toplam Yanlış"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_wrongNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_wrongNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_wrongNumber" />
+
+            <ImageView
+                android:id="@+id/iv_wrongNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_red_cross"
+                app:layout_constraintEnd_toEndOf="@+id/tv_wrongNumberInfo"
+                app:layout_constraintStart_toStartOf="@+id/tv_wrongNumberInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_wrongNumberInfo"/>
+
+            <TextView
+                android:id="@+id/tv_emptyNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1925"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_sumQuestionIcon" />
+
+            <TextView
+                android:id="@+id/tv_emptyNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Toplam Boş"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_emptyNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_emptyNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_emptyNumber" />
+
+            <ImageView
+                android:id="@+id/iv_emptyNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_empty_answer"
+                app:layout_constraintEnd_toEndOf="@+id/tv_emptyNumberInfo"
+                app:layout_constraintStart_toStartOf="@+id/tv_emptyNumberInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_emptyNumberInfo"/>
+
+            <TextView
+                android:id="@+id/tv_totalTimeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03:40:50"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_sumQuestionIcon" />
+
+            <TextView
+                android:id="@+id/tv_totalTimeNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Toplam Süre"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_totalTimeNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_totalTimeNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_totalTimeNumber" />
+
+            <ImageView
+                android:id="@+id/iv_totalTimeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_sum_time"
+                app:layout_constraintEnd_toEndOf="@+id/tv_totalTimeNumberInfo"
+                app:layout_constraintStart_toStartOf="@+id/tv_totalTimeNumberInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_totalTimeNumberInfo"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

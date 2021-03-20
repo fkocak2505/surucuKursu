@@ -16,6 +16,7 @@ import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -157,6 +158,15 @@ interface IApiService {
         @Part("token") token: RequestBody,
         @Part("sinav") sinavKey: RequestBody
     ): Observable<ResResultArray<Response4DenemeSinavi>>
+
+    @Multipart
+    @POST("/KursumAPI/sonuc-ozet/index.php")
+    fun getSinavSonuclarim(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody
+    ): Observable<ResResult<Response4SinavSonuclarim>>
+
+
 
 
 }

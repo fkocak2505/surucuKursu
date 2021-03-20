@@ -9,7 +9,7 @@ import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import kotlinx.android.synthetic.main.activity_sinif_sinavlari.*
 
-class SinifSinavlari : BaseActivity(), CListener<Response4SinifSinavi> {
+class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
 
     lateinit var sinifSinavi: SinifSinaviVM
 
