@@ -10,6 +10,7 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.fragments.course.dataModel.CourseItem
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_course_item)
 abstract class CourseItemModel: EpoxyModelWithHolder<CourseItemModel.Holder>()  {
@@ -30,6 +31,8 @@ abstract class CourseItemModel: EpoxyModelWithHolder<CourseItemModel.Holder>()  
             holder.cvCourseItem.setOnClickListener {
                 cCourseListener.invoke(courseItem)
             }
+
+            holder.tvTitle.semibold()
         }
 
     }

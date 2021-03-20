@@ -7,7 +7,9 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.renderHtml
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_hakkimizda.*
 
 class HakkimizdaActivity : BaseActivity() {
@@ -21,7 +23,9 @@ class HakkimizdaActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
+        tv_hakkimizdaTitle.semibold()
+        tv_hakkimizdaDesc.regular()
     }
 
     override fun initReq() {

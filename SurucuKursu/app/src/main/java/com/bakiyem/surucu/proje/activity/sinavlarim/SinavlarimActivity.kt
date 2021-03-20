@@ -9,6 +9,7 @@ import com.bakiyem.surucu.proje.activity.sinavlarim.epoxy.controller.SinavlarimC
 import com.bakiyem.surucu.proje.activity.sinifSinavlari.SinifSinavlariActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_sinavlarim.*
 
 class SinavlarimActivity: BaseActivity(), CListener<String> {
@@ -19,7 +20,7 @@ class SinavlarimActivity: BaseActivity(), CListener<String> {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
     }
 
     override fun initReq() {

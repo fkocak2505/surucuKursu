@@ -6,6 +6,7 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.araclarimiz.controller.AraclarimizController
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_araclarimiz.*
 
 class AraclarimizActivity : BaseActivity() {
@@ -19,7 +20,7 @@ class AraclarimizActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
     }
 
     override fun initReq() {

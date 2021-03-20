@@ -10,6 +10,8 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_ders_listesi_item)
 abstract class DersListesiItemModel: EpoxyModelWithHolder<DersListesiItemModel.Holder>() {
@@ -34,6 +36,9 @@ abstract class DersListesiItemModel: EpoxyModelWithHolder<DersListesiItemModel.H
         holder.cvDersListesi.setOnClickListener {
             listener.invoke(dersListesiItem)
         }
+
+        holder.tvDersListesiAdi.regular()
+        holder.tvCountDersListesi.semibold()
 
 
     }

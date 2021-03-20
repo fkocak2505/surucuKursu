@@ -7,6 +7,7 @@ import com.bakiyem.surucu.proje.activity.sinifSinavlari.SinifSinaviVM
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_sinav_sonuclarim.*
 
 class SinavSonuclarimActivity: BaseActivity() {
@@ -27,7 +28,7 @@ class SinavSonuclarimActivity: BaseActivity() {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
     }
 
     override fun initReq() {

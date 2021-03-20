@@ -10,6 +10,8 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_araclar_item)
 abstract class AraclarItem : EpoxyModelWithHolder<AraclarItem.Holder>() {
@@ -26,6 +28,8 @@ abstract class AraclarItem : EpoxyModelWithHolder<AraclarItem.Holder>() {
             holder.tvAracMarkaModel.text = model
         }
 
+        holder.tvAracSinif.semibold()
+        holder.tvAracMarkaModel.regular()
     }
 
     class Holder : EpoxyHolder() {

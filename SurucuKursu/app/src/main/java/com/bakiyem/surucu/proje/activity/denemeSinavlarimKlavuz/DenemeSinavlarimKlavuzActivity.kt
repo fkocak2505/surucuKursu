@@ -1,12 +1,15 @@
 package com.bakiyem.surucu.proje.activity.denemeSinavlarimKlavuz
 
-import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_deneme_sinavlarim_klavuz.*
+
 
 class DenemeSinavlarimKlavuzActivity : BaseActivity() {
     override fun getLayoutID(): Int = R.layout.activity_deneme_sinavlarim_klavuz
@@ -16,7 +19,18 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
+        tv_hugeTitle.semibold()
+        tv_klavuzTitleInfo.semibold()
+        tv_one.regular()
+        tv_two.regular()
+        tv_three.regular()
+        tv_four.regular()
+        tv_five.regular()
+        tv_six.regular()
+        tv_startExam.semibold()
 
+        val font = Typeface.createFromAsset(assets, "fonts/montserrat_regular.ttf")
+        cb_denemeSinavi.typeface = font
     }
 
     override fun initReq() {
@@ -50,7 +64,7 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
                 pDialog.show()
             } else
             //startActivity(Intent(this, DenemeSinaviActivity::class.java))
-                DenemeSinaviActivity.start(this, "2", "", false, "Deneme Sınavı",  mutableListOf())
+                DenemeSinaviActivity.start(this, "2", "", false, "Deneme Sınavı", mutableListOf())
         }
     }
 }

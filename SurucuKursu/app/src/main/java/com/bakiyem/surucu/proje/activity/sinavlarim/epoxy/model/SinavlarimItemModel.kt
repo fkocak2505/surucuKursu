@@ -8,6 +8,7 @@ import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_sinavlarim_item)
 abstract class SinavlarimItemModel: EpoxyModelWithHolder<SinavlarimItemModel.Holder>()  {
@@ -28,6 +29,8 @@ abstract class SinavlarimItemModel: EpoxyModelWithHolder<SinavlarimItemModel.Hol
         holder.cvSinavItem.setOnClickListener {
             listener.invoke(sinavItem)
         }
+
+        holder.tvSinavlarim.semibold()
 
     }
 

@@ -21,7 +21,9 @@ import com.bakiyem.surucu.proje.model.denemeSinavi.AnswerModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.QuestionsResultModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
 import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.renderHtml
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.*
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.iv_back
@@ -62,6 +64,35 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     override fun initChangeFont() {
 
         tv_hugeTitle.text = sinavtitle
+
+        tv_hugeTitle.semibold()
+        tv_userName.semibold()
+        tv_sinavAdi.regular()
+        tv_remainingTimeInfo.regular()
+        tv_seekbarValue.semibold()
+        tv_qKategoriName.semibold()
+        tv_qSoruAciklama.regular()
+        tv_qSoru.regular()
+        tv_secenekAInfo.semibold()
+        tv_secenekA.regular()
+        tv_secenekBInfo.semibold()
+        tv_secenekB.regular()
+        tv_secenekCInfo.semibold()
+        tv_secenekC.regular()
+        tv_secenekDInfo.semibold()
+        tv_secenekD.regular()
+        tv_oncekiSoru.semibold()
+        tv_sonrakiSoru.semibold()
+        tv_correctNumber.semibold()
+        tv_correctNumberInfo.semibold()
+        tv_wrongNumber.semibold()
+        tv_wrongNumberInfo.semibold()
+        tv_emptyNumber.semibold()
+        tv_emptyNumberInfo.semibold()
+        tv_score.semibold()
+        tv_scoreInfo.semibold()
+        tv_chooseAgain.regular()
+        tv_finishExam.semibold()
 
     }
 

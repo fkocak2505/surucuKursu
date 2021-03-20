@@ -61,12 +61,14 @@
             android:layout_margin="20dp">
 
             <TextView
+                android:id="@+id/tv_klavuzTitleInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
                 android:text="Kullanım Klavuzu"/>
 
             <TextView
+                android:id="@+id/tv_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
@@ -74,6 +76,7 @@
                 android:text="1- Lütfen kimlik bilgilerinizi yukarıdan kontrol ediniz."/>
 
             <TextView
+                android:id="@+id/tv_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
@@ -81,6 +84,7 @@
                 android:text="2- Elektronik ehliyet sınavlarına gireceklere: 12 İlk yardım sorusu, 23 Trafik sorusu, 9 Motor sorusu ve 6 Trafik adabı sorusu olmak üzere 50 soru sorulmaktadır."/>
 
             <TextView
+                android:id="@+id/tv_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
@@ -88,6 +92,7 @@
                 android:text="3- Elektronik ehliyet sınavı 45 dakikadır."/>
 
             <TextView
+                android:id="@+id/tv_four"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
@@ -95,6 +100,7 @@
                 android:text="4- 4 yanlış bir doğruyu götürmemektedir ve tüm ehliyet sınıfları için sorular aynıdır."/>
 
             <TextView
+                android:id="@+id/tv_five"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
@@ -102,6 +108,7 @@
                 android:text="5- Adayların başarılı olabilmesi için toplam 50 sorudan oluşan yeni müfredat ehliyet sınavından 35 soruyu doğru cevaplaması ve toplam 70 puan almaları gerekmektedir."/>
 
             <TextView
+                android:id="@+id/tv_six"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/titleTextSize"
@@ -130,6 +137,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <TextView
+                    android:id="@+id/tv_startExam"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/titleTextSize"

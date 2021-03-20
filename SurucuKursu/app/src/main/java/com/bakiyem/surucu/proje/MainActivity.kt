@@ -51,6 +51,10 @@ class MainActivity : BaseActivity() {
         tv_navLeftRandevularim.regular()
         tv_navLeftFaydaliBilgiler.regular()
         tv_navLeftGuvenliCikis.regular()
+
+        changeFontType(
+            applicationContext, bottomNavigationView
+        )
     }
 
     override fun initReq() {
@@ -200,6 +204,23 @@ class MainActivity : BaseActivity() {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+        }
+    }
+
+    private fun changeFontType(context: Context, v: View) {
+        try {
+            if (v is ViewGroup) {
+                for (i in 0 until v.childCount) {
+                    val child: View = v.getChildAt(i)
+                    changeFontType(context, child)
+                }
+            } else if (v is TextView) {
+                (v as TextView).typeface = Typeface.createFromAsset(
+                    context.assets,
+                    "montserrat_regular.ttf"
+                )
+            }
+        } catch (e: Exception) {
         }
     }
 

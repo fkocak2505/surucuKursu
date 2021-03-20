@@ -10,6 +10,8 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.bakiyem.surucu.proje.utils.ext.regular
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_kadromuz_item)
 abstract class KadromuzItemModel: EpoxyModelWithHolder<KadromuzItemModel.Holder>() {
@@ -26,6 +28,8 @@ abstract class KadromuzItemModel: EpoxyModelWithHolder<KadromuzItemModel.Holder>
             holder.tvDescKadromuz.text = adSoyad
         }
 
+        holder.tvTitleKadromuz.semibold()
+        holder.tvDescKadromuz.regular()
     }
 
     class Holder : EpoxyHolder() {

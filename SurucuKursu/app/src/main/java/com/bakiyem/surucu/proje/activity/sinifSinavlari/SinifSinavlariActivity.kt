@@ -7,6 +7,7 @@ import com.bakiyem.surucu.proje.activity.sinifSinavlari.epoxy.controller.SinifSi
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_sinif_sinavlari.*
 
 class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
@@ -20,7 +21,7 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
     }
 
     override fun initReq() {

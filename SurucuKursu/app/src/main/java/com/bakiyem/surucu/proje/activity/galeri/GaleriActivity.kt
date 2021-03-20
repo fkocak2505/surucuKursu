@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.stfalcon.frescoimageviewer.ImageViewer
 import kotlinx.android.synthetic.main.activity_galeri.*
 
@@ -24,7 +25,7 @@ class GaleriActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
     }
 
     override fun initReq() {

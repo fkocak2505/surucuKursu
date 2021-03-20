@@ -15,7 +15,9 @@ import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
+import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.renderHtml
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_ders_icerik.*
 import java.util.*
 
@@ -43,6 +45,12 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
             tv_hugeTitle.text = "Detaylar"
             tv_dersAdiDetail.text = "Detaylar"
         }
+
+        tv_hugeTitle.semibold()
+        tv_dersAdiDetail.semibold()
+        tv_dersiDinleInfo.semibold()
+        tv_songTime.regular()
+        tv_dersIcerik.regular()
     }
 
     override fun initReq() {

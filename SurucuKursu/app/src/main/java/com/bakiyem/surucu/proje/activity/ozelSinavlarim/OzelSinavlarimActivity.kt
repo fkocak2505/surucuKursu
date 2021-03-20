@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_ozel_sinavlar.*
 
 class OzelSinavlarimActivity : BaseActivity() {
@@ -25,7 +26,18 @@ class OzelSinavlarimActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
-
+        tv_hugeTitle.semibold()
+        tv_ozelSinavInfoTitle.semibold()
+        tv_ilkYardimInfoTitle.semibold()
+        tv_ilkYardimQuestionCount.semibold()
+        tv_trafikInfoTitle.semibold()
+        tv_trafikQuestionCount.semibold()
+        tv_motorInfoTitle.semibold()
+        tv_motorQuestionCount.semibold()
+        tv_adapInfoTitle.semibold()
+        tv_adapQuestionCount.semibold()
+        tv_totalQuestionCount.semibold()
+        tv_startExam.semibold()
     }
 
     override fun initReq() {

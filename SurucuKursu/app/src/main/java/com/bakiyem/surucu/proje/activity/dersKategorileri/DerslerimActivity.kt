@@ -7,6 +7,7 @@ import com.bakiyem.surucu.proje.activity.dersListesi.DersListesiActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_derslerim.*
 
 class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
@@ -20,6 +21,7 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
     }
 
     override fun initChangeFont() {
+        tv_hugeTitle.semibold()
     }
 
     override fun initReq() {

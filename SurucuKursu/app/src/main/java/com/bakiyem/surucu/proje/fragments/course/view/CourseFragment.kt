@@ -15,6 +15,7 @@ import com.bakiyem.surucu.proje.fragments.course.controller.CourseController
 import com.bakiyem.surucu.proje.fragments.course.dataModel.CourseItem
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.data.DummyData
+import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.fragment_course.view.*
 
 class CourseFragment : Fragment(), CListener<Any> {
@@ -30,6 +31,8 @@ class CourseFragment : Fragment(), CListener<Any> {
         viewP = inflater.inflate(R.layout.fragment_course, container, false)
 
         initERVCourse()
+
+        viewP.tv_hugeTitle.semibold()
 
         return viewP
     }

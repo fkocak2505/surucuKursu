@@ -7,6 +7,7 @@ import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_string_item)
 abstract class StringItemModel : EpoxyModelWithHolder<StringItemModel.Holder>() {
@@ -19,8 +20,9 @@ abstract class StringItemModel : EpoxyModelWithHolder<StringItemModel.Holder>() 
 
         with(title) {
             holder.tvStringItem.text = this
-
         }
+
+        holder.tvStringItem.semibold()
     }
 
     class Holder : EpoxyHolder() {

@@ -9,6 +9,7 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
+import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_derslerim_item)
 abstract class DersItemModel: EpoxyModelWithHolder<DersItemModel.Holder>() {
@@ -29,6 +30,8 @@ abstract class DersItemModel: EpoxyModelWithHolder<DersItemModel.Holder>() {
         holder.cvDersItem.setOnClickListener {
             listener.invoke(dersItem)
         }
+
+        holder.tvDersAdi.semibold()
 
     }
 
