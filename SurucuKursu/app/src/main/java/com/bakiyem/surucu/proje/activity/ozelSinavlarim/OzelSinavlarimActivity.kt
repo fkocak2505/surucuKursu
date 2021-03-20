@@ -35,7 +35,7 @@ class OzelSinavlarimActivity : BaseActivity() {
     override fun initVMListener() {
         ozelSinavVM.ozelSinavLD.observe(this, {
             it?.let {
-                DenemeSinaviActivity.start(this, "3", "", false,  it)
+                DenemeSinaviActivity.start(this, "3", "", false,  "Özel Sınav",  it)
             } ?: run {
                 toast("Error ozel sinav genarate service")
             }

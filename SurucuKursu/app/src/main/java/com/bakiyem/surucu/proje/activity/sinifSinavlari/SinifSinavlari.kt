@@ -40,7 +40,7 @@ class SinifSinavlari : BaseActivity(), CListener<Response4SinifSinavi> {
         sinifSinavi.sinifSinaviQuizLD.observe(this, {
             it?.let {
                 if (it.size != 0)
-                    DenemeSinaviActivity.start(this, "1", "2", false,  it)
+                    DenemeSinaviActivity.start(this, "1", "2", false,"Sınıf Sınavı",  it)
                 else
                     toast("Deneme sinavi size 0")
             } ?: run {

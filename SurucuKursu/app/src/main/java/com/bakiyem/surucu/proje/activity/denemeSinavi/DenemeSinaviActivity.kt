@@ -61,6 +61,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     override fun initChangeFont() {
 
+        tv_hugeTitle.text = sinavtitle
+
     }
 
     override fun initReq() {
@@ -624,6 +626,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         var sinavId: String? = ""
         var sinavData: MutableList<Response4DenemeSinavi> = mutableListOf()
         var isComingHaziCevap: Boolean? = false
+        var sinavtitle: String? = ""
 
 
         fun start(
@@ -631,6 +634,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             sinavTur: String,
             sinavId: String?,
             isComingHaziCevap: Boolean,
+            sinavtitle: String,
             sinavData: MutableList<Response4DenemeSinavi>
         ) {
             val starter = Intent(activity, DenemeSinaviActivity::class.java)
@@ -638,6 +642,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             this.sinavId = sinavId
             this.isComingHaziCevap = isComingHaziCevap
             this.sinavData = sinavData
+            this.sinavtitle = sinavtitle
 
             activity!!.startActivity(starter)
         }
