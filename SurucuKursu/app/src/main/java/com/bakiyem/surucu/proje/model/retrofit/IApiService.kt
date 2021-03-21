@@ -15,6 +15,8 @@ import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
+import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
@@ -165,6 +167,21 @@ interface IApiService {
         @Part("token") token: RequestBody,
         @Part("kursiyerKey") sinavKey: RequestBody
     ): Observable<ResResult<Response4SinavSonuclarim>>
+
+    @Multipart
+    @POST("/KursumAPI/kursiyer-borclar/index.php")
+    fun getBorcListesi(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody
+    ): Observable<ResResultArray<Response4OdemeBilgileri>>
+
+    @Multipart
+    @POST("/KursumAPI/kursiyer-borc-ozet/index.php")
+    fun getBorcOzet(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody
+    ): Observable<ResResult<Response4BorcOzet>>
+
 
 
 

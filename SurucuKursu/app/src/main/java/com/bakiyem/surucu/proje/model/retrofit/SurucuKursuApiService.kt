@@ -15,6 +15,8 @@ import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
+import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
@@ -259,6 +261,24 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
         return api.getSinavSonuclarim(tokenBody, kursiyerBody)
+    }
+
+    fun getBorcListesi(): Observable<ResResultArray<Response4OdemeBilgileri>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        return api.getBorcListesi(tokenBody, kursiyerBody)
+    }
+
+    fun getBorcOzet(): Observable<ResResult<Response4BorcOzet>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        return api.getBorcOzet(tokenBody, kursiyerBody)
     }
 
 

@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
+import com.bakiyem.surucu.proje.activity.odemeBilgilerim.OdemeBilgilerimActivity
 import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
 import com.bakiyem.surucu.proje.activity.sinavSonuclarim.SinavSonuclarimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
@@ -135,7 +136,7 @@ class MainActivity : BaseActivity() {
 
         cl_odemeBilgilerim.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toast("Profilim")
+            startActivity(Intent(this, OdemeBilgilerimActivity::class.java))
         }
 
         cl_Randevularim.setOnClickListener {
