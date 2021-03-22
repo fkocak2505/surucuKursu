@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
+import com.bakiyem.surucu.proje.activity.faydaliBilgiler.FaydaliBilgilerActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.activity.odemeBilgilerim.OdemeBilgilerimActivity
 import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
@@ -147,7 +148,7 @@ class MainActivity : BaseActivity() {
 
         cl_faydaliBilgiler.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toast("Profilim")
+            startActivity(Intent(this, FaydaliBilgilerActivity::class.java))
         }
 
         cl_guvenliCikis.setOnClickListener {

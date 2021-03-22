@@ -10,6 +10,7 @@ import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
+import com.bakiyem.surucu.proje.model.faydaliBilgiler.Response4FaydaliBilgiler
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
@@ -289,6 +290,13 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
         return api.getRandevularim(tokenBody, kursiyerBody)
+    }
+
+    fun getFaydaliBilgiler(): Observable<ResResultArray<Response4FaydaliBilgiler>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        return api.getFaydaliBilgiler(tokenBody)
     }
 
 

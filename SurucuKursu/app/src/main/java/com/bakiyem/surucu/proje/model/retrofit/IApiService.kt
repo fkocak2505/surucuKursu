@@ -10,6 +10,7 @@ import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
+import com.bakiyem.surucu.proje.model.faydaliBilgiler.Response4FaydaliBilgiler
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
@@ -189,6 +190,13 @@ interface IApiService {
         @Part("token") token: RequestBody,
         @Part("kursiyerKey") sinavKey: RequestBody
     ): Observable<ResResultArray<Response4Randevularim>>
+
+    @Multipart
+    @POST("/KursumAPI/pratik/index.php")
+    fun getFaydaliBilgiler(
+        @Part("token") token: RequestBody
+    ): Observable<ResResultArray<Response4FaydaliBilgiler>>
+
 
 
 

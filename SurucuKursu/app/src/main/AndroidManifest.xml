@@ -86,6 +86,12 @@
         <activity android:name=".activity.randevular.RandevularimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".activity.faydaliBilgiler.FaydaliBilgilerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.faydaliBilgilerDetay.FaydaliBilgilerDetayActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
