@@ -18,6 +18,7 @@ import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import io.reactivex.rxjava3.core.Observable
@@ -181,6 +182,13 @@ interface IApiService {
         @Part("token") token: RequestBody,
         @Part("kursiyerKey") sinavKey: RequestBody
     ): Observable<ResResult<Response4BorcOzet>>
+
+    @Multipart
+    @POST("/KursumAPI/kursiyer-randevu/index.php")
+    fun getRandevularim(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody
+    ): Observable<ResResultArray<Response4Randevularim>>
 
 
 

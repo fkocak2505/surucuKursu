@@ -18,6 +18,7 @@ import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import com.google.gson.Gson
@@ -279,6 +280,15 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
         return api.getBorcOzet(tokenBody, kursiyerBody)
+    }
+
+    fun getRandevularim(): Observable<ResResultArray<Response4Randevularim>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        return api.getRandevularim(tokenBody, kursiyerBody)
     }
 
 

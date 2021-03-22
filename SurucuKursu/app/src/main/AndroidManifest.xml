@@ -83,6 +83,9 @@
         <activity android:name=".activity.odemeBilgilerim.OdemeBilgilerimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".activity.randevular.RandevularimActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

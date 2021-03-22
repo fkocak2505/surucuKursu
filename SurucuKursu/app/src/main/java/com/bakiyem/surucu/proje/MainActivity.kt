@@ -13,6 +13,7 @@ import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.activity.odemeBilgilerim.OdemeBilgilerimActivity
 import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
+import com.bakiyem.surucu.proje.activity.randevular.RandevularimActivity
 import com.bakiyem.surucu.proje.activity.sinavSonuclarim.SinavSonuclarimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
@@ -141,7 +142,7 @@ class MainActivity : BaseActivity() {
 
         cl_Randevularim.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toast("Profilim")
+            startActivity(Intent(this, RandevularimActivity::class.java))
         }
 
         cl_faydaliBilgiler.setOnClickListener {
