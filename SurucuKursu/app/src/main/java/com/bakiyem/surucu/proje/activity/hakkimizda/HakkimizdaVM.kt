@@ -9,17 +9,19 @@ class HakkimizdaVM: BaseVM() {
 
     var hakkimizdaLD = MutableLiveData<Response4Hakkimizda>()
     fun getHakkimizda(){
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getHakkimizda()
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatus(rr)?.let {
                     hakkimizdaLD.value = it
                 }?: run{
                     hakkimizdaLD.value = null
                 }
             }, {
+                loadingHUD.value = false
                 hakkimizdaLD.value = null
             })
         )

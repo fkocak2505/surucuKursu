@@ -11,11 +11,11 @@ class MainFragmentVM : BaseVM() {
 
     var kursLD = MutableLiveData<Response4Kurs>()
     fun getKurs() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getKurs()
             ).subscribe({ rr ->
-
                 checkServiceStatus(rr)?.let {
                     kursLD.value = it
                 } ?: run{

@@ -9,16 +9,19 @@ class GaleriVM : BaseVM() {
 
     var galeriLD = MutableLiveData<MutableList<Response4Galeri>>()
     fun getGaleri() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getGaleri()
             ).subscribe({ rr ->
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     galeriLD.value = rr.data
                 } ?: run {
                     galeriLD.value = null
                 }
             }, {
+                loadingHUD.value = false
                 galeriLD.value = null
             })
         )

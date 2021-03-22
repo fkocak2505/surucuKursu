@@ -28,6 +28,7 @@ class KadromuzActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(kadromuzVM)
         kadromuzVM.kadromuzLD.observe(this, {
             it?.let {
                 prepareKadromuz(it)

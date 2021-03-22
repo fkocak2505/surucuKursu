@@ -9,11 +9,12 @@ class ProfilimActivityVM : BaseVM() {
 
     val profilLD = MutableLiveData<Response4Profilim>()
     fun getProfilim() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getProfilim()
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatus(rr)?.let {
                     profilLD.value = rr.data
                 } ?: run {
@@ -21,6 +22,7 @@ class ProfilimActivityVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 profilLD.value = null
             })
         )

@@ -9,10 +9,13 @@ class DerslerimVM : BaseVM() {
 
     var dersKategoriLD = MutableLiveData<MutableList<Response4Derslerim>>()
     fun getDersKategori() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getDersKategori()
             ).subscribe({ rr ->
+
+                loadingHUD.value = false
 
                 checkServiceStatusArr(rr)?.let {
 
@@ -24,6 +27,7 @@ class DerslerimVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 dersKategoriLD.value = null
             })
         )

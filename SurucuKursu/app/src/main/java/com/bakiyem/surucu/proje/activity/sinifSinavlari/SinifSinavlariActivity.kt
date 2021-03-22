@@ -29,6 +29,7 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(sinifSinavi)
         sinifSinavi.sinifSinaviLD.observe(this, {
             it?.let {
                 prepareSinifSinaviData(it)

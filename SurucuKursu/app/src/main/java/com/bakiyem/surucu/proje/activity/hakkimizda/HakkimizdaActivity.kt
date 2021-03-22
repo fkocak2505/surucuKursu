@@ -33,6 +33,7 @@ class HakkimizdaActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(hakkimizdaVM)
         hakkimizdaVM.hakkimizdaLD.observe(this, {
             it?.let {
                 prepareHakkimizdaData(it)

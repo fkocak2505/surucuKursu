@@ -29,6 +29,7 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(derslerimVM)
         derslerimVM.dersKategoriLD.observe(this, {
             it?.let {
                 prepareDersKategoriData(it)

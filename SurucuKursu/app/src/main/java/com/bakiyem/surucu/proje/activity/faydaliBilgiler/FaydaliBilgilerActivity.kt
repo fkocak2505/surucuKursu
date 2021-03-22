@@ -29,6 +29,7 @@ class FaydaliBilgilerActivity : BaseActivity(), CListener<Response4FaydaliBilgil
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(faydaliBilgilerVM)
         faydaliBilgilerVM.faydaliBilgilerLD.observe(this, {
             it?.let {
                 prepareFaydaliBilgilerERV(it)

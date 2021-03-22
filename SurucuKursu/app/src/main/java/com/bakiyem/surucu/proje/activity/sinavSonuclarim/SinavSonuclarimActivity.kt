@@ -36,6 +36,7 @@ class SinavSonuclarimActivity: BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(sinavSonuclarimVM)
         sinavSonuclarimVM.sinavSonuclarimLD.observe(this, {
             it?.let {
                 sinavSonuclarimList.add(it)

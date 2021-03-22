@@ -27,6 +27,7 @@ class RandevularimActivity: BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(randevularimVM)
         randevularimVM.randevularimLD.observe(this, {
             it?.let {
                 prepareRandevularimERV(it)

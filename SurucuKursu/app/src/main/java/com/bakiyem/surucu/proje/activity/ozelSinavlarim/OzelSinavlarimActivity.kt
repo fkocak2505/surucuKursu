@@ -45,6 +45,7 @@ class OzelSinavlarimActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(ozelSinavVM)
         ozelSinavVM.ozelSinavLD.observe(this, {
             it?.let {
                 DenemeSinaviActivity.start(this, "3", "", false,  "Özel Sınav",  it)

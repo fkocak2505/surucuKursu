@@ -10,11 +10,12 @@ class SinifSinaviVM : BaseVM() {
 
     val sinifSinaviLD = MutableLiveData<MutableList<Response4SinifSinavi>>()
     fun getSinifSinavi() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getSinifSinavi()
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     sinifSinaviLD.value = it
                 } ?: run {
@@ -22,6 +23,7 @@ class SinifSinaviVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 sinifSinaviLD.value = null
             })
         )
@@ -29,11 +31,12 @@ class SinifSinaviVM : BaseVM() {
 
     val sinifSinaviQuizLD = MutableLiveData<MutableList<Response4DenemeSinavi>>()
     fun getSinifSinaviQuiz(sinavId: String) {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getSinifSinaviQuiz(sinavId)
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     sinifSinaviQuizLD.value = it
                 } ?: run {
@@ -42,6 +45,7 @@ class SinifSinaviVM : BaseVM() {
 
 
             }, {
+                loadingHUD.value = false
                 sinifSinaviQuizLD.value = null
             })
         )

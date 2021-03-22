@@ -9,11 +9,13 @@ class AraclarVM: BaseVM() {
 
     var araclarLD = MutableLiveData<MutableList<Response4Araclar>>()
     fun getAraclar(){
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getAraclar()
             ).subscribe({ rr ->
 
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     araclarLD.value = it
                 }?: run{
@@ -21,6 +23,7 @@ class AraclarVM: BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 araclarLD.value = null
             })
         )

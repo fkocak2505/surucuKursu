@@ -28,6 +28,7 @@ class AraclarimizActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(araclarVM)
         araclarVM.araclarLD.observe(this, {
             it?.let {
                 prepareAraclarList(it)

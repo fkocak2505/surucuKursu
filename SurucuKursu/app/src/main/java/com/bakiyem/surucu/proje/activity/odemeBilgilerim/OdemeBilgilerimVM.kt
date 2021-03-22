@@ -10,12 +10,12 @@ class OdemeBilgilerimVM : BaseVM() {
 
     val borcListesiLD = MutableLiveData<MutableList<Response4OdemeBilgileri>>()
     fun getBorcListesi() {
-
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getBorcListesi()
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     borcListesiLD.value = it
                 } ?: run {
@@ -23,6 +23,7 @@ class OdemeBilgilerimVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 borcListesiLD.value = null
             })
         )
@@ -31,16 +32,19 @@ class OdemeBilgilerimVM : BaseVM() {
 
     val borcOzetLD = MutableLiveData<Response4BorcOzet>()
     fun getBorcOzet() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getBorcOzet()
             ).subscribe({ rr ->
+                loadingHUD.value = false
                 checkServiceStatus(rr)?.let {
                     borcOzetLD.value = it
                 } ?: run {
                     borcOzetLD.value = null
                 }
             }, {
+                loadingHUD.value = false
                 borcOzetLD.value = null
             })
         )

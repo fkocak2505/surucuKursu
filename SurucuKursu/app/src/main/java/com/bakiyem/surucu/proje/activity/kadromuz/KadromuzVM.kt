@@ -10,11 +10,12 @@ class KadromuzVM : BaseVM() {
 
     var kadromuzLD = MutableLiveData<MutableList<Response4Kadromuz>>()
     fun getKadromuz() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getKadromuz()
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     kadromuzLD.value = rr.data
                 } ?: run {
@@ -22,6 +23,7 @@ class KadromuzVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 kadromuzLD.value = null
             })
         )

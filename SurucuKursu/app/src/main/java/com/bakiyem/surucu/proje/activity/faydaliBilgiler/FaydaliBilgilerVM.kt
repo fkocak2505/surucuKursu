@@ -9,11 +9,12 @@ class FaydaliBilgilerVM: BaseVM() {
 
     val faydaliBilgilerLD = MutableLiveData<MutableList<Response4FaydaliBilgiler>>()
     fun getFaydaliBilgiler(){
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getFaydaliBilgiler()
             ).subscribe({ rr->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     faydaliBilgilerLD.value = it
                 }?: run{
@@ -21,6 +22,7 @@ class FaydaliBilgilerVM: BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 faydaliBilgilerLD.value = null
             })
         )

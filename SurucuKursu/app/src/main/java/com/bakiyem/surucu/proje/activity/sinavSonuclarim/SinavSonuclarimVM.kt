@@ -9,11 +9,12 @@ class SinavSonuclarimVM: BaseVM() {
 
     val sinavSonuclarimLD = MutableLiveData<Response4SinavSonuclarim>()
     fun getSinavSonuclarim(){
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getSinavSonuclarim()
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatus(rr)?.let {
                     sinavSonuclarimLD.value = it
                 }?: run{
@@ -21,6 +22,7 @@ class SinavSonuclarimVM: BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 sinavSonuclarimLD.value = null
             })
         )

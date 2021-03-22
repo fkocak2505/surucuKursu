@@ -47,6 +47,7 @@ class DersListesiActivity : BaseActivity(), CListener<Response4DersListesi> {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(dersListesiVM)
         dersListesiVM.dersListesiLD.observe(this, {
             it?.let {
                 prepareDersListesi(it)

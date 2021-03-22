@@ -70,6 +70,7 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(dersIcerikVM)
         dersIcerikVM.dersIcerikLD.observe(this, {
             it?.let {
                 prepareDersIcerikData(it)

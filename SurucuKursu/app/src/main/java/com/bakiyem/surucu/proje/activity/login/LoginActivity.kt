@@ -32,6 +32,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(loginVM)
         loginVM.loginLD.observe(this, {
             it?.let {
                 Hawk.put("loginResponse", it)

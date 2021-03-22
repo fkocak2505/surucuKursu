@@ -14,11 +14,12 @@ class OzelSinavVM : BaseVM() {
         motorCount: String,
         adapCount: String
     ) {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getOzelSinav(ilkYardimCount, trafikCount, motorCount, adapCount)
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     ozelSinavLD.value = it
                 } ?: run {
@@ -27,6 +28,7 @@ class OzelSinavVM : BaseVM() {
 
 
             }, {
+                loadingHUD.value = false
                 ozelSinavLD.value = null
             })
         )

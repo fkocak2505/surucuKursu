@@ -15,6 +15,8 @@ class IletisimVM : BaseVM() {
                 sApiService.getIletisim()
             ).subscribe({ rr ->
 
+                loadingHUD.value = false
+
                 checkServiceStatus(rr)?.let {
                     iletisimLD.value = it
                 } ?: run {
@@ -22,6 +24,7 @@ class IletisimVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 iletisimLD.value = null
             })
         )

@@ -9,11 +9,12 @@ class DuyuruDetayVM : BaseVM() {
 
     var duyuruDetayLD = MutableLiveData<List<Response4DuyuruDetay>>()
     fun getDuyuruDetay(key: String) {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getDuyuruDetay(key)
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     duyuruDetayLD.value = rr.data
                 } ?: run {
@@ -21,6 +22,7 @@ class DuyuruDetayVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 duyuruDetayLD.value = null
             })
         )

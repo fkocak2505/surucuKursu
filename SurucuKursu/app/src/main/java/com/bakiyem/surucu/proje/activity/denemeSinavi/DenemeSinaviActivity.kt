@@ -138,6 +138,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(denemeSinaviVM)
+
         denemeSinaviVM.denemeSinaviLD.observe(this, {
             it?.let {
                 questions = it

@@ -34,6 +34,7 @@ class DuyuruDetayActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(duyuruDetayVM)
         duyuruDetayVM.duyuruDetayLD.observe(this, {
             it?.let {
                 prepareDuyuruDetayData(it[0])

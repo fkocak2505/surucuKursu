@@ -33,6 +33,9 @@ class SplashScreenActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(mainFragmentVM)
+        prepareWithBaseVM(iletisimVM)
+
         mainFragmentVM.kursLD.observe(this, {
             it?.let {
                 Hawk.put("token", it.key)

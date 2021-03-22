@@ -9,11 +9,12 @@ class LoginVM : BaseVM() {
 
     var loginLD = MutableLiveData<Response4Login>()
     fun doLogin(tckn: String) {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.doLogin(tckn)
             ).subscribe({ rr ->
-
+                loadingHUD.value = false
                 checkServiceStatus(rr)?.let {
                     loginLD.value = rr.data
                 } ?: run {
@@ -21,6 +22,7 @@ class LoginVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 loginLD.value = null
             })
         )

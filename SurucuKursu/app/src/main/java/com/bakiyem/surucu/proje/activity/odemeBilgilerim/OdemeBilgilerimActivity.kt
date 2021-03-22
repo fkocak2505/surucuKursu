@@ -33,6 +33,7 @@ class OdemeBilgilerimActivity : BaseActivity(), CListener<Response4OdemeBilgiler
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(odemeBilgilerimVM)
         odemeBilgilerimVM.borcListesiLD.observe(this, {
             it?.let {
                 borcListesi = it

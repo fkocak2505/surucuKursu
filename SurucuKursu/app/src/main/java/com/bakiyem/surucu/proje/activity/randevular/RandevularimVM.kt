@@ -9,11 +9,12 @@ class RandevularimVM: BaseVM() {
 
     val randevularimLD = MutableLiveData<MutableList<Response4Randevularim>>()
     fun getRandevularim(){
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getRandevularim()
             ).subscribe({ rr->
-
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     randevularimLD.value = it
                 }?: run{
@@ -21,6 +22,7 @@ class RandevularimVM: BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 randevularimLD.value = null
             })
         )

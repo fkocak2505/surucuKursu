@@ -9,10 +9,13 @@ class DersIcerikVM : BaseVM() {
 
     var dersIcerikLD = MutableLiveData<MutableList<Response4DersIcerik>>()
     fun getDersIcerik(dersKey: String) {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getDersIcerik(dersKey)
             ).subscribe({ rr ->
+
+                loadingHUD.value = false
 
                 checkServiceStatusArr(rr)?.let {
                     dersIcerikLD.value = rr.data
@@ -21,6 +24,7 @@ class DersIcerikVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 dersIcerikLD.value = null
             })
         )

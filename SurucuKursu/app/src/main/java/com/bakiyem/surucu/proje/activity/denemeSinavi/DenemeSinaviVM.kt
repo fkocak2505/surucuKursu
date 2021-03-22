@@ -11,11 +11,13 @@ class DenemeSinaviVM : BaseVM() {
 
     var denemeSinaviLD = MutableLiveData<MutableList<Response4DenemeSinavi>>()
     fun getDenemeSinavi() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getDenemeSinavi()
             ).subscribe({ rr ->
 
+                loadingHUD.value = false
                 checkServiceStatusArr(rr)?.let {
                     denemeSinaviLD.value = it
                 } ?: run {
@@ -23,6 +25,7 @@ class DenemeSinaviVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 denemeSinaviLD.value = null
             })
         )
@@ -102,6 +105,7 @@ class DenemeSinaviVM : BaseVM() {
             }
         }
 
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.postSinavSonuc(
@@ -123,6 +127,8 @@ class DenemeSinaviVM : BaseVM() {
                 )
             ).subscribe({ rr ->
 
+                loadingHUD.value = false
+
                 checkServiceStatus(rr)?.let {
                     cevapNumberLD.value =
                         "${iyDogru + tDogru + mDogru + aDogru}&${iyYanlis + tYanlis + mYanlis + aYanlis}&${iyBos + tBos + mBos + aBos}"
@@ -133,6 +139,7 @@ class DenemeSinaviVM : BaseVM() {
                 }
 
             }, {
+                loadingHUD.value = false
                 cevapNumberLD.value = null
                 sinavSonucLD.value = null
             })

@@ -33,6 +33,7 @@ class GaleriActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(galeriVM)
         galeriVM.galeriLD.observe(this, {
             it?.let {
                 listOfGaleri = mutableListOf()

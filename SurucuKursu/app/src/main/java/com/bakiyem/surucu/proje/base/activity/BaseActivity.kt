@@ -107,7 +107,7 @@ abstract class BaseActivity: AppCompatActivity() {
     }
 
     private fun loadingHudColor(): Int {
-        return getColorById(R.color.green)
+        return getColorById(R.color.orange)
     }
 
     private fun getColorById(colorId: Int): Int {

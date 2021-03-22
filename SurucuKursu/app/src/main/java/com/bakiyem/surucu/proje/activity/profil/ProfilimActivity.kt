@@ -67,6 +67,7 @@ class ProfilimActivity : BaseActivity() {
     }
 
     override fun initVMListener() {
+        prepareWithBaseVM(profilVM)
         profilVM.profilLD.observe(this, {
             it?.let {
                 prepareProfilimData(it)
