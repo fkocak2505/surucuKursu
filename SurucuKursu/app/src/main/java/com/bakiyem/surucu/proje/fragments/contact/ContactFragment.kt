@@ -1,5 +1,9 @@
 package com.bakiyem.surucu.proje.fragments.contact
 
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +26,8 @@ class ContactFragment : Fragment() {
 
     lateinit var iletisimVM: IletisimVM
 
+    lateinit var iletisimData: Response4Iletisim
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,6 +35,8 @@ class ContactFragment : Fragment() {
     ): View {
 
         viewP = inflater.inflate(R.layout.fragment_contact, container, false)
+
+        iletisimData = Hawk.get("iletisim")
 
         changeFontType()
 
@@ -59,14 +67,6 @@ class ContactFragment : Fragment() {
     private fun initVM() {
         iletisimVM = ViewModelProviders.of(this).get(IletisimVM::class.java)
 
-       /* iletisimVM.iletisimLD.observe(this, {
-            it?.let {
-                Hawk.put("iletisim", it)
-                prepareIletisimData(it)
-            } ?: run {
-
-            }
-        })*/
 
         iletisimVM.sendFeedbackLD.observe(this, {
             it?.let {
@@ -84,14 +84,37 @@ class ContactFragment : Fragment() {
             }
         })
 
-        //iletisimVM.getIletisim()
-
-        prepareIletisimData(Hawk.get("iletisim"))
+        prepareIletisimData(iletisimData)
     }
 
     private fun handleClickListener() {
         viewP.btn_send.setOnClickListener {
             sendFeedback()
+        }
+
+        viewP.iv_facebook.setOnClickListener {
+            val facebookIntent = Intent(Intent.ACTION_VIEW)
+            facebookIntent.data = Uri.parse(iletisimData.facebook)
+            startActivity(facebookIntent)
+        }
+
+        viewP.iv_twitter.setOnClickListener {
+            val twitterIntent = Intent(Intent.ACTION_VIEW)
+            twitterIntent.data = Uri.parse(iletisimData.twiter)
+            startActivity(twitterIntent)
+        }
+
+        viewP.iv_instagram.setOnClickListener {
+            val instagramIntent = Intent(Intent.ACTION_VIEW)
+            instagramIntent.data = Uri.parse(iletisimData.instagram)
+            startActivity(instagramIntent)
+        }
+
+        viewP.iv_whatsapp.setOnClickListener {
+            val url = "https://api.whatsapp.com/send?phone=${iletisimData.whatsapp}"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
         }
     }
 

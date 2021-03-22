@@ -3,12 +3,15 @@ package com.bakiyem.surucu.proje
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.faydaliBilgiler.FaydaliBilgilerActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
@@ -19,8 +22,11 @@ import com.bakiyem.surucu.proje.activity.sinavSonuclarim.SinavSonuclarimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
+import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
 import com.bakiyem.surucu.proje.fragments.main.view.MainFragment
+import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
+import com.bakiyem.surucu.proje.model.iletisim.Response4Iletisim
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
@@ -34,6 +40,10 @@ import kotlinx.android.synthetic.main.left_menu_without_login.*
 
 
 class MainActivity : BaseActivity() {
+
+
+
+    lateinit var iletisimData: Response4Iletisim
 
     override fun getLayoutID(): Int = R.layout.activity_main
 
@@ -75,6 +85,8 @@ class MainActivity : BaseActivity() {
         handleClickListener()
 
         handleisLoginandDrawUI()
+
+        iletisimData = Hawk.get("iletisim")
 
     }
 
@@ -153,7 +165,34 @@ class MainActivity : BaseActivity() {
 
         cl_guvenliCikis.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toast("Profilim")
+            Hawk.delete("loginResponse")
+            toast("Çıkış Yaptınız")
+            startActivity(intent)
+        }
+
+        iv_facebook.setOnClickListener {
+            val facebookIntent = Intent(Intent.ACTION_VIEW)
+            facebookIntent.data = Uri.parse(iletisimData.facebook)
+            startActivity(facebookIntent)
+        }
+
+        iv_twitter.setOnClickListener {
+            val twitterIntent = Intent(Intent.ACTION_VIEW)
+            twitterIntent.data = Uri.parse(iletisimData.twiter)
+            startActivity(twitterIntent)
+        }
+
+        iv_instagram.setOnClickListener {
+            val instagramIntent = Intent(Intent.ACTION_VIEW)
+            instagramIntent.data = Uri.parse(iletisimData.instagram)
+            startActivity(instagramIntent)
+        }
+
+        iv_whatsapp.setOnClickListener {
+            val url = "https://api.whatsapp.com/send?phone=${iletisimData.whatsapp}"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
         }
 
 

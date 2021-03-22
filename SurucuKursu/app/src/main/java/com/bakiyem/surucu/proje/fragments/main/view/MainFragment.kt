@@ -25,7 +25,7 @@ class MainFragment : Fragment(), CListener<Any> {
 
     lateinit var mainFragmentVM: MainFragmentVM
 
-    lateinit var iletisimVM: IletisimVM
+
 
     lateinit var viewP: View
 
@@ -44,29 +44,13 @@ class MainFragment : Fragment(), CListener<Any> {
 
     private fun initVM() {
         mainFragmentVM = ViewModelProviders.of(this).get(MainFragmentVM::class.java)
-        iletisimVM = ViewModelProviders.of(this).get(IletisimVM::class.java)
 
         prepareVMListener()
 
-        iletisimVM.getIletisim()
-
-        if (!Hawk.contains("token"))
-            mainFragmentVM.getKurs()
-        else
-            mainFragmentVM.getAnnouncements()
+        mainFragmentVM.getAnnouncements()
     }
 
     private fun prepareVMListener() {
-        mainFragmentVM.kursLD.observe(this, {
-            it?.let {
-                Hawk.put("token", it.key)
-
-                mainFragmentVM.getAnnouncements()
-
-            } ?: run {
-                Toast.makeText(requireContext(), "Error Kurs Token", Toast.LENGTH_SHORT).show()
-            }
-        })
 
         mainFragmentVM.announcementsLD.observe(this, {
             it?.let {
@@ -76,17 +60,6 @@ class MainFragment : Fragment(), CListener<Any> {
             }
         })
 
-        iletisimVM.iletisimLD.observe(this, {
-            it?.let {
-                Hawk.put("iletisim", it)
-            } ?: run {
-                Toast.makeText(
-                    activity?.applicationContext,
-                    "error fetch iletisim",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
     }
 
     private fun initEpoxyController(listOfAnnouncement: List<Response4Announcements>) {
