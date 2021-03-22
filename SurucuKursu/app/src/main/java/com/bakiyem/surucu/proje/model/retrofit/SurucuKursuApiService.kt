@@ -13,6 +13,8 @@ import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.faydaliBilgiler.Response4FaydaliBilgiler
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
+import com.bakiyem.surucu.proje.model.iletisim.Response4Iletisim
+import com.bakiyem.surucu.proje.model.iletisim.Response4SendFeedback
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
@@ -299,7 +301,29 @@ class SurucuKursuApiService {
         return api.getFaydaliBilgiler(tokenBody)
     }
 
+    fun getIletisim(): Observable<ResResult<Response4Iletisim>> {
+        val token = Hawk.get<String>("token")
 
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        return api.getIletisim(tokenBody)
+    }
+
+    fun sendFeedback(
+        adSoyad: String,
+        mail: String,
+        tel: String,
+        mesaj: String
+    ): Observable<ResResult<Response4SendFeedback>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val adSoyadBody = RequestBody.create(MediaType.parse("text/plain"), adSoyad)
+        val mailBody = RequestBody.create(MediaType.parse("text/plain"), mail)
+        val telBody = RequestBody.create(MediaType.parse("text/plain"), tel)
+        val mesajBody = RequestBody.create(MediaType.parse("text/plain"), mesaj)
+
+        return api.sendFeedback(tokenBody, adSoyadBody, mailBody, telBody, mesajBody)
+    }
 
 
 }

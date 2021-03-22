@@ -12,6 +12,7 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
+import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.controller.MainFragmentController
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
@@ -23,6 +24,8 @@ import org.imaginativeworld.whynotimagecarousel.CarouselItem
 class MainFragment : Fragment(), CListener<Any> {
 
     lateinit var mainFragmentVM: MainFragmentVM
+
+    lateinit var iletisimVM: IletisimVM
 
     lateinit var viewP: View
 
@@ -41,8 +44,11 @@ class MainFragment : Fragment(), CListener<Any> {
 
     private fun initVM() {
         mainFragmentVM = ViewModelProviders.of(this).get(MainFragmentVM::class.java)
+        iletisimVM = ViewModelProviders.of(this).get(IletisimVM::class.java)
 
         prepareVMListener()
+
+        iletisimVM.getIletisim()
 
         if (!Hawk.contains("token"))
             mainFragmentVM.getKurs()
@@ -67,6 +73,18 @@ class MainFragment : Fragment(), CListener<Any> {
                 initEpoxyController(it)
             } ?: run {
                 Toast.makeText(requireContext(), "Error Announcement", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        iletisimVM.iletisimLD.observe(this, {
+            it?.let {
+                Hawk.put("iletisim", it)
+            } ?: run {
+                Toast.makeText(
+                    activity?.applicationContext,
+                    "error fetch iletisim",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }

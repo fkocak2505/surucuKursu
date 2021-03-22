@@ -13,6 +13,8 @@ import com.bakiyem.surucu.proje.model.duyuruDetay.Response4DuyuruDetay
 import com.bakiyem.surucu.proje.model.faydaliBilgiler.Response4FaydaliBilgiler
 import com.bakiyem.surucu.proje.model.galeri.Response4Galeri
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
+import com.bakiyem.surucu.proje.model.iletisim.Response4Iletisim
+import com.bakiyem.surucu.proje.model.iletisim.Response4SendFeedback
 import com.bakiyem.surucu.proje.model.kadromuz.Response4Kadromuz
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
@@ -197,6 +199,22 @@ interface IApiService {
         @Part("token") token: RequestBody
     ): Observable<ResResultArray<Response4FaydaliBilgiler>>
 
+    @Multipart
+    @POST("/KursumAPI/kurs/index.php")
+    fun getIletisim(
+        @Part("token") token: RequestBody
+    ): Observable<ResResult<Response4Iletisim>>
+
+
+    @Multipart
+    @POST("/KursumAPI/basvuru/index.php")
+    fun sendFeedback(
+        @Part("token") token: RequestBody,
+        @Part("AdSoyad") adSoyad: RequestBody,
+        @Part("Mail") mail: RequestBody,
+        @Part("Tel") tel: RequestBody,
+        @Part("Mesaj") mesaj: RequestBody,
+    ): Observable<ResResult<Response4SendFeedback>>
 
 
 
