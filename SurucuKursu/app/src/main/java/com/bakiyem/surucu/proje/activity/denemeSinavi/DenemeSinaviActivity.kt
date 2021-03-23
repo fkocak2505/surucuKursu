@@ -21,6 +21,7 @@ import com.bakiyem.surucu.proje.model.denemeSinavi.AnswerModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.QuestionsResultModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
 import com.bakiyem.surucu.proje.model.login.Response4Login
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.renderHtml
 import com.bakiyem.surucu.proje.utils.ext.semibold
@@ -231,10 +232,24 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         tv_seekbarValue.x = sb_questionsLength.x + value + sb_questionsLength.thumbOffset / 2
 
         tv_qKategoriName.text = questions[num].kategori
+
+        if (questions[num].soruResim != "") {
+            iv_questionImage.visibility = View.VISIBLE
+            iv_questionImage.loadImage(questions[num].soruResim)
+        } else {
+            iv_questionImage.visibility = View.GONE
+        }
+
+        if(questions[num].soruAciklama != ""){
+            tv_qSoruAciklama.visibility = View.VISIBLE
+            val htmlData = Html.fromHtml(questions[num].soruAciklama!!).toString()
+            tv_qSoruAciklama renderHtml htmlData
+        }else {
+            tv_qSoruAciklama.visibility = View.GONE
+        }
+
         tv_qSoru.text = questions[num].soru
 
-        val htmlData = Html.fromHtml(questions[num].soruAciklama!!).toString()
-        tv_qSoruAciklama renderHtml htmlData
 
         tv_secenekA.text = questions[num].secenekler!![0]?.cevap
         tv_secenekB.text = questions[num].secenekler!![1]?.cevap

@@ -192,6 +192,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_qKategoriName" />
 
+                <ImageView
+                    android:id="@+id/iv_questionImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_green_tick"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_qSoruAciklama"/>
+
                 <TextView
                     android:id="@+id/tv_qSoru"
                     android:layout_width="match_parent"
@@ -203,7 +212,7 @@
                     android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_qSoruAciklama" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_questionImage" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_seceneklerA"

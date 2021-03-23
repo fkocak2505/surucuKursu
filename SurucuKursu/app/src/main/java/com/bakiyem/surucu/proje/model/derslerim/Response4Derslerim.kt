@@ -8,6 +8,12 @@ data class Response4Derslerim(
     var id: String? = null,
 
     @SerializedName("DersAdTr")
-    var dersAdi: String? = null
+    var dersAdi: String? = null,
+
+    @SerializedName("imageUrl")
+    var imageUrl: String? = null,
+
+    @SerializedName("iconUrl")
+    var iconUrl: String? = null
 
 )

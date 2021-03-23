@@ -44,7 +44,7 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
     }
 
     private fun prepareDersKategoriData(listOfDersKategori: MutableList<Response4Derslerim>) {
-        val derslerimController = DerslerimController(this)
+        val derslerimController = DerslerimController(applicationContext,this)
         derslerimController.derslerim = listOfDersKategori
         erv_derslerim.setController(derslerimController)
 
