@@ -5,6 +5,7 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.sinavSonuclarim.epoxy.controller.SinavSonuclarimController
 import com.bakiyem.surucu.proje.activity.sinifSinavlari.SinifSinaviVM
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import com.bakiyem.surucu.proje.utils.ext.semibold

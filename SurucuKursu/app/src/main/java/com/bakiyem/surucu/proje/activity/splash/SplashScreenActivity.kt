@@ -9,7 +9,9 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.orhanobut.hawk.Hawk
+import kotlinx.android.synthetic.main.splash.*
 
 class SplashScreenActivity : BaseActivity() {
 
@@ -49,10 +51,13 @@ class SplashScreenActivity : BaseActivity() {
 
         iletisimVM.iletisimLD.observe(this, {
             it?.let {
+
+                iv_logo.loadImage(it.logo)
+
                 Hawk.put("iletisim", it)
                 Handler().postDelayed({
                     startActivity(Intent(this, MainActivity::class.java))
-                }, 1000)
+                }, 2000)
             } ?: run {
                 Toast.makeText(
                     applicationContext,

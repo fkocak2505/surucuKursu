@@ -216,8 +216,13 @@ interface IApiService {
         @Part("Mesaj") mesaj: RequestBody,
     ): Observable<ResResult<Response4SendFeedback>>
 
-
-
+    @Multipart
+    @POST("/KursumAPI/randevu-iptal/index.php")
+    fun randevuIptal(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody,
+        @Part("randevuId") randevuId: RequestBody
+    ): Observable<ResResult<Response4SendFeedback>>
 
 
 }

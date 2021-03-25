@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
+import com.bakiyem.surucu.proje.activity.login.LoginActivity
+import com.bakiyem.surucu.proje.activity.randevular.RandevularimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
 import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
@@ -100,7 +102,7 @@ class MainFragment : Fragment(), CListener<Any> {
             }
             is String -> {
                 if (!Hawk.contains("loginResponse"))
-                    Toast.makeText(requireContext(), "Login olun", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(requireContext(), LoginActivity::class.java))
                 else {
                     when (data) {
                         "Derslerim" -> {
@@ -110,7 +112,7 @@ class MainFragment : Fragment(), CListener<Any> {
                             startActivity(Intent(requireContext(), SinavlarimActivity::class.java))
                         }
                         "Randevu" -> {
-                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(requireContext(), RandevularimActivity::class.java))
                         }
                     }
                 }

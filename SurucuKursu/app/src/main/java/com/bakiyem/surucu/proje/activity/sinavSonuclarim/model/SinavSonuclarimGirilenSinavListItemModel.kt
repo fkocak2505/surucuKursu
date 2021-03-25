@@ -24,9 +24,6 @@ abstract class SinavSonuclarimGirilenSinavListItemModel : EpoxyModelWithHolder<S
     @EpoxyAttribute
     lateinit var sinifSinavi: Response4SinifSinavi
 
-    @EpoxyAttribute
-    lateinit var listener: (Response4SinifSinavi) -> Unit
-
 
     override fun bind(holder: Holder) {
         super.bind(holder)
@@ -63,10 +60,6 @@ abstract class SinavSonuclarimGirilenSinavListItemModel : EpoxyModelWithHolder<S
         holder.tvCorrectNumber.semibold()
         holder.tvWrongNumber.semibold()
         holder.tvEmptyNumber.semibold()
-
-        holder.btnAgainResolve.setOnClickListener {
-            listener.invoke(sinifSinavi)
-        }
 
 
     }

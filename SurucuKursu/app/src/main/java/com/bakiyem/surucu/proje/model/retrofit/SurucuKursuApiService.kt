@@ -325,5 +325,16 @@ class SurucuKursuApiService {
         return api.sendFeedback(tokenBody, adSoyadBody, mailBody, telBody, mesajBody)
     }
 
+    fun randevuIptal(randevuId: String): Observable<ResResult<Response4SendFeedback>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        val randevuIdBody = RequestBody.create(MediaType.parse("text/plain"), randevuId)
+
+        return api.randevuIptal(tokenBody, kursiyerBody,randevuIdBody)
+    }
+
 
 }
