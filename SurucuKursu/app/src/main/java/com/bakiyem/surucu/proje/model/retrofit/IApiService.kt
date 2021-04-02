@@ -21,6 +21,8 @@ import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.randevuEkle.Response4Egitmen
+import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
@@ -223,6 +225,36 @@ interface IApiService {
         @Part("kursiyerKey") sinavKey: RequestBody,
         @Part("randevuId") randevuId: RequestBody
     ): Observable<ResResult<Response4SendFeedback>>
+
+
+    @Multipart
+    @POST("/KursumAPI/randevu-egitmen/index.php")
+    fun getRandevuEgitmenList(
+        @Part("token") token: RequestBody,
+        @Part("tarih") tarih: RequestBody
+    ): Observable<ResResultArray<Response4Egitmen>>
+
+    @Multipart
+    @POST("/KursumAPI/randevu-saatler/index.php")
+    fun getRandevuEgitmenSaat(
+        @Part("token") token: RequestBody,
+        @Part("tarih") tarih: RequestBody,
+        @Part("egitmen") egitmen: RequestBody
+    ): Observable<ResResultArray<Response4Saat>>
+
+    @Multipart
+    @POST("/KursumAPI/randevu-ekle/index.php")
+    fun addRandevu(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody,
+        @Part("Tarih") tarih: RequestBody,
+        @Part("PersonelId") egitmen: RequestBody,
+        @Part("SaatId") saat: RequestBody
+    ): Observable<ResResult<Response4SendFeedback>>
+
+
+
+
 
 
 }

@@ -45,11 +45,40 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_goRandevu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_start_btn"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_hugeTitle">
+
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:text="Randevu Ekle"
+            android:textAllCaps="false"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/cardview_compat_inset_shadow"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/erv_randevularim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="190dp"
         android:clipToPadding="false"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"

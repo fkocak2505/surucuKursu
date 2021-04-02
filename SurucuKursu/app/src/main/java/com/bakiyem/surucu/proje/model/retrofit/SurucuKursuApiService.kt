@@ -21,6 +21,8 @@ import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
+import com.bakiyem.surucu.proje.model.randevuEkle.Response4Egitmen
+import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
@@ -334,6 +336,35 @@ class SurucuKursuApiService {
         val randevuIdBody = RequestBody.create(MediaType.parse("text/plain"), randevuId)
 
         return api.randevuIptal(tokenBody, kursiyerBody,randevuIdBody)
+    }
+
+    fun getRandevuEgitmenList(tarih: String): Observable<ResResultArray<Response4Egitmen>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val tarihBody = RequestBody.create(MediaType.parse("text/plain"), tarih)
+        return api.getRandevuEgitmenList(tokenBody, tarihBody)
+    }
+
+    fun getRandevuEgitmenSaat(tarih: String, egitmenId: String): Observable<ResResultArray<Response4Saat>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val tarihBody = RequestBody.create(MediaType.parse("text/plain"), tarih)
+        val egitmenIdBody = RequestBody.create(MediaType.parse("text/plain"), egitmenId)
+        return api.getRandevuEgitmenSaat(tokenBody, tarihBody,egitmenIdBody)
+    }
+
+    fun addRandevu(tarih: String, egitmenId: String, saat: String): Observable<ResResult<Response4SendFeedback>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        val tarihBody = RequestBody.create(MediaType.parse("text/plain"), tarih)
+        val egitmenIdBody = RequestBody.create(MediaType.parse("text/plain"), egitmenId)
+        val saatBody = RequestBody.create(MediaType.parse("text/plain"), saat)
+        return api.addRandevu(tokenBody,kursiyerBody, tarihBody,egitmenIdBody,saatBody)
     }
 
 

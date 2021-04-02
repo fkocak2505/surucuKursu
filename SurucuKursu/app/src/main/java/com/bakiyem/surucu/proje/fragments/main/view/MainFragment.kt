@@ -12,6 +12,7 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
+import com.bakiyem.surucu.proje.activity.randevuEkle.RandevuEkleActivity
 import com.bakiyem.surucu.proje.activity.randevular.RandevularimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
 import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
@@ -112,6 +113,7 @@ class MainFragment : Fragment(), CListener<Any> {
                             startActivity(Intent(requireContext(), SinavlarimActivity::class.java))
                         }
                         "Randevu" -> {
+                            //startActivity(Intent(requireContext(), RandevuEkleActivity::class.java))
                             startActivity(Intent(requireContext(), RandevularimActivity::class.java))
                         }
                     }

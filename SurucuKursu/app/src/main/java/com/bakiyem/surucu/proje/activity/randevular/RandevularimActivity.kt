@@ -1,14 +1,20 @@
 package com.bakiyem.surucu.proje.activity.randevular
 
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.randevuEkle.RandevuEkleActivity
 import com.bakiyem.surucu.proje.activity.randevular.epoxy.controller.RandevularimController
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.utils.ext.semibold
 import kotlinx.android.synthetic.main.activity_randevularim.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+
 
 class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
 
@@ -23,6 +29,7 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
     override fun initChangeFont() {
         tv_hugeTitle.semibold()
         tv_noRandevuTitle.semibold()
+        tv_start.semibold()
     }
 
     override fun initReq() {
@@ -53,6 +60,25 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
 
     override fun onCreateMethod() {
         goBack()
+
+        btn_goRandevu.setOnClickListener {
+            startActivity(Intent(this@RandevularimActivity, RandevuEkleActivity::class.java))
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onRefreshActivity(isRefresh: String) {
+        startActivity(intent)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun prepareRandevularimERV(listOfRandevularim: MutableList<Response4Randevularim>) {
