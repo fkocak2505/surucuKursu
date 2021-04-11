@@ -20,6 +20,7 @@ import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
+import com.bakiyem.surucu.proje.model.odemeYap.Response4OdemeYap
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
 import com.bakiyem.surucu.proje.model.randevuEkle.Response4Egitmen
 import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
@@ -238,7 +239,13 @@ class SurucuKursuApiService {
         val motorCountBody = RequestBody.create(MediaType.parse("text/plain"), motorCount)
         val adapCountBody = RequestBody.create(MediaType.parse("text/plain"), adapCount)
 
-        return api.getOzelSinav(tokenBody, ilkYardimCountBody, trafikCountBody, motorCountBody, adapCountBody)
+        return api.getOzelSinav(
+            tokenBody,
+            ilkYardimCountBody,
+            trafikCountBody,
+            motorCountBody,
+            adapCountBody
+        )
     }
 
     fun getSinifSinavi(): Observable<ResResultArray<Response4SinifSinavi>> {
@@ -335,7 +342,7 @@ class SurucuKursuApiService {
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
         val randevuIdBody = RequestBody.create(MediaType.parse("text/plain"), randevuId)
 
-        return api.randevuIptal(tokenBody, kursiyerBody,randevuIdBody)
+        return api.randevuIptal(tokenBody, kursiyerBody, randevuIdBody)
     }
 
     fun getRandevuEgitmenList(tarih: String): Observable<ResResultArray<Response4Egitmen>> {
@@ -346,16 +353,23 @@ class SurucuKursuApiService {
         return api.getRandevuEgitmenList(tokenBody, tarihBody)
     }
 
-    fun getRandevuEgitmenSaat(tarih: String, egitmenId: String): Observable<ResResultArray<Response4Saat>> {
+    fun getRandevuEgitmenSaat(
+        tarih: String,
+        egitmenId: String
+    ): Observable<ResResultArray<Response4Saat>> {
         val token = Hawk.get<String>("token")
 
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
         val tarihBody = RequestBody.create(MediaType.parse("text/plain"), tarih)
         val egitmenIdBody = RequestBody.create(MediaType.parse("text/plain"), egitmenId)
-        return api.getRandevuEgitmenSaat(tokenBody, tarihBody,egitmenIdBody)
+        return api.getRandevuEgitmenSaat(tokenBody, tarihBody, egitmenIdBody)
     }
 
-    fun addRandevu(tarih: String, egitmenId: String, saat: String): Observable<ResResult<Response4SendFeedback>> {
+    fun addRandevu(
+        tarih: String,
+        egitmenId: String,
+        saat: String
+    ): Observable<ResResult<Response4SendFeedback>> {
         val token = Hawk.get<String>("token")
         val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
 
@@ -364,7 +378,40 @@ class SurucuKursuApiService {
         val tarihBody = RequestBody.create(MediaType.parse("text/plain"), tarih)
         val egitmenIdBody = RequestBody.create(MediaType.parse("text/plain"), egitmenId)
         val saatBody = RequestBody.create(MediaType.parse("text/plain"), saat)
-        return api.addRandevu(tokenBody,kursiyerBody, tarihBody,egitmenIdBody,saatBody)
+        return api.addRandevu(tokenBody, kursiyerBody, tarihBody, egitmenIdBody, saatBody)
+    }
+
+    fun odemeYap(
+        kartNo: String,
+        kartIsim: String,
+        ay: String,
+        yil: String,
+        cv2: String,
+        tutar: String
+    ): Observable<ResResult<Response4OdemeYap>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+
+        val kartNoBody = RequestBody.create(MediaType.parse("text/plain"), kartNo)
+        val kartIsimBody = RequestBody.create(MediaType.parse("text/plain"), kartIsim)
+        val ayBody = RequestBody.create(MediaType.parse("text/plain"), ay)
+        val yilBody = RequestBody.create(MediaType.parse("text/plain"), yil)
+        val cv2Body = RequestBody.create(MediaType.parse("text/plain"), cv2)
+        val tutarBody = RequestBody.create(MediaType.parse("text/plain"), tutar)
+
+        return api.odemeYap(
+            tokenBody,
+            kursiyerBody,
+            kartNoBody,
+            kartIsimBody,
+            ayBody,
+            yilBody,
+            cv2Body,
+            tutarBody
+        )
     }
 
 

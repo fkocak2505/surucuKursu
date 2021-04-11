@@ -1,8 +1,10 @@
 package com.bakiyem.surucu.proje.activity.odemeBilgilerim
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.odemeBilgilerim.epoxy.controller.OdemeBilgileriController
+import com.bakiyem.surucu.proje.activity.odemeYap.OdemeYap
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
@@ -71,6 +73,6 @@ class OdemeBilgilerimActivity : BaseActivity(), CListener<Response4OdemeBilgiler
     }
 
     override fun onSelected(data: Response4OdemeBilgileri) {
-
+        startActivity(Intent(this@OdemeBilgilerimActivity, OdemeYap::class.java))
     }
 }

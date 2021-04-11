@@ -20,6 +20,7 @@ import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
+import com.bakiyem.surucu.proje.model.odemeYap.Response4OdemeYap
 import com.bakiyem.surucu.proje.model.profilim.Response4Profilim
 import com.bakiyem.surucu.proje.model.randevuEkle.Response4Egitmen
 import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
@@ -251,6 +252,20 @@ interface IApiService {
         @Part("PersonelId") egitmen: RequestBody,
         @Part("SaatId") saat: RequestBody
     ): Observable<ResResult<Response4SendFeedback>>
+
+    @Multipart
+    @POST("/KursumAPI/odeme-al/index.php")
+    fun odemeYap(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") sinavKey: RequestBody,
+        @Part("kart") kart: RequestBody,
+        @Part("kart_isim") kart_isim: RequestBody,
+        @Part("ay") ay: RequestBody,
+        @Part("yil") yil: RequestBody,
+        @Part("cv2") cv2: RequestBody,
+        @Part("tutar") tutar: RequestBody
+    ): Observable<ResResult<Response4OdemeYap>>
+
 
 
 

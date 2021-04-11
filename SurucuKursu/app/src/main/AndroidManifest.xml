@@ -98,6 +98,9 @@
         <activity android:name=".activity.randevuEkle.RandevuEkleActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".activity.odemeYap.OdemeYap"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

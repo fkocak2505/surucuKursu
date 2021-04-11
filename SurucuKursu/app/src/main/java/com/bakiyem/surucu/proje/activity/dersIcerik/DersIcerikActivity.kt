@@ -207,7 +207,15 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
     private fun goback() {
         iv_back.setOnClickListener {
             onBackPressed()
-            mp?.stop()
+            //mp?.stop()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mp?.let {
+            if(it.isPlaying)
+                it.stop()
         }
     }
 

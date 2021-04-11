@@ -176,6 +176,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             changeConstraint(R.id.tv_chooseAgain)
             calculateSinavSonuc()
 
+            isComingHaziCevap = true
             prepareAllAnswersGrid(true)
 
         })

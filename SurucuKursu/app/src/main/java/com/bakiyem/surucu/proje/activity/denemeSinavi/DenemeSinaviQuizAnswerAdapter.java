@@ -45,19 +45,26 @@ public class DenemeSinaviQuizAnswerAdapter extends RecyclerView.Adapter<DenemeSi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.questionNumber.setText(String.valueOf(mData.get(position).getQuestionNumber()));
         holder.answer.setText(mData.get(position).getQuestionAnswe());
+        holder.cv_answer.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_circle_answer));
 
         if (isShownAnswer) {
             if (mData.get(position).isCorrectAnswe() != null) {
                 if (mData.get(position).isCorrectAnswe()) {
-                    holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.correct_answer));
+                    holder.cv_answer.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_circle_correct_answer));
+                    holder.answer.setTextColor(ContextCompat.getColor(context, R.color.white));
                 } else {
-                    holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.wrong_answer));
+                    holder.cv_answer.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_circle_wrong_answer));
+                    holder.answer.setTextColor(ContextCompat.getColor(context, R.color.white));
                 }
             } else {
-                holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.answer_bg));
+                holder.cv_answer.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_circle_answer));
+                holder.answer.setTextColor(ContextCompat.getColor(context, R.color.textColor));
             }
-        } else
-            holder.cv_answer.setCardBackgroundColor(ContextCompat.getColor(context, R.color.answer_bg));
+        } else{
+            holder.cv_answer.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_circle_answer));
+            holder.answer.setTextColor(ContextCompat.getColor(context, R.color.textColor));
+        }
+
 
 
     }

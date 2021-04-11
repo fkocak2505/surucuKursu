@@ -17,9 +17,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_answer"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
         app:cardElevation="1dp"
         app:layout_constraintTop_toBottomOf="@+id/tv_questionNumber"
@@ -35,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:textColor="@color/textColor"
                 android:text="A"/>
 
 
