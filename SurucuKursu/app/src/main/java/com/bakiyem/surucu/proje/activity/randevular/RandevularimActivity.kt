@@ -20,6 +20,8 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
 
     lateinit var randevularimVM: RandevularimVM
 
+    private var isComingRandevuEkle = ""
+
     override fun getLayoutID(): Int = R.layout.activity_randevularim
 
     override fun initVM() {
@@ -68,12 +70,14 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onRefreshActivity(isRefresh: String) {
-        startActivity(intent)
+        isComingRandevuEkle = isRefresh
+        randevularimVM.getRandevularim()
     }
 
     override fun onStart() {
         super.onStart()
-        EventBus.getDefault().register(this)
+        if (isComingRandevuEkle == "")
+            EventBus.getDefault().register(this)
     }
 
     override fun onDestroy() {

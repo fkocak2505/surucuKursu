@@ -73,6 +73,7 @@ class OdemeBilgilerimActivity : BaseActivity(), CListener<Response4OdemeBilgiler
     }
 
     override fun onSelected(data: Response4OdemeBilgileri) {
-        startActivity(Intent(this@OdemeBilgilerimActivity, OdemeYap::class.java))
+        if (data.durum != "Ödendi")
+            startActivity(Intent(this@OdemeBilgilerimActivity, OdemeYap::class.java))
     }
 }

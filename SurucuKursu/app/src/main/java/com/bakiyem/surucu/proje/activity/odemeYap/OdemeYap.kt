@@ -63,21 +63,55 @@ class OdemeYap : BaseActivity() {
 
     }
 
-    private fun odemeYapClickListener(){
+    private fun odemeYapClickListener() {
         btn_odemeYap.setOnClickListener {
-            val kartNo = et_kartNo.text.toString().split(" ")
-            val kartIsim = et_isim.text.toString()
-            val ay = et_skt.text.toString().split("/")[0]
-            val yil = et_skt.text.toString().split("/")[1]
-            val cv2 = et_cvc.text.toString()
-            val tutar = et_tutar.text.toString()
 
-            val kartNo2 = kartNo[0] + kartNo[1] + kartNo[2] + kartNo[3]
+            if (checkEmptyField()) {
+                val kartNo = et_kartNo.text.toString().split(" ")
+                val kartIsim = et_isim.text.toString()
+                val ay = et_skt.text.toString().split("/")[0]
+                val yil = et_skt.text.toString().split("/")[1]
+                val cv2 = et_cvc.text.toString()
+                val tutar = et_tutar.text.toString()
 
-            odemeYapVM.odemeYap(kartNo2, kartIsim, ay, yil, cv2, tutar)
+                val kartNo2 = kartNo[0] + kartNo[1] + kartNo[2] + kartNo[3]
 
+                odemeYapVM.odemeYap(kartNo2, kartIsim, ay, yil, cv2, tutar)
+            } else
+                toast("Ödeme aşamasında boş alan bırakılamaz..!")
 
         }
+    }
+
+    private fun checkEmptyField(): Boolean {
+        if (et_kartNo.text.toString() == "")
+            return false
+
+        if (et_isim.text.toString() == "")
+            return false
+
+        if (et_skt.text.toString().split("/")[0] == "")
+            return false
+
+        if (et_skt.text.toString().split("/")[1] == "")
+            return false
+
+        if (et_cvc.text.toString() == "")
+            return false
+
+        if (et_tutar.text.toString() == "")
+            return false
+
+        val kartNo = et_kartNo.text.toString().split(" ")
+
+        if (kartNo.size < 4)
+            return false
+
+        if(kartNo[3].length < 4)
+            return false
+
+        return true
+
     }
 
     private fun goback() {
