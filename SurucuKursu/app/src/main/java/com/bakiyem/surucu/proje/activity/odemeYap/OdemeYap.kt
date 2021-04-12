@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.activity.webView3D.CheckoutPaymentWVActivityNew
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
@@ -46,9 +47,15 @@ class OdemeYap : BaseActivity() {
         odemeYapVM.odemeYapLD.observe(this, {
             it?.let {
                 toast(it.link!!)
+                it.link?.let {
+                    CheckoutPaymentWVActivityNew.start(this@OdemeYap, it)
+                }?: run{
+                    toast("Error link error..")
+                }
+
             } ?: run {
                 toast("Error odeme yap")
-                //onBackPressed()
+                onBackPressed()
             }
         })
     }
