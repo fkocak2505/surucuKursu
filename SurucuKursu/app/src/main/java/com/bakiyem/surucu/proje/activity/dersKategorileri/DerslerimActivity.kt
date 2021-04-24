@@ -1,5 +1,7 @@
 package com.bakiyem.surucu.proje.activity.dersKategorileri
 
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersKategorileri.epoxy.controller.DerslerimController
@@ -56,7 +58,12 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
         }
     }
 
-    override fun onSelected(response4Derslerim: Response4Derslerim) {
-        DersListesiActivity.start(this, response4Derslerim)
+    override fun onSelected(
+        data: Response4Derslerim,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
+        DersListesiActivity.start(this, data)
     }
 }

@@ -3,6 +3,7 @@ package com.bakiyem.surucu.proje.model.retrofit
 import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.announcements.Response4Slider
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4SinavSonuc
@@ -27,6 +28,7 @@ import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
+import com.bakiyem.surucu.proje.model.video.Response4Video
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.RequestBody
@@ -48,6 +50,20 @@ interface IApiService {
         @Part("kursiyer") kursiyer: RequestBody,
         @Part("grup") grup: RequestBody
     ): Observable<ResResultArray<Response4Announcements>>
+
+    @Multipart
+    @POST("/KursumAPI/duyurular/index.php")
+    fun getSlider(
+        @Part("token") token: RequestBody
+    ): Observable<ResResultArray<Response4Slider>>
+
+    @Multipart
+    @POST("/KursumAPI/video/index.php")
+    fun getVideolar(
+        @Part("token") token: RequestBody
+    ): Observable<ResResultArray<Response4Video>>
+
+
 
     @Multipart
     @POST("/KursumAPI/duyuru-detay/index.php")

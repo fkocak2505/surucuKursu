@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
@@ -20,6 +22,7 @@ import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.fragments.main.controller.MainFragmentController
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.announcements.Response4Slider
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
@@ -27,8 +30,6 @@ import org.imaginativeworld.whynotimagecarousel.CarouselItem
 class MainFragment : Fragment(), CListener<Any> {
 
     lateinit var mainFragmentVM: MainFragmentVM
-
-
 
     lateinit var viewP: View
 
@@ -54,20 +55,29 @@ class MainFragment : Fragment(), CListener<Any> {
     }
 
     private fun prepareVMListener() {
-
+        var announcements = mutableListOf<Response4Announcements>()
         mainFragmentVM.announcementsLD.observe(this, {
             it?.let {
-                initEpoxyController(it)
+                announcements = it
+                mainFragmentVM.getSlider()
             } ?: run {
                 Toast.makeText(requireContext(), "Error Announcement", Toast.LENGTH_SHORT).show()
             }
         })
 
+        mainFragmentVM.sliderLD.observe(this, {
+            it?.let {
+                initEpoxyController(announcements, it)
+            }?: run{
+                Toast.makeText(requireContext(), "Error Slider", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 
-    private fun initEpoxyController(listOfAnnouncement: List<Response4Announcements>) {
+    private fun initEpoxyController(listOfAnnouncement: List<Response4Announcements>, listOfSlider: MutableList<Response4Slider>) {
 
-        val sliderList = prepareSliderData()
+        val sliderList = prepareSliderData(listOfSlider)
 
         val controller = MainFragmentController(this)
         controller.sliderItem = sliderList
@@ -76,27 +86,26 @@ class MainFragment : Fragment(), CListener<Any> {
         //controller.requestModelBuild()
     }
 
-    private fun prepareSliderData(): MutableList<CarouselItem> {
-        val listOfSlider = mutableListOf<CarouselItem>()
-        for (i in 1..5) {
-            if (i % 2 == 0) {
-                listOfSlider.add(
-                    CarouselItem(
-                        imageUrl = "https://images.unsplash.com/photo-1569398034126-476b0d96e2d1?w=1080"
-                    )
+    private fun prepareSliderData(listOfSlider: MutableList<Response4Slider>): MutableList<CarouselItem> {
+        val cListOfSlider = mutableListOf<CarouselItem>()
+
+        listOfSlider.forEach {
+            cListOfSlider.add(
+                CarouselItem(
+                    imageUrl = it.resim
                 )
-            } else {
-                listOfSlider.add(
-                    CarouselItem(
-                        imageUrl = "https://images.unsplash.com/photo-1507667522877-ad03f0c7b0e0?w=1080"
-                    )
-                )
-            }
+            )
         }
-        return listOfSlider
+
+        return cListOfSlider
     }
 
-    override fun onSelected(data: Any) {
+    override fun onSelected(
+        data: Any,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         when (data) {
             is Response4Announcements -> {
                 DuyuruDetayActivity.start(requireContext(), data.keyi)

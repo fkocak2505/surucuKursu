@@ -4,6 +4,8 @@
     package="com.bakiyem.surucu.proje">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:name=".SurucuKursuApplication"
@@ -102,6 +104,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".activity.webView3D.CheckoutPaymentWVActivityNew"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.video.VideolarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

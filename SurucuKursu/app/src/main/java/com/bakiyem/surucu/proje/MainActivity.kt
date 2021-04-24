@@ -7,11 +7,9 @@ import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.faydaliBilgiler.FaydaliBilgilerActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
@@ -20,13 +18,13 @@ import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
 import com.bakiyem.surucu.proje.activity.randevular.RandevularimActivity
 import com.bakiyem.surucu.proje.activity.sinavSonuclarim.SinavSonuclarimActivity
 import com.bakiyem.surucu.proje.activity.sinavlarim.SinavlarimActivity
+import com.bakiyem.surucu.proje.activity.video.VideolarimActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.ContactFragment
-import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.course.view.CourseFragment
 import com.bakiyem.surucu.proje.fragments.main.view.MainFragment
-import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
 import com.bakiyem.surucu.proje.model.iletisim.Response4Iletisim
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
@@ -40,8 +38,6 @@ import kotlinx.android.synthetic.main.left_menu_without_login.*
 
 
 class MainActivity : BaseActivity() {
-
-
 
     lateinit var iletisimData: Response4Iletisim
 
@@ -59,6 +55,7 @@ class MainActivity : BaseActivity() {
         tv_navLeftProfilim.regular()
         tv_navLeftDerslerim.regular()
         tv_navLeftSinavlar.regular()
+        tv_navLeftVideolar.regular()
         tv_navLeftSinavSonuclarim.regular()
         tv_navLeftOdemeBilgilerim.regular()
         tv_navLeftRandevularim.regular()
@@ -68,6 +65,8 @@ class MainActivity : BaseActivity() {
         changeFontType(
             applicationContext, bottomNavigationView
         )
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {
@@ -141,6 +140,11 @@ class MainActivity : BaseActivity() {
         cl_sinavlarim.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
             startActivity(Intent(this, SinavlarimActivity::class.java))
+        }
+
+        cl_videolar.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            startActivity(Intent(this, VideolarimActivity::class.java))
         }
 
         cl_sinavSonuclarim.setOnClickListener {

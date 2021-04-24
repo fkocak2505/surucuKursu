@@ -2,6 +2,8 @@ package com.bakiyem.surucu.proje.activity.odemeBilgilerim.epoxy.model
 
 import android.content.Context
 import android.view.View
+import android.widget.ImageView
+import android.widget.VideoView
 import com.airbnb.epoxy.*
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.odemeBilgilerim.epoxy.model.controller.GridController4OdemeBilgileri
@@ -41,9 +43,17 @@ abstract class GridItem4OdemeBilgilerimModel: EpoxyModelWithHolder<GridItem4Odem
             ervGridOdemeListesi = itemView.findViewById(R.id.erv_grid_odeme_listesi)
         }
     }
-
+/*
     override fun onSelected(data: Response4OdemeBilgileri) {
         listener.invoke(data)
-    }
+    }*/
 
+    override fun onSelected(
+        data: Response4OdemeBilgileri,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
+        listener.invoke(data)
+    }
 }

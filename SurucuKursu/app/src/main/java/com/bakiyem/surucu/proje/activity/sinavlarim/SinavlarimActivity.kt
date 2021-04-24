@@ -1,6 +1,8 @@
 package com.bakiyem.surucu.proje.activity.sinavlarim
 
 import android.content.Intent
+import android.widget.ImageView
+import android.widget.VideoView
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity
@@ -54,7 +56,29 @@ class SinavlarimActivity: BaseActivity(), CListener<String> {
         }
     }
 
-    override fun onSelected(data: String) {
+    /*override fun onSelected(data: String) {
+        when(data){
+            "Deneme Sınavları" -> {
+                startActivity(Intent(this, DenemeSinavlarimKlavuzActivity::class.java))
+            }
+            "Özel Sınavlar" -> {
+                startActivity(Intent(this, OzelSinavlarimActivity::class.java))
+            }
+            "Sınıf Sınavları" -> {
+                startActivity(Intent(this, SinifSinavlariActivity::class.java))
+            }
+            "Hazır Cevap Sınavlar" -> {
+                DenemeSinaviActivity.start(this, "2", "", true, "Hazır Cevap Sınavlar", mutableListOf())
+            }
+        }
+    }*/
+
+    override fun onSelected(
+        data: String,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         when(data){
             "Deneme Sınavları" -> {
                 startActivity(Intent(this, DenemeSinavlarimKlavuzActivity::class.java))

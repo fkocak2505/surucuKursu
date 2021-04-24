@@ -1,5 +1,7 @@
 package com.bakiyem.surucu.proje.activity.sinifSinavlari
 
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
@@ -72,7 +74,16 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
         }
     }
 
-    override fun onSelected(data: Response4SinifSinavi) {
+    /*override fun onSelected(data: Response4SinifSinavi) {
+        sinifSinavi.getSinifSinaviQuiz(data.sinavId!!)
+    }*/
+
+    override fun onSelected(
+        data: Response4SinifSinavi,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         sinifSinavi.getSinifSinaviQuiz(data.sinavId!!)
     }
 }

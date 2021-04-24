@@ -2,6 +2,8 @@ package com.bakiyem.surucu.proje.activity.randevular
 
 import android.content.Intent
 import android.view.View
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.randevuEkle.RandevuEkleActivity
@@ -105,7 +107,16 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
         }
     }
 
-    override fun onSelected(data: Response4Randevularim) {
+    /*override fun onSelected(data: Response4Randevularim) {
+        randevularimVM.randevuIptal(data.Id!!)
+    }*/
+
+    override fun onSelected(
+        data: Response4Randevularim,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         randevularimVM.randevuIptal(data.Id!!)
     }
 }

@@ -3,6 +3,7 @@ package com.bakiyem.surucu.proje.activity.splash
 import android.content.Intent
 import android.os.Handler
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.MainActivity
 import com.bakiyem.surucu.proje.R
@@ -27,7 +28,6 @@ class SplashScreenActivity : BaseActivity() {
     }
 
     override fun initChangeFont() {
-
     }
 
     override fun initReq() {
@@ -41,6 +41,7 @@ class SplashScreenActivity : BaseActivity() {
         mainFragmentVM.kursLD.observe(this, {
             it?.let {
                 Hawk.put("token", it.key)
+                Hawk.put("kursBilgisi", it)
                 iletisimVM.getIletisim()
                 mainFragmentVM.getAnnouncements()
 

@@ -1,0 +1,77 @@
+package com.bakiyem.surucu.proje.activity.video
+
+import android.net.Uri
+import android.view.View
+import android.widget.ImageView
+import android.widget.MediaController
+import android.widget.VideoView
+import androidx.lifecycle.ViewModelProviders
+import com.bakiyem.surucu.proje.R
+import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.fragments.main.controller.CListener
+import com.bakiyem.surucu.proje.model.video.Response4Video
+import com.bakiyem.surucu.proje.utils.ext.semibold
+import kotlinx.android.synthetic.main.activity_derslerim.*
+import kotlinx.android.synthetic.main.activity_videolar.*
+import kotlinx.android.synthetic.main.activity_videolar.iv_back
+import kotlinx.android.synthetic.main.activity_videolar.tv_hugeTitle
+
+class VideolarimActivity: BaseActivity(), CListener<Response4Video> {
+
+    private lateinit var videolarimVM: VideolarimVM
+
+    override fun getLayoutID(): Int = R.layout.activity_videolar
+
+    override fun initVM() {
+        videolarimVM = ViewModelProviders.of(this).get(VideolarimVM::class.java)
+    }
+
+    override fun initChangeFont() {
+        tv_hugeTitle.semibold()
+    }
+
+    override fun initReq() {
+        videolarimVM.getVideolar()
+    }
+
+    override fun initVMListener() {
+        videolarimVM.videolarLD.observe(this, {
+            it?.let {
+                prepareVideoData(it)
+            } ?: run {
+                toast("Error videolar api..")
+                onBackPressed()
+            }
+        })
+    }
+
+    override fun onCreateMethod() {
+        iv_back.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    private fun prepareVideoData(listOfVideo: MutableList<Response4Video>){
+        val videolarimController = VideolarimController(applicationContext, this)
+        videolarimController.videolarim = listOfVideo
+        erv_videolar.setController(videolarimController)
+    }
+
+
+    override fun onSelected(
+        data: Response4Video,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
+        val uri: Uri = Uri.parse(data.link)
+        videoView?.setMediaController(MediaController(this))
+        videoView?.setVideoURI(uri)
+        videoView?.requestFocus()
+        videoView?.start()
+
+        placeHolder?.visibility = View.GONE
+        playIcon?.visibility = View.GONE
+
+    }
+}

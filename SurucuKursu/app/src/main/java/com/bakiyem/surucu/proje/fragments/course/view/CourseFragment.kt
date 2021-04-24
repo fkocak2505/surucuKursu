@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.araclarimiz.view.AraclarimizActivity
@@ -43,7 +45,13 @@ class CourseFragment : Fragment(), CListener<Any> {
         viewP.erv_course.setController(courseController)
     }
 
-    override fun onSelected(data: Any) {
+
+    override fun onSelected(
+        data: Any,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         when (data) {
             is CourseItem -> {
                 when (data.id) {

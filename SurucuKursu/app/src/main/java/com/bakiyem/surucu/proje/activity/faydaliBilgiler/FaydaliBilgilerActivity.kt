@@ -1,5 +1,7 @@
 package com.bakiyem.surucu.proje.activity.faydaliBilgiler
 
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.faydaliBilgiler.epoxy.controller.FaydaliBilgilerController
@@ -56,7 +58,13 @@ class FaydaliBilgilerActivity : BaseActivity(), CListener<Response4FaydaliBilgil
         }
     }
 
-    override fun onSelected(data: Response4FaydaliBilgiler) {
+
+    override fun onSelected(
+        data: Response4FaydaliBilgiler,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         FaydaliBilgilerDetayActivity.start(this, data)
     }
 }

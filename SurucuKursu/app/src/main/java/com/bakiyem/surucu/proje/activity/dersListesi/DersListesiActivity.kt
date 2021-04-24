@@ -2,6 +2,8 @@ package com.bakiyem.surucu.proje.activity.dersListesi
 
 import android.content.Context
 import android.content.Intent
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersIcerik.DersIcerikActivity
@@ -90,7 +92,12 @@ class DersListesiActivity : BaseActivity(), CListener<Response4DersListesi> {
 
     }
 
-    override fun onSelected(response4DersListesi: Response4DersListesi) {
-        DersIcerikActivity.start(this, dersKategoriItem, response4DersListesi)
+    override fun onSelected(
+        data: Response4DersListesi,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
+        DersIcerikActivity.start(this, dersKategoriItem, data)
     }
 }

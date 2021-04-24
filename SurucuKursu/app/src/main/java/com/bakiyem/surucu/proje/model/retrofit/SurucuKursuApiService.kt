@@ -3,6 +3,7 @@ package com.bakiyem.surucu.proje.model.retrofit
 import com.bakiyem.surucu.proje.base.model.ResResult
 import com.bakiyem.surucu.proje.base.model.ResResultArray
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.announcements.Response4Slider
 import com.bakiyem.surucu.proje.model.araclar.Response4Araclar
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4SinavSonuc
@@ -27,6 +28,7 @@ import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
+import com.bakiyem.surucu.proje.model.video.Response4Video
 import com.google.gson.Gson
 import com.orhanobut.hawk.Hawk
 import io.reactivex.rxjava3.core.Observable
@@ -64,6 +66,14 @@ class SurucuKursuApiService {
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), "2")
         val grup = RequestBody.create(MediaType.parse("text/plain"), "4")
         return api.getAnnouncements(tokenBody, kursiyerBody, grup)
+    }
+
+    fun getSlider(): Observable<ResResultArray<Response4Slider>>  {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+
+        return api.getSlider(tokenBody)
     }
 
     fun getDuyuruDetay(key: String): Observable<ResResultArray<Response4DuyuruDetay>> {
@@ -412,6 +422,14 @@ class SurucuKursuApiService {
             cv2Body,
             tutarBody
         )
+    }
+
+    fun getVideolar(): Observable<ResResultArray<Response4Video>> {
+        val token = Hawk.get<String>("token")
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+
+        return api.getVideolar(tokenBody)
     }
 
 

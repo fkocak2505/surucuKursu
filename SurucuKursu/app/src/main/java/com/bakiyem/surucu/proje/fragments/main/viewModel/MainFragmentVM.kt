@@ -3,6 +3,7 @@ package com.bakiyem.surucu.proje.fragments.main.viewModel
 import androidx.lifecycle.MutableLiveData
 import com.bakiyem.surucu.proje.base.vm.BaseVM
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.announcements.Response4Slider
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.RxUtils
 
@@ -45,6 +46,28 @@ class MainFragmentVM : BaseVM() {
 
             }, {
                 announcementsLD.value = null
+            })
+        )
+    }
+
+    var sliderLD = MutableLiveData<MutableList<Response4Slider>>()
+    fun getSlider(){
+        loadingHUD.value = true
+        addDisposable(
+            RxUtils.androidDefaults(
+                sApiService.getSlider()
+            ).subscribe({ rr ->
+
+                loadingHUD.value = false
+
+                checkServiceStatusArr(rr)?.let {
+                    sliderLD.value = it
+                }?: run{
+                    sliderLD.value = null
+                }
+
+            }, { error ->
+                loadingHUD.value = false
             })
         )
     }

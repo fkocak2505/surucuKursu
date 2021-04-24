@@ -1,6 +1,8 @@
 package com.bakiyem.surucu.proje.activity.odemeBilgilerim
 
 import android.content.Intent
+import android.widget.ImageView
+import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.odemeBilgilerim.epoxy.controller.OdemeBilgileriController
@@ -72,7 +74,13 @@ class OdemeBilgilerimActivity : BaseActivity(), CListener<Response4OdemeBilgiler
         }
     }
 
-    override fun onSelected(data: Response4OdemeBilgileri) {
+
+    override fun onSelected(
+        data: Response4OdemeBilgileri,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         if (data.durum != "Ödendi")
             startActivity(Intent(this@OdemeBilgilerimActivity, OdemeYap::class.java))
     }

@@ -1,6 +1,8 @@
 package com.bakiyem.surucu.proje.fragments.main.epoxyModel
 
 import android.view.View
+import android.widget.ImageView
+import android.widget.VideoView
 import com.airbnb.epoxy.*
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.duyuruDetay.DuyuruDetayActivity
@@ -35,7 +37,20 @@ abstract class GridItemModel : EpoxyModelWithHolder<GridItemModel.GridHolder>(),
         }
     }
 
-    override fun onSelected(data: Any) {
+    /*override fun onSelected(data: Any) {
+        when (data) {
+            is String -> {
+                listener.invoke(data)
+            }
+        }
+    }*/
+
+    override fun onSelected(
+        data: Any,
+        videoView: VideoView?,
+        placeHolder: ImageView?,
+        playIcon: ImageView?
+    ) {
         when (data) {
             is String -> {
                 listener.invoke(data)
