@@ -1,7 +1,10 @@
 package com.bakiyem.surucu.proje
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
 import android.view.View
@@ -35,6 +38,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.left_menu_with_login.*
 import kotlinx.android.synthetic.main.left_menu_without_login.*
+import kotlinx.android.synthetic.main.navigation_header.*
 
 
 class MainActivity : BaseActivity() {
@@ -67,6 +71,7 @@ class MainActivity : BaseActivity() {
         )
 
         iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
+        iv_logo.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {
@@ -105,10 +110,12 @@ class MainActivity : BaseActivity() {
 
     }
 
+    @SuppressLint("ResourceType")
     private fun handleClickListener() {
         val firstFragment = MainFragment()
         val secondFragment = CourseFragment()
         val thirdFragment = ContactFragment()
+
 
         setCurrentFragment(firstFragment)
 
@@ -121,6 +128,28 @@ class MainActivity : BaseActivity() {
             }
             true
         }
+
+        val state = arrayOf(
+            intArrayOf(android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_enabled),
+            intArrayOf(android.R.attr.state_pressed),
+            intArrayOf(android.R.attr.state_focused),
+            intArrayOf(android.R.attr.state_pressed)
+        )
+
+        val color = intArrayOf(
+            Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"),
+            Color.GRAY,
+            Color.GRAY,
+            Color.GRAY,
+            Color.GRAY
+        )
+
+        val colorStateList1 = ColorStateList(state, color)
+        val colorStateList2 = ColorStateList(state, color)
+
+        bottomNavigationView.itemTextColor = colorStateList1
+        bottomNavigationView.itemIconTintList = colorStateList2
 
         btn_login.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)

@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.randevuEkle.Response4Egitmen
 import com.bakiyem.surucu.proje.model.randevuSaat.Response4Saat
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_randevu_ekle.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 import org.greenrobot.eventbus.EventBus
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,6 +45,8 @@ class RandevuEkleActivity: BaseActivity() {
         tv_createRandevu.semibold()
         et_randevuTarih.regular()
         tv_hugeTitle.semibold()
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {

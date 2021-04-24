@@ -1,19 +1,24 @@
 package com.bakiyem.surucu.proje.activity.sinavSonuclarim.model
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.dersListesi.epoxy.model.DersListesiItemModel
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 
 @EpoxyModelClass(layout = R.layout.holder_sinif_list_item)
 abstract class SinavSonuclarimGirilenSinavListItemModel : EpoxyModelWithHolder<SinavSonuclarimGirilenSinavListItemModel.Holder>() {
@@ -44,6 +49,11 @@ abstract class SinavSonuclarimGirilenSinavListItemModel : EpoxyModelWithHolder<S
             }
 
             holder.tvAgainResolve.text = sonuc
+
+            val unwrappedDrawable = AppCompatResources.getDrawable(holder.btnAgainResolve.context, R.drawable.bg_start_btn)
+            val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+            DrawableCompat.setTint(wrappedDrawable, Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
+            holder.btnAgainResolve.setBackgroundResource(R.drawable.bg_start_btn)
 
         }
 
@@ -105,6 +115,8 @@ abstract class SinavSonuclarimGirilenSinavListItemModel : EpoxyModelWithHolder<S
         lateinit var tv_wrongNumberInfo: TextView
         lateinit var tv_emptyNumberInfo: TextView
         lateinit var tvScoreNumberInfo: TextView
+
+
 
 
         override fun bindView(itemView: View) {

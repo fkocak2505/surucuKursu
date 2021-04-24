@@ -10,9 +10,13 @@ import com.bakiyem.surucu.proje.activity.randevuEkle.RandevuEkleActivity
 import com.bakiyem.surucu.proje.activity.randevular.epoxy.controller.RandevularimController
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_randevularim.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -34,6 +38,8 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
         tv_hugeTitle.semibold()
         tv_noRandevuTitle.semibold()
         tv_start.semibold()
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {

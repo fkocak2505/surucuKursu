@@ -1,15 +1,19 @@
 package com.bakiyem.surucu.proje.activity.splash
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Handler
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.MainActivity
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.splash.*

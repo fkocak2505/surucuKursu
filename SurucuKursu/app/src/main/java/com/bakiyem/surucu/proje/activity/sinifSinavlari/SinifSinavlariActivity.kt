@@ -8,9 +8,13 @@ import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.activity.sinifSinavlari.epoxy.controller.SinifSinaviController
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_sinif_sinavlari.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
 
@@ -24,6 +28,8 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
 
     override fun initChangeFont() {
         tv_hugeTitle.semibold()
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {

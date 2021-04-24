@@ -9,8 +9,12 @@ import com.bakiyem.surucu.proje.activity.faydaliBilgilerDetay.FaydaliBilgilerDet
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.faydaliBilgiler.Response4FaydaliBilgiler
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_faydali_bilgileri.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class FaydaliBilgilerActivity : BaseActivity(), CListener<Response4FaydaliBilgiler> {
 
@@ -24,6 +28,8 @@ class FaydaliBilgilerActivity : BaseActivity(), CListener<Response4FaydaliBilgil
 
     override fun initChangeFont() {
         tv_hugeTitle.semibold()
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {

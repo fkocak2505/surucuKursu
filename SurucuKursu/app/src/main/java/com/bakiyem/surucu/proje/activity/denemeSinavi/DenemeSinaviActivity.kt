@@ -3,15 +3,19 @@ package com.bakiyem.surucu.proje.activity.denemeSinavi
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Html
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -20,6 +24,7 @@ import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.denemeSinavi.AnswerModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.QuestionsResultModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.login.Response4Login
 import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
@@ -28,6 +33,8 @@ import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.*
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.iv_back
+import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemClickListener {
 
@@ -94,6 +101,17 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         tv_scoreInfo.semibold()
         tv_chooseAgain.regular()
         tv_finishExam.semibold()
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
+
+        tv_seekbarValue.setTextColor(Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
+        sb_questionsLength.thumb.setColorFilter(Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"), PorterDuff.Mode.SRC_ATOP)
+
+        val unwrappedDrawable = AppCompatResources.getDrawable(cl_sinavSonucPuan.context, R.drawable.bg_sinav_sonuc_puan)
+        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+        DrawableCompat.setTint(wrappedDrawable, Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
+        cl_sinavSonucPuan.setBackgroundResource(R.drawable.bg_sinav_sonuc_puan)
+
 
     }
 

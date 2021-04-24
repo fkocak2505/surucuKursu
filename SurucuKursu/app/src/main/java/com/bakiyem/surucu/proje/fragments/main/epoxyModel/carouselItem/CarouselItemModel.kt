@@ -1,5 +1,6 @@
 package com.bakiyem.surucu.proje.fragments.main.epoxyModel.carouselItem
 
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -9,8 +10,10 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.announcements.Response4Announcements
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 
 @EpoxyModelClass(layout = R.layout.holder_carousel_item)
 abstract class CarouselItemModel: EpoxyModelWithHolder<CarouselItemModel.Holder>()  {
@@ -34,6 +37,8 @@ abstract class CarouselItemModel: EpoxyModelWithHolder<CarouselItemModel.Holder>
             holder.tvDate.regular()
             holder.tvAnnouncementsTitle.semibold()
         }
+
+        holder.tvDate.setTextColor(Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
     }
 
     class Holder : EpoxyHolder() {

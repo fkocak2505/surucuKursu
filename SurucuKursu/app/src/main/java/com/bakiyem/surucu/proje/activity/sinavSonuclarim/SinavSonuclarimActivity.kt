@@ -6,10 +6,14 @@ import com.bakiyem.surucu.proje.activity.sinavSonuclarim.epoxy.controller.SinavS
 import com.bakiyem.surucu.proje.activity.sinifSinavlari.SinifSinaviVM
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.sinavSonuclarim.Response4SinavSonuclarim
 import com.bakiyem.surucu.proje.model.sinifSinavi.Response4SinifSinavi
+import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_sinav_sonuclarim.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class SinavSonuclarimActivity: BaseActivity() {
 
@@ -30,6 +34,8 @@ class SinavSonuclarimActivity: BaseActivity() {
 
     override fun initChangeFont() {
         tv_hugeTitle.semibold()
+
+        iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
 
     override fun initReq() {

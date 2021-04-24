@@ -19,9 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#fff"
-        android:fitsSystemWindows="true"
-        app:itemIconTint="#FF5722"
-        app:itemTextColor="#4d4c4b">
+        android:fitsSystemWindows="true">
 
         <LinearLayout
             android:layout_width="match_parent"
