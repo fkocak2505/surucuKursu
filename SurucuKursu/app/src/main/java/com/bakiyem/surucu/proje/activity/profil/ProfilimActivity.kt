@@ -1,6 +1,8 @@
 package com.bakiyem.surucu.proje.activity.profil
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
@@ -12,6 +14,7 @@ import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_profilim.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+
 
 class ProfilimActivity : BaseActivity() {
 
@@ -65,6 +68,14 @@ class ProfilimActivity : BaseActivity() {
         tv_eposta.regular()
 
         iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
+
+        tv_onlineDers.setOnClickListener {
+            val uri: Uri =
+                Uri.parse(tv_onlineDers.text.toString())
+
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
     }
 
     override fun initReq() {

@@ -1,8 +1,11 @@
 package com.bakiyem.surucu.proje.activity.dersListesi.epoxy.model
 
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
+import androidx.core.graphics.drawable.DrawableCompat
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
@@ -10,8 +13,10 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
+import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import com.orhanobut.hawk.Hawk
 
 @EpoxyModelClass(layout = R.layout.holder_ders_listesi_item)
 abstract class DersListesiItemModel: EpoxyModelWithHolder<DersListesiItemModel.Holder>() {
@@ -21,6 +26,9 @@ abstract class DersListesiItemModel: EpoxyModelWithHolder<DersListesiItemModel.H
 
     @EpoxyAttribute
     lateinit var listener: (Response4DersListesi) -> Unit
+
+    @EpoxyAttribute
+    lateinit var color: String
 
     @EpoxyAttribute
     var position: Int = -1
@@ -39,6 +47,11 @@ abstract class DersListesiItemModel: EpoxyModelWithHolder<DersListesiItemModel.H
 
         holder.tvDersListesiAdi.regular()
         holder.tvCountDersListesi.semibold()
+
+        val unwrappedDrawable = AppCompatResources.getDrawable(holder.tvCountDersListesi.context, R.drawable.bg_derslistesi_count)
+        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+        DrawableCompat.setTint(wrappedDrawable, Color.parseColor(color))
+        holder.tvCountDersListesi.setBackgroundResource(R.drawable.bg_derslistesi_count)
 
 
     }

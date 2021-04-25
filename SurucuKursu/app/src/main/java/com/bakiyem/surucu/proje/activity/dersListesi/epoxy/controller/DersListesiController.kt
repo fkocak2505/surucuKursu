@@ -5,7 +5,7 @@ import com.bakiyem.surucu.proje.activity.dersListesi.epoxy.model.dersListesiItem
 import com.bakiyem.surucu.proje.fragments.main.controller.CListener
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
 
-class DersListesiController(var listener: CListener<Response4DersListesi>) :
+class DersListesiController(var listener: CListener<Response4DersListesi>, var color: String) :
     AsyncEpoxyController() {
 
     var dersListesi: List<Response4DersListesi> = emptyList()
@@ -21,6 +21,7 @@ class DersListesiController(var listener: CListener<Response4DersListesi>) :
             dersListesiItem {
                 id("dersListesi $index")
                 dersListesiItem(dersListesiItem)
+                color(color)
                 position(index + 1)
                 listener {
                     listener.onSelected(dersListesiItem)

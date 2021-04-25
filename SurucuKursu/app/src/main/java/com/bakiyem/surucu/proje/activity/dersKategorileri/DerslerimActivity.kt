@@ -52,7 +52,7 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
     }
 
     private fun prepareDersKategoriData(listOfDersKategori: MutableList<Response4Derslerim>) {
-        val derslerimController = DerslerimController(applicationContext,this)
+        val derslerimController = DerslerimController(applicationContext, this)
         derslerimController.derslerim = listOfDersKategori
         erv_derslerim.setController(derslerimController)
 
@@ -70,6 +70,19 @@ class DerslerimActivity : BaseActivity(), CListener<Response4Derslerim> {
         placeHolder: ImageView?,
         playIcon: ImageView?
     ) {
-        DersListesiActivity.start(this, data)
+        when (data.id) {
+            "1" -> {
+                DersListesiActivity.start(this, data, "#6AACA9")
+            }
+            "2" -> {
+                DersListesiActivity.start(this, data, "#679A6F")
+            }
+            "3" -> {
+                DersListesiActivity.start(this, data, "#C1B481")
+            }
+            "4" -> {
+                DersListesiActivity.start(this, data, "#6B6086")
+            }
+        }
     }
 }

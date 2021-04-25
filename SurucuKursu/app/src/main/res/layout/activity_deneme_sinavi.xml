@@ -60,7 +60,7 @@
             android:id="@+id/cl_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="visible"
             android:paddingBottom="10dp">
 
             <TextView
@@ -404,18 +404,14 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>
-
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_oncekiSoru"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:visibility="visible"
@@ -434,7 +430,8 @@
                             android:layout_height="wrap_content"
                             android:text="Önceki Soru"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/titleTextSize"
+                            android:padding="5dp"
+                            android:textSize="@dimen/descTextSize"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -449,7 +446,7 @@
                     android:id="@+id/cv_sonrakiSoru"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="5dp"
                     android:visibility="visible"
@@ -468,7 +465,8 @@
                             android:layout_height="wrap_content"
                             android:text="Sonraki Soru"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/titleTextSize"
+                            android:padding="5dp"
+                            android:textSize="@dimen/descTextSize"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

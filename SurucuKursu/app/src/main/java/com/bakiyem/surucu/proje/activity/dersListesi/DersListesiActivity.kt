@@ -71,7 +71,7 @@ class DersListesiActivity : BaseActivity(), CListener<Response4DersListesi> {
     }
 
     private fun prepareDersListesi(listOfDersListesi: MutableList<Response4DersListesi>) {
-        val dersListesiController = DersListesiController(this)
+        val dersListesiController = DersListesiController(this, color!!)
         dersListesiController.dersListesi = listOfDersListesi
         erv_dersIcerik.setController(dersListesiController)
     }
@@ -85,17 +85,19 @@ class DersListesiActivity : BaseActivity(), CListener<Response4DersListesi> {
     companion object {
 
         var dersKategoriItem: Response4Derslerim? = null
+        var color: String? = null
 
         fun start(
             context: Context?,
-            dersKategoriItem: Response4Derslerim? = null
+            dersKategoriItem: Response4Derslerim? = null,
+            color: String
         ) {
             val starter = Intent(context, DersListesiActivity::class.java)
             this.dersKategoriItem = dersKategoriItem
+            this.color = color
 
             context!!.startActivity(starter)
         }
-
     }
 
     override fun onSelected(

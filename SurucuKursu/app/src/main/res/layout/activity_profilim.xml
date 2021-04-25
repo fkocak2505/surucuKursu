@@ -465,6 +465,7 @@
                     android:background="@drawable/bg_tckn"
                     android:text="Fatih"
                     android:padding="10dp"
+                    android:textAllCaps="false"
                     android:textColor="@color/textColor"
                     android:layout_weight="3"
                     android:layout_marginTop="10dp"
