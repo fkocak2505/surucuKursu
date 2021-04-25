@@ -66,7 +66,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:text="Sınav maximum 100 sorudan oluşmalıdır."
+                android:text="Sınav maksimum 50 sorudan oluşmalıdır."
                 android:textSize="@dimen/titleTextSize"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

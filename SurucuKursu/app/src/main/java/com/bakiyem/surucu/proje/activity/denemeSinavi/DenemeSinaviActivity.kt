@@ -62,6 +62,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     var correctAnswerIndex = -1
 
+    var selectedSecenek = ""
+
 
     override fun getLayoutID(): Int = R.layout.activity_deneme_sinavi
 
@@ -105,11 +107,20 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
 
         tv_seekbarValue.setTextColor(Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
-        sb_questionsLength.thumb.setColorFilter(Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"), PorterDuff.Mode.SRC_ATOP)
+        sb_questionsLength.thumb.setColorFilter(
+            Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"),
+            PorterDuff.Mode.SRC_ATOP
+        )
 
-        val unwrappedDrawable = AppCompatResources.getDrawable(cl_sinavSonucPuan.context, R.drawable.bg_sinav_sonuc_puan)
+        val unwrappedDrawable = AppCompatResources.getDrawable(
+            cl_sinavSonucPuan.context,
+            R.drawable.bg_sinav_sonuc_puan
+        )
         val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
-        DrawableCompat.setTint(wrappedDrawable, Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
+        DrawableCompat.setTint(
+            wrappedDrawable,
+            Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}")
+        )
         cl_sinavSonucPuan.setBackgroundResource(R.drawable.bg_sinav_sonuc_puan)
 
 
@@ -117,6 +128,9 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     override fun initReq() {
         when (sinavTur) {
+            "4" -> {
+                prepareDenemeSinaviFirst()
+            }
             "3" -> {
                 prepareAnotherSinav()
             }
@@ -259,11 +273,11 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             iv_questionImage.visibility = View.GONE
         }
 
-        if(questions[num].soruAciklama != ""){
+        if (questions[num].soruAciklama != "") {
             tv_qSoruAciklama.visibility = View.VISIBLE
             val htmlData = Html.fromHtml(questions[num].soruAciklama!!).toString()
             tv_qSoruAciklama renderHtml htmlData
-        }else {
+        } else {
             tv_qSoruAciklama.visibility = View.GONE
         }
 
@@ -285,9 +299,125 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         }
 
         if (isShowBGColor) {
-            changeBackgroundColor4Secenek(questionsAnswer)
+            if (sinavTur == "2")
+                changeBackgroundColor4Secenek(questionsAnswer)
+            else
+                changeBackgroundColor4Selected(questionsAnswer)
         } else {
             goFirstColorBGForSecenek()
+        }
+    }
+
+    private fun changeBackgroundColor4Selected(questionsAnswer: String) {
+        when (questionsAnswer) {
+            "A" -> {
+                cv_seceneklerA.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.selectedAnswer
+                    )
+                )
+
+                cv_seceneklerB.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerC.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerD.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+            }
+            "B" -> {
+                cv_seceneklerB.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.selectedAnswer
+                    )
+                )
+
+                cv_seceneklerA.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerC.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerD.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+            }
+            "C" -> {
+                cv_seceneklerC.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.selectedAnswer
+                    )
+                )
+
+                cv_seceneklerA.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerB.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerD.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+            }
+            "D" -> {
+                cv_seceneklerD.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.selectedAnswer
+                    )
+                )
+
+                cv_seceneklerA.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerB.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+                cv_seceneklerC.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.titleBackground
+                    )
+                )
+            }
         }
     }
 
@@ -494,18 +624,26 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     private fun handleSecenekClickListener() {
         cv_seceneklerA.setOnClickListener {
+            selectedSecenek = "A"
+            changeBackgroundColor4Selected("A")
             checkIfCorrectAnswer(tv_secenekA, "A")
         }
 
         cv_seceneklerB.setOnClickListener {
+            selectedSecenek = "B"
+            changeBackgroundColor4Selected("B")
             checkIfCorrectAnswer(tv_secenekB, "B")
         }
 
         cv_seceneklerC.setOnClickListener {
+            selectedSecenek = "C"
+            changeBackgroundColor4Selected("C")
             checkIfCorrectAnswer(tv_secenekC, "C")
         }
 
         cv_seceneklerD.setOnClickListener {
+            selectedSecenek = "D"
+            changeBackgroundColor4Selected("D")
             checkIfCorrectAnswer(tv_secenekD, "D")
         }
 
@@ -514,7 +652,11 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                 Toast.makeText(applicationContext, "Başa geldi", Toast.LENGTH_SHORT).show()
             } else {
                 currentQuizIndex--
-                NextQuestion(currentQuizIndex)
+                NextQuestion(
+                    currentQuizIndex,
+                    true,
+                    mAdapter.getItem(currentQuizIndex).questionAnswe
+                )
             }
         }
 
@@ -522,10 +664,18 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             if (currentQuizIndex + 1 == questionLength) {
                 Toast.makeText(applicationContext, "Sona geldi", Toast.LENGTH_SHORT).show()
             } else {
-                if (!isComingHaziCevap!!)
-                    notifyAnswerAdapter("-")
+                /*if (!isComingHaziCevap!!)
+                    notifyAnswerAdapter("-")*/
                 currentQuizIndex++
-                NextQuestion(currentQuizIndex)
+
+                if (mAdapter.getItem(currentQuizIndex).questionAnswe == "-")
+                    NextQuestion(currentQuizIndex)
+                else
+                    NextQuestion(
+                        currentQuizIndex,
+                        true,
+                        mAdapter.getItem(currentQuizIndex).questionAnswe
+                    )
             }
         }
 
@@ -553,8 +703,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             changeBackgroundColor4Secenek(secenek)
         else {
             if (!isQuizFinished) {
-                currentQuizIndex++
-                NextQuestion(currentQuizIndex)
+                /*currentQuizIndex++
+                NextQuestion(currentQuizIndex)*/
             } else {
                 finishQuiz()
             }
@@ -675,7 +825,13 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     }
 
     override fun onItemClick(answerModel: AnswerModel, position: Int) {
-        if (isFinishExam) {
+        currentQuizIndex = position
+
+        changeVisibility(View.VISIBLE, View.GONE)
+        changeConstraint(R.id.cv_sonrakiSoru)
+        goFirstColorBGForSecenek()
+        NextQuestion(currentQuizIndex, true, answerModel.questionAnswe)
+        /*if (isFinishExam) {
             currentQuizIndex = position
 
             changeVisibility(View.VISIBLE, View.GONE)
@@ -684,7 +840,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             NextQuestion(currentQuizIndex, true, answerModel.questionAnswe)
         } else {
             toast("Önce sınavı bitiriniz..")
-        }
+        }*/
     }
 
     companion object {
