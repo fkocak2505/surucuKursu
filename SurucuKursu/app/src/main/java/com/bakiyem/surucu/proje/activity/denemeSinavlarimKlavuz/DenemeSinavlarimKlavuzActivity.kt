@@ -3,7 +3,6 @@ package com.bakiyem.surucu.proje.activity.denemeSinavlarimKlavuz
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.activity.denemeSinavi.DenemeSinaviActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
@@ -12,7 +11,11 @@ import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
+import dev.shreyaspatil.MaterialDialog.MaterialDialog
+import kotlinx.android.synthetic.main.activity_deneme_sinavi.*
 import kotlinx.android.synthetic.main.activity_deneme_sinavlarim_klavuz.*
+import kotlinx.android.synthetic.main.activity_deneme_sinavlarim_klavuz.iv_back
+import kotlinx.android.synthetic.main.activity_deneme_sinavlarim_klavuz.tv_hugeTitle
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -84,12 +87,23 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
     private fun handleClickListener() {
         btn_start.setOnClickListener {
             if (!cb_denemeSinavi.isChecked) {
-                val pDialog = SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                val mDialog = MaterialDialog.Builder(this)
+                    .setTitle("Emin misin?")
+                    .setMessage("Lütfen Klavuzu okudum ve anladım işaretleyin!")
+                    .setCancelable(false)
+                    .setPositiveButton(
+                        "Tamam", R.drawable.ic_green_tick
+                    ) { dialogInterface, which ->
+                        dialogInterface.dismiss()
+                    }
+                    .build()
+                mDialog.show()
+                /*val pDialog = SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 pDialog.progressHelper.barColor = Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}")
                 pDialog.titleText = "Lütfen Klavuzu okudum ve anladım işaretleyin!"
                 pDialog.confirmText = "Tamam"
                 pDialog.setCancelable(false)
-                pDialog.show()
+                pDialog.show()*/
             } else
             //startActivity(Intent(this, DenemeSinaviActivity::class.java))
                 DenemeSinaviActivity.start(this, "4", "", false, "Deneme Sınavı", mutableListOf())

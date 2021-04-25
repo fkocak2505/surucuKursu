@@ -7,6 +7,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -278,8 +279,15 @@ class MainActivity : BaseActivity() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            finish()
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish()
+            true
+        } else super.onKeyDown(keyCode, event)
     }
 
     private fun changeFontType(context: Context, v: View) {

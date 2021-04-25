@@ -1,8 +1,6 @@
 package com.bakiyem.surucu.proje.fragments.contact
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +16,8 @@ import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.fragment_contact.view.*
 import kotlinx.android.synthetic.main.fragment_course.view.tv_hugeTitle
+import java.lang.String
+import java.util.*
 
 
 class ContactFragment : Fragment() {
@@ -90,6 +90,12 @@ class ContactFragment : Fragment() {
     private fun handleClickListener() {
         viewP.btn_send.setOnClickListener {
             sendFeedback()
+        }
+
+        viewP.btn_yolTarifi.setOnClickListener {
+            val uri = String.format(Locale.ENGLISH, "geo:%f,%f", iletisimData.haritaX?.toFloat(), iletisimData.haritaY?.toFloat())
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            context!!.startActivity(intent)
         }
 
         viewP.iv_facebook.setOnClickListener {
@@ -168,5 +174,6 @@ class ContactFragment : Fragment() {
         viewP.tv_location.text = iletisimData.adres
         viewP.tv_phone.text = iletisimData.telefon1
         viewP.tv_mail.text = iletisimData.mail
+
     }
 }

@@ -43,7 +43,7 @@ ext {
 
     legacySupportVersion = "1.0.0"
 
-    recyclerViewVersion = "1.1.0"
+    recyclerViewVersion = "1.2.0"
     cardViewVersion = "1.0.0"
 
     retrofitVersion = "2.9.0"

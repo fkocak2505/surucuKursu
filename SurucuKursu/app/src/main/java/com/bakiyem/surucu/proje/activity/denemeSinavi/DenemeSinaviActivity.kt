@@ -1,13 +1,11 @@
 package com.bakiyem.surucu.proje.activity.denemeSinavi
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.os.Bundle
 import android.text.Html
+import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -18,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.denemeSinavi.AnswerModel
@@ -31,10 +28,11 @@ import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.renderHtml
 import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
+import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import kotlinx.android.synthetic.main.activity_deneme_sinavi.*
-import kotlinx.android.synthetic.main.activity_deneme_sinavi.iv_back
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+
 
 class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemClickListener {
 
@@ -299,10 +297,15 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         }
 
         if (isShowBGColor) {
-            if (sinavTur == "2")
-                changeBackgroundColor4Secenek(questionsAnswer)
-            else
-                changeBackgroundColor4Selected(questionsAnswer)
+            when {
+                isFinishExam -> {
+                    changeBackgroundColor4Secenek(questionsAnswer)
+                }
+                sinavTur == "2" -> changeBackgroundColor4Secenek(questionsAnswer)
+                else -> changeBackgroundColor4Selected(questionsAnswer)
+            }
+
+
         } else {
             goFirstColorBGForSecenek()
         }
@@ -874,7 +877,27 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     }
 
     private fun finishQuiz() {
-        val pDialog = SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+        val mDialog = MaterialDialog.Builder(this)
+            .setTitle("Emin misin?")
+            .setMessage("Sınavı bitirmek istediğine emin misin?")
+            .setCancelable(false)
+            .setPositiveButton(
+                "Bitir", R.drawable.ic_green_tick
+            ) { dialogInterface, which ->
+                denemeSinaviVM.postSinavSonuc(
+                    "${cdv_remainingTime.minute}:${cdv_remainingTime.second}",
+                    sinavTur!!,
+                    sinavId,
+                    resultQuestions
+                )
+                dialogInterface.dismiss()
+            }
+            .setNegativeButton(
+                "Vazgeç", R.drawable.ic_red_cross
+            ) { dialogInterface, which -> dialogInterface.dismiss() }
+            .build()
+        mDialog.show()
+        /*val pDialog = SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
         pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
         pDialog.titleText = "Sınavın bitiyor"
         pDialog.setCancelable(false)
@@ -889,7 +912,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             )
             pDialog.dismissWithAnimation()
         }
-        pDialog.show()
+        pDialog.show()*/
     }
 
     @SuppressLint("SetTextI18n")
@@ -976,7 +999,34 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     private fun goBack() {
         iv_back.setOnClickListener {
-            onBackPressed()
+            goBackFeature()
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+            goBackFeature()
+            true
+        } else super.onKeyDown(keyCode, event)
+    }
+
+    private fun goBackFeature(){
+        if (!isFinishExam) {
+            val mDialog = MaterialDialog.Builder(this)
+                .setTitle("Emin misin?")
+                .setMessage("Verileriniz kaydedilmedi. Yine de çıkma istiyor musunuz?")
+                .setCancelable(false)
+                .setPositiveButton(
+                    "Evet", R.drawable.ic_green_tick
+                ) { dialogInterface, which ->
+                    onBackPressed()
+                    dialogInterface.dismiss()
+                }
+                .setNegativeButton(
+                    "Hayır", R.drawable.ic_red_cross
+                ) { dialogInterface, which -> dialogInterface.dismiss() }
+                .build()
+            mDialog.show()
         }
     }
 

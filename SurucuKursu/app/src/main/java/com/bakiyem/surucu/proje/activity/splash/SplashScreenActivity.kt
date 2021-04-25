@@ -62,6 +62,7 @@ class SplashScreenActivity : BaseActivity() {
                 Hawk.put("iletisim", it)
                 Handler().postDelayed({
                     startActivity(Intent(this, MainActivity::class.java))
+                    finishAffinity()
                 }, 2000)
             } ?: run {
                 Toast.makeText(

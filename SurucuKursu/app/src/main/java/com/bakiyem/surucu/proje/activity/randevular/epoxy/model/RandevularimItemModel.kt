@@ -13,6 +13,8 @@ import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.model.randevularim.Response4Randevularim
 import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
+import java.text.SimpleDateFormat
+import java.util.*
 
 @EpoxyModelClass(layout = R.layout.holder_randevularim)
 abstract class RandevularimItemModel : EpoxyModelWithHolder<RandevularimItemModel.RandevuHolder>() {
@@ -24,21 +26,44 @@ abstract class RandevularimItemModel : EpoxyModelWithHolder<RandevularimItemMode
     lateinit var listener: (Response4Randevularim) -> Unit
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun bind(holder: RandevuHolder) {
         super.bind(holder)
 
         with(randevu) {
+            var baslamaSaati = ""
+            var bitisSaati = ""
+            var finalSaat = ""
+            saatBaslama?.let {
+                baslamaSaati = it
+                finalSaat = baslamaSaati
+            }
+
+            saatBitis?.let {
+                bitisSaati = it
+                finalSaat = "$finalSaat : $bitisSaati"
+            }
+
             holder.tvRandevuDate.text = "$tarih /"
-            holder.tvRandevuTime.text = "$saatBaslama : $saatBitis "
+            holder.tvRandevuTime.text = finalSaat
             holder.tvRandevuTitle.text = "$egitmen ile direksiyon dersiniz bulunmaktadır"
 
-            if (durum == "Pasif"){
+            if (durum == "Aktif"){
                 holder.ivRandevuIsActive.visibility = View.VISIBLE
                 holder.clIptalRandevu.visibility= View.GONE
             } else{
-                holder.ivRandevuIsActive.visibility = View.GONE
-                holder.clIptalRandevu.visibility= View.VISIBLE
+
+                val sdf = SimpleDateFormat("dd/MM/yyyy")
+                if(System.currentTimeMillis() < sdf.parse(tarih).time ){
+                    holder.ivRandevuIsActive.visibility = View.GONE
+                    holder.clIptalRandevu.visibility= View.VISIBLE
+                }else {
+                    holder.ivRandevuIsActive.visibility = View.GONE
+                    holder.clIptalRandevu.visibility= View.GONE
+                }
+
+                /*holder.ivRandevuIsActive.visibility = View.GONE
+                holder.clIptalRandevu.visibility= View.VISIBLE*/
             }
         }
 
