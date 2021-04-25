@@ -131,7 +131,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_remainingTimeInfo"
-                        app:timeTextColor="@color/orange"
+                        app:timeTextColor="@color/fiveEgrey"
                         app:timeTextSize="22sp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

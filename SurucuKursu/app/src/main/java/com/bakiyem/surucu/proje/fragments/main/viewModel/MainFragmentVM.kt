@@ -12,7 +12,6 @@ class MainFragmentVM : BaseVM() {
 
     var kursLD = MutableLiveData<Response4Kurs>()
     fun getKurs() {
-        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getKurs()
@@ -32,6 +31,7 @@ class MainFragmentVM : BaseVM() {
 
     var announcementsLD = MutableLiveData<MutableList<Response4Announcements>>()
     fun getAnnouncements() {
+        loadingHUD.value = true
         addDisposable(
             RxUtils.androidDefaults(
                 sApiService.getAnnouncements()
