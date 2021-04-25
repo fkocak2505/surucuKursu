@@ -4,13 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Handler
 import android.text.Html
+import android.text.Spannable
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
+import com.bakiyem.surucu.proje.GlideImageGetter
 import com.bakiyem.surucu.proje.R
-import com.bakiyem.surucu.proje.activity.dersListesi.DersListesiActivity
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.dersIcerik.Response4DersIcerik
 import com.bakiyem.surucu.proje.model.dersListesi.Response4DersListesi
@@ -18,12 +20,12 @@ import com.bakiyem.surucu.proje.model.derslerim.Response4Derslerim
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
-import com.bakiyem.surucu.proje.utils.ext.renderHtml
 import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_ders_icerik.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import java.util.*
+
 
 class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
 
@@ -96,25 +98,46 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
         handleSesDosyasiPlayPause()
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun prepareDersIcerikData(listOfDersIcerik: MutableList<Response4DersIcerik>) {
         if (listOfDersIcerik.isNotEmpty()) {
-            val htmlData = Html.fromHtml(listOfDersIcerik[0].detay!!).toString()
-            tv_dersIcerik renderHtml htmlData
+            /*val htmlData = Html.fromHtml(listOfDersIcerik[0].detay!!).toString()
+            tv_dersIcerik renderHtml htmlData*/
+
+            /*tv_dersIcerik.setHtml(
+                listOfDersIcerik[0].detay!!,
+                HtmlHttpImageGetter(tv_dersIcerik, "n", true)
+            );*/
+
+            //val imageGetter = PicassoImageGetter(tv_dersIcerik, applicationContext)
+            val imageGetter = GlideImageGetter(tv_dersIcerik)
+            val html: Spannable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Html.fromHtml(
+                    listOfDersIcerik[0].detay!!,
+                    Html.FROM_HTML_MODE_LEGACY,
+                    imageGetter,
+                    null
+                ) as Spannable
+            } else {
+                Html.fromHtml(listOfDersIcerik[0].detay!!, imageGetter, null) as Spannable
+            }
+            tv_dersIcerik.text = html
+
 
             prepareSesDosyasi(listOfDersIcerik[0].sesDosyasi!!)
 
         }
     }
 
-    private fun handleSesDosyasiPlayPause(){
+    private fun handleSesDosyasiPlayPause() {
         iv_play.setOnClickListener {
-            if(mp?.isPlaying!!){
+            if (mp?.isPlaying!!) {
                 iv_play.setImageResource(R.drawable.ic_play)
 
                 mp?.pause()
 
             } else {
-                if(!prepare)
+                if (!prepare)
                     return@setOnClickListener
 
                 iv_play.setImageResource(R.drawable.ic_pause)
@@ -132,7 +155,11 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
                             val currentDuration: Long = it.currentPosition.toLong()
 
                             runOnUiThread {
-                                tv_songTime.text = "${milliSecondsToTimer(currentDuration)}/${milliSecondsToTimer(totalDuration)}"
+                                tv_songTime.text = "${milliSecondsToTimer(currentDuration)}/${
+                                    milliSecondsToTimer(
+                                        totalDuration
+                                    )
+                                }"
                             }
                         }
                     }
@@ -220,7 +247,7 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
     override fun onStop() {
         super.onStop()
         mp?.let {
-            if(it.isPlaying)
+            if (it.isPlaying)
                 it.stop()
         }
     }
