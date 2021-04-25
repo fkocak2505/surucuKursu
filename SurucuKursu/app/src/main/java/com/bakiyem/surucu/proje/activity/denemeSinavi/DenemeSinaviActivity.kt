@@ -439,6 +439,19 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerC.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerD.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "C" -> {
                         cv_seceneklerC.setCardBackgroundColor(
@@ -447,12 +460,38 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerB.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerD.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "D" -> {
                         cv_seceneklerD.setCardBackgroundColor(
                             ContextCompat.getColor(
                                 applicationContext,
                                 R.color.wrong_answer
+                            )
+                        )
+
+                        cv_seceneklerB.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerC.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
                             )
                         )
                     }
@@ -478,6 +517,19 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerC.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerD.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "C" -> {
                         cv_seceneklerC.setCardBackgroundColor(
@@ -486,12 +538,38 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerA.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerD.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "D" -> {
                         cv_seceneklerD.setCardBackgroundColor(
                             ContextCompat.getColor(
                                 applicationContext,
                                 R.color.wrong_answer
+                            )
+                        )
+
+                        cv_seceneklerA.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerC.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
                             )
                         )
                     }
@@ -517,6 +595,19 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerB.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerD.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "B" -> {
                         cv_seceneklerB.setCardBackgroundColor(
@@ -525,12 +616,38 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerA.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerD.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "D" -> {
                         cv_seceneklerD.setCardBackgroundColor(
                             ContextCompat.getColor(
                                 applicationContext,
                                 R.color.wrong_answer
+                            )
+                        )
+
+                        cv_seceneklerA.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerB.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
                             )
                         )
                     }
@@ -556,6 +673,19 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerB.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerC.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "B" -> {
                         cv_seceneklerB.setCardBackgroundColor(
@@ -564,12 +694,38 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                                 R.color.wrong_answer
                             )
                         )
+
+                        cv_seceneklerA.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerC.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
                     }
                     "C" -> {
                         cv_seceneklerC.setCardBackgroundColor(
                             ContextCompat.getColor(
                                 applicationContext,
                                 R.color.wrong_answer
+                            )
+                        )
+
+                        cv_seceneklerA.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
+                            )
+                        )
+                        cv_seceneklerB.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.titleBackground
                             )
                         )
                     }

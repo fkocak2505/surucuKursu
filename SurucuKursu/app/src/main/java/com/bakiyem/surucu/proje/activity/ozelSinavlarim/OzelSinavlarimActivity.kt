@@ -54,7 +54,7 @@ class OzelSinavlarimActivity : BaseActivity() {
         prepareWithBaseVM(ozelSinavVM)
         ozelSinavVM.ozelSinavLD.observe(this, {
             it?.let {
-                DenemeSinaviActivity.start(this, "3", "", false,  "Özel Sınav",  it)
+                DenemeSinaviActivity.start(this, "3", "", false, "Özel Sınav", it)
             } ?: run {
                 toast("Error ozel sinav genarate service")
             }
@@ -79,12 +79,15 @@ class OzelSinavlarimActivity : BaseActivity() {
 
     private fun handleViewClickListener() {
         btn_startExam.setOnClickListener {
-            ozelSinavVM.getOzelSinav(
-                ilkYardimCount.toString(),
-                trafikCount.toString(),
-                motorCount.toString(),
-                adapCount.toString()
-            )
+            if (ilkYardimCount + trafikCount + motorCount + adapCount > 50)
+                toast("50' den fazla soru sayısı seçemezsiniz..!")
+            else
+                ozelSinavVM.getOzelSinav(
+                    ilkYardimCount.toString(),
+                    trafikCount.toString(),
+                    motorCount.toString(),
+                    adapCount.toString()
+                )
         }
     }
 
