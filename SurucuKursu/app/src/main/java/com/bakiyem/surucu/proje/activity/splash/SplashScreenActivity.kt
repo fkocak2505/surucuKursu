@@ -1,22 +1,21 @@
 package com.bakiyem.surucu.proje.activity.splash
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Handler
+import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.MainActivity
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.fragments.contact.IletisimVM
 import com.bakiyem.surucu.proje.fragments.main.viewModel.MainFragmentVM
-import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.splash.*
+
 
 class SplashScreenActivity : BaseActivity() {
 
@@ -75,6 +74,16 @@ class SplashScreenActivity : BaseActivity() {
     }
 
     override fun onCreateMethod() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("TOKEN..", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                val token = task.result
+                Log.d("TOKEN..", token ?: "Token is null")
+            })
 
     }
 }
