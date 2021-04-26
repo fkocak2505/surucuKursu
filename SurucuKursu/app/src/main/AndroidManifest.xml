@@ -101,7 +101,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".activity.odemeYap.OdemeYap"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity android:name=".activity.webView3D.CheckoutPaymentWVActivityNew"
             android:theme="@style/AppTheme.NoActionBar" />
