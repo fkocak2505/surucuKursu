@@ -16,7 +16,6 @@ import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.fragment_contact.view.*
 import kotlinx.android.synthetic.main.fragment_course.view.tv_hugeTitle
-import java.lang.String
 import java.util.*
 
 
@@ -93,9 +92,14 @@ class ContactFragment : Fragment() {
         }
 
         viewP.btn_yolTarifi.setOnClickListener {
-            val uri = String.format(Locale.ENGLISH, "geo:%f,%f", iletisimData.haritaX?.toFloat(), iletisimData.haritaY?.toFloat())
+            /*val uri = String.format(Locale.ENGLISH, "geo:%f,%f", iletisimData.haritaX?.toFloat(), iletisimData.haritaY?.toFloat())
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-            context!!.startActivity(intent)
+            context!!.startActivity(intent)*/
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("geo:0,0?q=${iletisimData.haritaX},${iletisimData.haritaY} (" + "deneme" + ")")
+            )
+            startActivity(intent)
         }
 
         viewP.iv_facebook.setOnClickListener {

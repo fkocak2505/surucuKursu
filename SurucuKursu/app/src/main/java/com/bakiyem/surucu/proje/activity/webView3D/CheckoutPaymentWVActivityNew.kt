@@ -49,11 +49,11 @@ class CheckoutPaymentWVActivityNew: BaseActivity() {
         wv_payment.webViewClient = object : WebViewClient() {
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                toast("Lütfen Bekleyiniz..")
+
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
-                toast("Şimdi ödemenizi yapabilirsiniz..")
+
             }
 
             override fun shouldOverrideUrlLoading(
@@ -66,7 +66,13 @@ class CheckoutPaymentWVActivityNew: BaseActivity() {
         }
 
         wv_payment.loadUrl(html)
+
+        iv_back.setOnClickListener {
+            onBackPressed()
+        }
     }
+
+
 
     companion object {
         private var KEY_LINK = "link"

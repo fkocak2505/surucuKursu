@@ -52,7 +52,6 @@ class OdemeYap : BaseActivity() {
     override fun initVMListener() {
         odemeYapVM.odemeYapLD.observe(this, {
             it?.let {
-                toast(it.link!!)
                 it.link?.let {
                     CheckoutPaymentWVActivityNew.start(this@OdemeYap, it)
                 }?: run{

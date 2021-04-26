@@ -52,13 +52,12 @@ abstract class RandevularimItemModel : EpoxyModelWithHolder<RandevularimItemMode
                 holder.ivRandevuIsActive.visibility = View.VISIBLE
                 holder.clIptalRandevu.visibility= View.GONE
             } else{
-
                 val sdf = SimpleDateFormat("dd/MM/yyyy")
                 if(System.currentTimeMillis() < sdf.parse(tarih).time ){
                     holder.ivRandevuIsActive.visibility = View.GONE
                     holder.clIptalRandevu.visibility= View.VISIBLE
                 }else {
-                    holder.ivRandevuIsActive.visibility = View.GONE
+                    holder.ivRandevuIsActive.visibility = View.VISIBLE
                     holder.clIptalRandevu.visibility= View.GONE
                 }
 
