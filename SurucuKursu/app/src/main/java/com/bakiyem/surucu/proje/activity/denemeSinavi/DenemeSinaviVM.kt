@@ -5,9 +5,31 @@ import com.bakiyem.surucu.proje.base.vm.BaseVM
 import com.bakiyem.surucu.proje.model.denemeSinavi.QuestionsResultModel
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4DenemeSinavi
 import com.bakiyem.surucu.proje.model.denemeSinavi.Response4SinavSonuc
+import com.bakiyem.surucu.proje.model.iletisim.Response4SendFeedback
 import com.bakiyem.surucu.proje.utils.RxUtils
 
 class DenemeSinaviVM : BaseVM() {
+
+    var sendHataliSoruLD = MutableLiveData<Response4SendFeedback>()
+    fun sendHataliSoru(soruId: String) {
+        loadingHUD.value = true
+        addDisposable(
+            RxUtils.androidDefaults(
+                sApiService.sendhataliSoru(soruId)
+            ).subscribe({ rr ->
+
+                loadingHUD.value = false
+                checkServiceStatus(rr)?.let {
+                    sendHataliSoruLD.value = it
+                } ?: run {
+                    sendHataliSoruLD.value = null
+                }
+
+            }, { error ->
+                loadingHUD.value = false
+            })
+        )
+    }
 
     var denemeSinaviLD = MutableLiveData<MutableList<Response4DenemeSinavi>>()
     fun getDenemeSinavi() {

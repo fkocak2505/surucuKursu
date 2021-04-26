@@ -174,6 +174,17 @@ class SurucuKursuApiService {
         return api.getDenemeSinavi(tokenBody)
     }
 
+    fun sendhataliSoru(soruId: String): Observable<ResResult<Response4SendFeedback>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+        val soruBody = RequestBody.create(MediaType.parse("text/plain"), soruId)
+
+        return api.sendhataliSoru(tokenBody,kursiyerBody, soruBody)
+    }
+
     fun postSinavSonuc(
         aTur: String,
         iyDogru: String,

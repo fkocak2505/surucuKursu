@@ -139,6 +139,15 @@ interface IApiService {
     ): Observable<ResResultArray<Response4DenemeSinavi>>
 
     @Multipart
+    @POST("/KursumAPI/hatali-soru/index.php")
+    fun sendhataliSoru(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") kursiyerKey: RequestBody,
+        @Part("soruId") soruId: RequestBody,
+    ): Observable<ResResult<Response4SendFeedback>>
+
+
+    @Multipart
     @POST("/KursumAPI/sonuc-gonder/index.php")
     fun postSinavSonuc(
         @Part("token") token: RequestBody,

@@ -121,6 +121,10 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         )
         cl_sinavSonucPuan.setBackgroundResource(R.drawable.bg_sinav_sonuc_puan)
 
+        iv_hataliSoru.setOnClickListener {
+            denemeSinaviVM.sendHataliSoru(questions[currentQuizIndex].soruId!!)
+        }
+
 
     }
 
@@ -209,6 +213,15 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             isComingHaziCevap = true
             prepareAllAnswersGrid(true)
 
+        })
+
+        denemeSinaviVM.sendHataliSoruLD.observe(this, {
+            it?.let {
+                toast(it.detay ?: "Başarıyla iletildi..")
+            } ?: run {
+                toast("Error when send hatalı soru..")
+                onBackPressed()
+            }
         })
     }
 
@@ -1010,7 +1023,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         } else super.onKeyDown(keyCode, event)
     }
 
-    private fun goBackFeature(){
+    private fun goBackFeature() {
         if (!isFinishExam) {
             val mDialog = MaterialDialog.Builder(this)
                 .setTitle("Emin misin?")

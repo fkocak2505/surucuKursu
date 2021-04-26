@@ -442,6 +442,16 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <ImageView
+                    android:id="@+id/iv_hataliSoru"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/hatali_soru"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/cv_oncekiSoru"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_oncekiSoru"/>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_sonrakiSoru"
                     android:layout_width="wrap_content"
