@@ -88,10 +88,11 @@ class SurucuKursuApiService {
 
     fun doLogin(tcNo: String): Observable<ResResult<Response4Login>> {
         val token = Hawk.get<String>("token")
+        val fcmToken = Hawk.get("fcmToken", "1213213")
 
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
-        val fcmBody = RequestBody.create(MediaType.parse("text/plain"), "1213213")
-        val cihazBody = RequestBody.create(MediaType.parse("text/plain"), "1")
+        val fcmBody = RequestBody.create(MediaType.parse("text/plain"), fcmToken)
+        val cihazBody = RequestBody.create(MediaType.parse("text/plain"), "2")
         val tcknBody = RequestBody.create(MediaType.parse("text/plain"), tcNo)
 
         return api.doLogin(tokenBody, fcmBody, cihazBody, tcknBody)

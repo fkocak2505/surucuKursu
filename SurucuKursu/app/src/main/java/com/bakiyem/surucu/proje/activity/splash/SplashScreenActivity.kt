@@ -82,6 +82,7 @@ class SplashScreenActivity : BaseActivity() {
                 }
 
                 val token = task.result
+                Hawk.put("fcmToken", token)
                 Log.d("TOKEN..", token ?: "Token is null")
             })
 
