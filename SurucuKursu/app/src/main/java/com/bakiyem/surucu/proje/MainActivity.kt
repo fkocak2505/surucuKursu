@@ -12,10 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.bakiyem.surucu.proje.activity.dersKategorileri.DerslerimActivity
 import com.bakiyem.surucu.proje.activity.faydaliBilgiler.FaydaliBilgilerActivity
+import com.bakiyem.surucu.proje.activity.hakkimizda.HakkimizdaActivity
 import com.bakiyem.surucu.proje.activity.login.LoginActivity
 import com.bakiyem.surucu.proje.activity.odemeBilgilerim.OdemeBilgilerimActivity
 import com.bakiyem.surucu.proje.activity.profil.ProfilimActivity
@@ -66,6 +69,9 @@ class MainActivity : BaseActivity() {
         tv_navLeftRandevularim.regular()
         tv_navLeftFaydaliBilgiler.regular()
         tv_navLeftGuvenliCikis.regular()
+        tv_hakkimizda.regular()
+        tv_gizlilik.regular()
+        tv_iletisim.regular()
 
         changeFontType(
             applicationContext, bottomNavigationView
@@ -73,6 +79,17 @@ class MainActivity : BaseActivity() {
 
         iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
         iv_logo.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
+
+        val unwrappedDrawable = AppCompatResources.getDrawable(
+            btn_login.context,
+            R.drawable.bg_start_btn
+        )
+        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
+        DrawableCompat.setTint(
+            wrappedDrawable,
+            Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}")
+        )
+        btn_login.setBackgroundResource(R.drawable.bg_start_btn)
     }
 
     override fun initReq() {
@@ -229,6 +246,46 @@ class MainActivity : BaseActivity() {
             startActivity(i)
         }
 
+        iv_facebookLeftMenu.setOnClickListener {
+            val facebookIntent = Intent(Intent.ACTION_VIEW)
+            facebookIntent.data = Uri.parse(iletisimData.facebook)
+            startActivity(facebookIntent)
+        }
+
+        iv_twitterLeftMenu.setOnClickListener {
+            val twitterIntent = Intent(Intent.ACTION_VIEW)
+            twitterIntent.data = Uri.parse(iletisimData.twiter)
+            startActivity(twitterIntent)
+        }
+
+        iv_instagramLeftMenu.setOnClickListener {
+            val instagramIntent = Intent(Intent.ACTION_VIEW)
+            instagramIntent.data = Uri.parse(iletisimData.instagram)
+            startActivity(instagramIntent)
+        }
+
+        iv_whatsappLeftMenu.setOnClickListener {
+            val url = "https://api.whatsapp.com/send?phone=${iletisimData.whatsapp}"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+        }
+
+        tv_gizlilik.setOnClickListener {
+            val url = "https://${iletisimData.web}/gizlilik-sozlesmesi"
+            val uri = Uri.parse(url)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
+
+        tv_hakkimizda.setOnClickListener {
+            startActivity(Intent(this@MainActivity, HakkimizdaActivity::class.java))
+        }
+
+        tv_iletisim.setOnClickListener {
+            bottomNavigationView.selectedItemId = bottomNavigationView.menu.getItem(2).itemId
+            drawer_layout.closeDrawer(GravityCompat.START)
+        }
 
     }
 

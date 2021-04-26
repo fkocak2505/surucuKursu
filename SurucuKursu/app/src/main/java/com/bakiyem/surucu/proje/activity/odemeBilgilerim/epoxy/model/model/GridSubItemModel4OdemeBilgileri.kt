@@ -2,6 +2,7 @@ package com.bakiyem.surucu.proje.activity.odemeBilgilerim.epoxy.model.model
 
 import android.content.Context
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -15,7 +16,8 @@ import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
 
 @EpoxyModelClass(layout = R.layout.holder_sub_grid_odeme_bilgileri)
-abstract class GridSubItemModel4OdemeBilgileri: EpoxyModelWithHolder<GridSubItemModel4OdemeBilgileri.GridHolder>() {
+abstract class GridSubItemModel4OdemeBilgileri :
+    EpoxyModelWithHolder<GridSubItemModel4OdemeBilgileri.GridHolder>() {
 
     @EpoxyAttribute
     lateinit var context: Context
@@ -30,17 +32,42 @@ abstract class GridSubItemModel4OdemeBilgileri: EpoxyModelWithHolder<GridSubItem
         super.bind(holder)
         with(response4OdemeBilgileri) {
             holder.tvVadeTarihi.text = borcTarih
-            holder.tvTahsilTarihi.text = odemeTarih
-            holder.tvTuru.text = odemeTur
-            holder.tvMakbuz.text = makbuzNo
-            holder.tvTuru.text = "$tutar TL"
+            holder.tvTutar.text = "$tutar TL"
 
-            if(durum == "Ödendi"){
-                holder.btnOdemeYap.background = ContextCompat.getDrawable(context, R.drawable.bg_start_btn_gray)
+            if (durum == "Ödendi") {
+                holder.btnOdemeYap.background =
+                    ContextCompat.getDrawable(context, R.drawable.bg_start_btn_gray)
                 holder.tvOdemeYap.text = "Ödeme Yapıldı"
-            } else{
-                holder.btnOdemeYap.background = ContextCompat.getDrawable(context, R.drawable.bg_start_btn_green)
+
+                holder.llTahsilTarihi.visibility = View.VISIBLE
+                holder.llTuru.visibility = View.VISIBLE
+                holder.llMakbuzNo.visibility = View.VISIBLE
+
+                if (odemeTarih != "")
+                    holder.tvTahsilTarihi.text = odemeTarih
+                else
+                    holder.tvTahsilTarihi.text = "-"
+
+                if (odemeTur != "")
+                    holder.tvTuru.text = odemeTur
+                else
+                    holder.tvTuru.text = "-"
+
+                if (makbuzNo != "")
+                    holder.tvMakbuz.text = makbuzNo
+                else
+                    holder.tvMakbuz.text = "-"
+
+
+
+            } else {
+                holder.btnOdemeYap.background =
+                    ContextCompat.getDrawable(context, R.drawable.bg_start_btn_green)
                 holder.tvOdemeYap.text = "Ödeme Yap"
+
+                holder.llTahsilTarihi.visibility = View.GONE
+                holder.llTuru.visibility = View.GONE
+                holder.llMakbuzNo.visibility = View.GONE
             }
 
         }
@@ -80,6 +107,12 @@ abstract class GridSubItemModel4OdemeBilgileri: EpoxyModelWithHolder<GridSubItem
         lateinit var btnOdemeYap: ConstraintLayout
         lateinit var tvOdemeYap: TextView
 
+        lateinit var llVadeTarihi: LinearLayout
+        lateinit var llTahsilTarihi: LinearLayout
+        lateinit var llTuru: LinearLayout
+        lateinit var llMakbuzNo: LinearLayout
+        lateinit var llTutar: LinearLayout
+
 
         override fun bindView(itemView: View) {
             tvVadeTarihiInfo = itemView.findViewById(R.id.tv_vadeTarihiInfo)
@@ -94,6 +127,12 @@ abstract class GridSubItemModel4OdemeBilgileri: EpoxyModelWithHolder<GridSubItem
             tvTutar = itemView.findViewById(R.id.tv_tutar)
             btnOdemeYap = itemView.findViewById(R.id.btn_odemeYap)
             tvOdemeYap = itemView.findViewById(R.id.tv_odemeYap)
+
+            llVadeTarihi = itemView.findViewById(R.id.ll_vadeTarihi)
+            llTahsilTarihi = itemView.findViewById(R.id.ll_tahsilTarihi)
+            llTuru = itemView.findViewById(R.id.ll_turu)
+            llMakbuzNo = itemView.findViewById(R.id.ll_makbuzNo)
+            llTutar = itemView.findViewById(R.id.ll_tutar)
 
         }
     }

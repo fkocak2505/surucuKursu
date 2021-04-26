@@ -24,6 +24,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_vadeTarihi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -35,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="10sp"
                     android:text="Vade Tarihi"/>
 
                 <TextView
@@ -50,6 +51,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_tahsilTarihi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -62,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="10sp"
                     android:text="Tahsil Tarihi"/>
 
                 <TextView
@@ -77,6 +79,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_turu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -89,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="10sp"
                     android:text="Türü"/>
 
                 <TextView
@@ -105,6 +108,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_makbuzNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -116,7 +120,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="10sp"
                     android:textColor="@color/textColor"
                     android:text="Makbuz No"/>
 
@@ -132,6 +136,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_tutar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -144,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/descTextSize"
+                    android:textSize="10sp"
                     android:text="Tutar"/>
 
                 <TextView
