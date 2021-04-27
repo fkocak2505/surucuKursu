@@ -27,8 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="30"
-                android:textSize="20sp"
-                android:layout_marginStart="40dp"
+                android:textSize="@dimen/titleTextSize"
+                android:layout_marginStart="50dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Toplam Sınav"
-                android:textSize="15sp"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintEnd_toEndOf="@+id/tv_sumQuizNumber"
                 app:layout_constraintStart_toStartOf="@+id/tv_sumQuizNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sumQuizNumber" />
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="30"
-                android:textSize="20sp"
+                android:textSize="@dimen/titleTextSize"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Toplam Soru"
-                android:textSize="15sp"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintEnd_toEndOf="@+id/tv_sumQuiestionNumber"
                 app:layout_constraintStart_toStartOf="@+id/tv_sumQuiestionNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sumQuiestionNumber" />
@@ -90,8 +90,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30"
-                android:textSize="20sp"
-                android:layout_marginEnd="40dp"
+                android:textSize="@dimen/titleTextSize"
+                android:layout_marginEnd="50dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Toplam Doğru"
-                android:textSize="15sp"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintEnd_toEndOf="@+id/tv_correcntNumber"
                 app:layout_constraintStart_toStartOf="@+id/tv_correcntNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_correcntNumber" />
@@ -122,8 +122,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30"
-                android:textSize="20sp"
-                android:layout_marginStart="40dp"
+                android:textSize="@dimen/titleTextSize"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_sumQuestionIcon" />
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Toplam Yanlış"
-                android:textSize="15sp"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintEnd_toEndOf="@+id/tv_wrongNumber"
                 app:layout_constraintStart_toStartOf="@+id/tv_wrongNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_wrongNumber" />
@@ -154,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1925"
-                android:textSize="20sp"
+                android:textSize="@dimen/titleTextSize"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Toplam Boş"
-                android:textSize="15sp"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintEnd_toEndOf="@+id/tv_emptyNumber"
                 app:layout_constraintStart_toStartOf="@+id/tv_emptyNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_emptyNumber" />
@@ -186,9 +186,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="03:40:50"
-                android:textSize="20sp"
+                android:textSize="@dimen/titleTextSize"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_sumQuestionIcon" />
 
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Toplam Süre"
-                android:textSize="15sp"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintEnd_toEndOf="@+id/tv_totalTimeNumber"
                 app:layout_constraintStart_toStartOf="@+id/tv_totalTimeNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_totalTimeNumber" />

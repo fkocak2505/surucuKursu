@@ -24,8 +24,8 @@ public class GlideImageGetter implements Html.ImageGetter {
     private HtmlImagesHandler imagesHandler;
     private float density = 1.0f;
 
-    public GlideImageGetter(TextView textView) {
-        this(textView, true, false, null);
+    public GlideImageGetter(TextView textView, Boolean isFullScreen) {
+        this(textView, isFullScreen, false, null);
     }
 
     public GlideImageGetter(TextView textView, boolean matchParentWidth, HtmlImagesHandler imagesHandler) {

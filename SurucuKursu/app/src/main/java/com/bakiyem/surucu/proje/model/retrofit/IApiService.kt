@@ -52,7 +52,7 @@ interface IApiService {
     ): Observable<ResResultArray<Response4Announcements>>
 
     @Multipart
-    @POST("/KursumAPI/duyurular/index.php")
+    @POST("/KursumAPI/slide/index.php")
     fun getSlider(
         @Part("token") token: RequestBody
     ): Observable<ResResultArray<Response4Slider>>

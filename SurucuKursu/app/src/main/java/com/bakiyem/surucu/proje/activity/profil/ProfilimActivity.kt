@@ -20,6 +20,8 @@ class ProfilimActivity : BaseActivity() {
 
     lateinit var profilVM: ProfilimActivityVM
 
+    lateinit var profilimData: Response4Profilim
+
     override fun getLayoutID(): Int = R.layout.activity_profilim
 
     override fun initVM() {
@@ -71,7 +73,7 @@ class ProfilimActivity : BaseActivity() {
 
         tv_onlineDers.setOnClickListener {
             val uri: Uri =
-                Uri.parse(tv_onlineDers.text.toString())
+                Uri.parse(profilimData.onlineDers)
 
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
@@ -86,6 +88,7 @@ class ProfilimActivity : BaseActivity() {
         prepareWithBaseVM(profilVM)
         profilVM.profilLD.observe(this, {
             it?.let {
+                profilimData = it
                 prepareProfilimData(it)
             } ?: run {
                 toast("Error Profilim")
@@ -115,7 +118,7 @@ class ProfilimActivity : BaseActivity() {
         tv_dil.text = profilim.dili
         tv_cinsiyet.text = profilim.cinsiyeti
         tv_kanGrubu.text = profilim.kanGrup
-        tv_onlineDers.text = profilim.onlineDers
+        /*tv_onlineDers.text = profilim.onlineDers*/
         tv_adres.text = profilim.adres
         tv_cepTel.text = profilim.gsm
         tv_evTel.text = profilim.evTel

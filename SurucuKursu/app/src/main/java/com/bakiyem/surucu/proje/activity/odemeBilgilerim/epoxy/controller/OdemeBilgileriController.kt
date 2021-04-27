@@ -40,10 +40,10 @@ class OdemeBilgileriController(val context: Context,val listener: CListener<Resp
             }
         }
 
-        toplamBorcItem {
+        /*toplamBorcItem {
             id("123123")
             borcOzet(borcOzet)
-        }
+        }*/
 
     }
 }

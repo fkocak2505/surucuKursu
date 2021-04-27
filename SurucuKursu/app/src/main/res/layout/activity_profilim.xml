@@ -445,16 +445,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/tv_onlineDersInfo"
-                    android:layout_width="120dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:text="Online Ders Linki: "
                     android:textColor="@color/textColor"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:layout_marginBottom="10dp" />
 
                 <TextView
@@ -463,11 +465,12 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/descTextSize"
                     android:background="@drawable/bg_tckn"
-                    android:text="Fatih"
+                    android:text="Canlı Derse Katıl"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:textAllCaps="false"
                     android:textColor="@color/textColor"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
             </LinearLayout>

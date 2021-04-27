@@ -2,6 +2,7 @@ package com.bakiyem.surucu.proje.activity.hakkimizda
 
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
@@ -53,6 +54,14 @@ class HakkimizdaActivity : BaseActivity() {
             iv_hakkimizdaImage.loadImage(it, R.drawable.hakkimizda_image)
         } ?: run {
             iv_hakkimizdaImage.setImageResource(R.drawable.hakkimizda_image)
+        }
+
+        response4Hakkimizda.icon?.let {
+            cardView.visibility = View.VISIBLE
+            cardView.background = ContextCompat.getDrawable(context, R.drawable.bg_circle_answer);
+            iv_hakkimizdaIcon.loadImage(it)
+        } ?: run {
+            cardView.visibility = View.GONE
         }
 
         response4Hakkimizda.baslik?.let {

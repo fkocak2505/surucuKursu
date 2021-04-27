@@ -110,7 +110,7 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
             );*/
 
             //val imageGetter = PicassoImageGetter(tv_dersIcerik, applicationContext)
-            val imageGetter = GlideImageGetter(tv_dersIcerik)
+            val imageGetter = GlideImageGetter(tv_dersIcerik, true)
             val html: Spannable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 Html.fromHtml(
                     listOfDersIcerik[0].detay!!,

@@ -1,6 +1,7 @@
 package com.bakiyem.surucu.proje.activity.odemeBilgilerim
 
 import android.content.Intent
+import android.view.View
 import android.widget.ImageView
 import android.widget.VideoView
 import androidx.lifecycle.ViewModelProviders
@@ -13,6 +14,7 @@ import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4BorcOzet
 import com.bakiyem.surucu.proje.model.odemeBilgilerim.Response4OdemeBilgileri
 import com.bakiyem.surucu.proje.utils.ext.loadImage
+import com.bakiyem.surucu.proje.utils.ext.regular
 import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_odeme_bilgilerim.*
@@ -34,6 +36,12 @@ class OdemeBilgilerimActivity : BaseActivity(), CListener<Response4OdemeBilgiler
 
     override fun initChangeFont() {
         tv_hugeTitle.semibold()
+        tv_toplamBorcInfo.semibold()
+        tv_toplamBorc.regular()
+        tv_tahsilEdilenInfo.semibold()
+        tv_tahsilEdilen.regular()
+        tv_kalanInfo.semibold()
+        tv_kalan.regular()
 
         iv_rootImage.loadImage(Hawk.get<Response4Kurs>("kursBilgisi").logo)
     }
@@ -68,10 +76,15 @@ class OdemeBilgilerimActivity : BaseActivity(), CListener<Response4OdemeBilgiler
     }
 
     private fun prepareBorcListesiData() {
+        cv_ozetBorc.visibility = View.VISIBLE
         val controller = OdemeBilgileriController(applicationContext, this)
         erv_borcListesi.setController(controller)
         controller.borcListesi = borcListesi
-        controller.borcOzet = borcOzet
+        /*controller.borcOzet = borcOzet*/
+
+        tv_toplamBorc.text = borcOzet.toplamBorc
+        tv_tahsilEdilen.text = borcOzet.tahsilEdilen
+        tv_kalan.text = borcOzet.kalanBorcu
     }
 
     private fun goBack() {
