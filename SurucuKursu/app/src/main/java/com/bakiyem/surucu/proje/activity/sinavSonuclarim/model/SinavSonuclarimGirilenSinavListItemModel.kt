@@ -45,15 +45,15 @@ abstract class SinavSonuclarimGirilenSinavListItemModel : EpoxyModelWithHolder<S
             if(sonuc == "Başarılı"){
                 holder.btnAgainResolve.background = ContextCompat.getDrawable(context, R.drawable.bg_start_btn_green)
             } else{
-                holder.btnAgainResolve.background = ContextCompat.getDrawable(context, R.drawable.bg_start_btn)
+                holder.btnAgainResolve.background = ContextCompat.getDrawable(context, R.drawable.bg_start_btn_red)
             }
 
             holder.tvAgainResolve.text = sonuc
 
-            val unwrappedDrawable = AppCompatResources.getDrawable(holder.btnAgainResolve.context, R.drawable.bg_start_btn)
+            /*val unwrappedDrawable = AppCompatResources.getDrawable(holder.btnAgainResolve.context, R.drawable.bg_start_btn)
             val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable!!)
             DrawableCompat.setTint(wrappedDrawable, Color.parseColor("#${Hawk.get<Response4Kurs>("kursBilgisi").renk}"))
-            holder.btnAgainResolve.setBackgroundResource(R.drawable.bg_start_btn)
+            holder.btnAgainResolve.setBackgroundResource(R.drawable.bg_start_btn)*/
 
         }
 

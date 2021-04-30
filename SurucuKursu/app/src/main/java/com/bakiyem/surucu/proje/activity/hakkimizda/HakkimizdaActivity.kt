@@ -1,19 +1,24 @@
 package com.bakiyem.surucu.proje.activity.hakkimizda
 
+import android.os.Build
+import android.text.Html
+import android.text.Spannable
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
+import com.bakiyem.surucu.proje.GlideImageGetter
 import com.bakiyem.surucu.proje.R
 import com.bakiyem.surucu.proje.base.activity.BaseActivity
 import com.bakiyem.surucu.proje.model.hakkimizda.Response4Hakkimizda
 import com.bakiyem.surucu.proje.model.kurs.Response4Kurs
 import com.bakiyem.surucu.proje.utils.ext.loadImage
 import com.bakiyem.surucu.proje.utils.ext.regular
-import com.bakiyem.surucu.proje.utils.ext.renderHtml
 import com.bakiyem.surucu.proje.utils.ext.semibold
 import com.orhanobut.hawk.Hawk
 import kotlinx.android.synthetic.main.activity_hakkimizda.*
+import kotlinx.android.synthetic.main.activity_hakkimizda.iv_back
+import kotlinx.android.synthetic.main.activity_hakkimizda.tv_hugeTitle
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class HakkimizdaActivity : BaseActivity() {
@@ -76,7 +81,19 @@ class HakkimizdaActivity : BaseActivity() {
         response4Hakkimizda.detay?.let {
             tv_hakkimizdaDesc.visibility = View.VISIBLE
 
-            tv_hakkimizdaDesc renderHtml it
+            val imageGetter = GlideImageGetter(tv_hakkimizdaDesc, true)
+            val html: Spannable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Html.fromHtml(
+                    it,
+                    Html.FROM_HTML_MODE_LEGACY,
+                    imageGetter,
+                    null
+                ) as Spannable
+            } else {
+                Html.fromHtml(it, imageGetter, null) as Spannable
+            }
+            tv_hakkimizdaDesc.text = html
+            //tv_hakkimizdaDesc renderHtml it
 
         } ?: run {
             tv_hakkimizdaDesc.visibility = View.GONE

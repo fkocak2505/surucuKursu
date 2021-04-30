@@ -55,10 +55,11 @@ class VideolarimActivity: BaseActivity(), CListener<Response4Video> {
         iv_back.setOnClickListener {
             onBackPressed()
         }
+
     }
 
     private fun prepareVideoData(listOfVideo: MutableList<Response4Video>){
-        val videolarimController = VideolarimController(applicationContext, this)
+        val videolarimController = VideolarimController(applicationContext, lifecycle, this)
         videolarimController.videolarim = listOfVideo
         erv_videolar.setController(videolarimController)
     }

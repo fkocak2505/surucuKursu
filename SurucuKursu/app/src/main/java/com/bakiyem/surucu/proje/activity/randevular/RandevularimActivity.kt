@@ -88,8 +88,8 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
             EventBus.getDefault().register(this)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
         EventBus.getDefault().unregister(this)
     }
 

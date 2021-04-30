@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.annotation.NonNull
+import androidx.lifecycle.Lifecycle
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
@@ -32,6 +33,9 @@ abstract class VideolarimItemModel : EpoxyModelWithHolder<VideolarimItemModel.Ho
     @EpoxyAttribute
     lateinit var listener: (Response4Video, VideoView?, ImageView, ImageView) -> Unit
 
+    @EpoxyAttribute
+    lateinit var lifecycle: Lifecycle
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun bind(holder: Holder) {
         super.bind(holder)
@@ -39,15 +43,16 @@ abstract class VideolarimItemModel : EpoxyModelWithHolder<VideolarimItemModel.Ho
         with(videoItem) {
             holder.tvVideoTitle.text = baslik
             //holder.ivPlaceholder.loadImage(resim)
-
-
         }
 
         val aa = videoItem.link?.split("/")
         val key = aa?.get(aa.size - 1)
+
+        lifecycle.addObserver(holder.vvVideo)
+
         holder.vvVideo.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(@NonNull youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(key!!, 0f)
+                youTubePlayer.cueVideo(key!!, 0f)
             }
         })
 
