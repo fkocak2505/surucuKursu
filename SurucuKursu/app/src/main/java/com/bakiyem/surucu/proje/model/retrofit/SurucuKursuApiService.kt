@@ -396,7 +396,8 @@ class SurucuKursuApiService {
     fun addRandevu(
         tarih: String,
         egitmenId: String,
-        saat: String
+        saat: String,
+        saatTxt: String
     ): Observable<ResResult<Response4SendFeedback>> {
         val token = Hawk.get<String>("token")
         val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
@@ -406,7 +407,8 @@ class SurucuKursuApiService {
         val tarihBody = RequestBody.create(MediaType.parse("text/plain"), tarih)
         val egitmenIdBody = RequestBody.create(MediaType.parse("text/plain"), egitmenId)
         val saatBody = RequestBody.create(MediaType.parse("text/plain"), saat)
-        return api.addRandevu(tokenBody, kursiyerBody, tarihBody, egitmenIdBody, saatBody)
+        val saatTxtBody = RequestBody.create(MediaType.parse("text/plain"), saatTxt)
+        return api.addRandevu(tokenBody, kursiyerBody, tarihBody, egitmenIdBody, saatBody,saatTxtBody)
     }
 
     fun odemeYap(

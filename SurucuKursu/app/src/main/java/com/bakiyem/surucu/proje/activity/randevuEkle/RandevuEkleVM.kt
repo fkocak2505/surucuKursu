@@ -52,11 +52,11 @@ class RandevuEkleVM : BaseVM() {
     }
 
     val addRandevuLD = MutableLiveData<Response4SendFeedback>()
-    fun addRandevu(tarih: String, egitmen: String, saat: String){
+    fun addRandevu(tarih: String, egitmen: String, saat: String, saatText: String){
         loadingHUD.value
         addDisposable(
             RxUtils.androidDefaults(
-                sApiService.addRandevu(tarih, egitmen, saat)
+                sApiService.addRandevu(tarih, egitmen, saat, saatText)
             ).subscribe({rr->
                         loadingHUD.value = false
                         checkServiceStatus(rr)?.let {

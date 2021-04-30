@@ -63,7 +63,9 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
                 toast("Error iptal randevu")
             }
 
-            onBackPressed()
+            randevularimVM.getRandevularim()
+
+            //onBackPressed()
         })
     }
 

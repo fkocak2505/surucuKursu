@@ -193,7 +193,6 @@ class DersIcerikActivity : BaseActivity(), MediaPlayer.OnPreparedListener {
         })
 
         mp?.setOnCompletionListener {
-            Toast.makeText(applicationContext, "aaaa", Toast.LENGTH_SHORT).show()
             killMediaPlayer()
         }
     }

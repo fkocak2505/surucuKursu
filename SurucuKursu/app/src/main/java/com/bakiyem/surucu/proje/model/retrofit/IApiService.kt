@@ -275,7 +275,8 @@ interface IApiService {
         @Part("kursiyerKey") sinavKey: RequestBody,
         @Part("Tarih") tarih: RequestBody,
         @Part("PersonelId") egitmen: RequestBody,
-        @Part("SaatId") saat: RequestBody
+        @Part("SaatId") saat: RequestBody,
+        @Part("Saat") saatTxt: RequestBody,
     ): Observable<ResResult<Response4SendFeedback>>
 
     @Multipart

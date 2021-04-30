@@ -32,6 +32,7 @@ class RandevuEkleActivity: BaseActivity() {
     var tarihData: String? = ""
     var egitmenId: String? = ""
     var saatId: String? = ""
+    var saat: String? = ""
 
     override fun getLayoutID(): Int = R.layout.activity_randevu_ekle
 
@@ -123,7 +124,7 @@ class RandevuEkleActivity: BaseActivity() {
 
     private fun handleAddRandevuClickListener(){
         btn_createRandevu.setOnClickListener {
-            randevuEkleVM.addRandevu(tarihData!!, egitmenId!!, saatId!!)
+            randevuEkleVM.addRandevu(tarihData!!, egitmenId!!, saatId!!,saat!!)
         }
     }
 
@@ -173,6 +174,7 @@ class RandevuEkleActivity: BaseActivity() {
 
         adapter.onShopSelected = { resposne4Saat ->
             saatId = resposne4Saat.id
+            saat = resposne4Saat.saat
         }
     }
 
