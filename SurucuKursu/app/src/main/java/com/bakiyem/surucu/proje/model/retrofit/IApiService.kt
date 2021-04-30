@@ -47,8 +47,8 @@ interface IApiService {
     @POST("/KursumAPI/duyurular/index.php")
     fun getAnnouncements(
         @Part("token") token: RequestBody,
-        @Part("kursiyer") kursiyer: RequestBody,
-        @Part("grup") grup: RequestBody
+        @Part("kursiyer") kursiyer: RequestBody?,
+        @Part("grup") grup: RequestBody?
     ): Observable<ResResultArray<Response4Announcements>>
 
     @Multipart

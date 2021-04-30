@@ -65,7 +65,13 @@ class SurucuKursuApiService {
         val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
         val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), "2")
         val grup = RequestBody.create(MediaType.parse("text/plain"), "4")
-        return api.getAnnouncements(tokenBody, kursiyerBody, grup)
+
+        val loginData = Hawk.get<Response4Login>("loginResponse", null)
+        loginData?.let {
+            return api.getAnnouncements(tokenBody, kursiyerBody, grup)
+        }?: run{
+            return api.getAnnouncements(tokenBody, null, null)
+        }
     }
 
     fun getSlider(): Observable<ResResultArray<Response4Slider>>  {
