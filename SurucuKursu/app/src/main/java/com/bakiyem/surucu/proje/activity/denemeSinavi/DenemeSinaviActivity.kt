@@ -130,13 +130,13 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
 
     override fun initReq() {
         when (sinavTur) {
-            "4" -> {
+            "2" -> {
                 prepareDenemeSinaviFirst()
             }
             "3" -> {
                 prepareAnotherSinav()
             }
-            "2" -> {
+            "4" -> {
                 prepareDenemeSinaviFirst()
             }
             "1" -> {
@@ -295,7 +295,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         tv_qSoru.text = questions[num].soru
 
 
-        if(questions[num].secenekler!![0]?.cevap?.isEmpty()!!){
+        if (questions[num].secenekler!![0]?.cevap?.isEmpty()!!) {
             iv_secenekA.visibility = View.VISIBLE
             iv_secenekB.visibility = View.VISIBLE
             iv_secenekC.visibility = View.VISIBLE
@@ -311,7 +311,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
             iv_secenekC.loadImage(questions[num].secenekler!![2]?.cevapFoto)
             iv_secenekD.loadImage(questions[num].secenekler!![3]?.cevapFoto)
 
-        }else {
+        } else {
             iv_secenekA.visibility = View.GONE
             iv_secenekB.visibility = View.GONE
             iv_secenekC.visibility = View.GONE
@@ -342,7 +342,7 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                 isFinishExam -> {
                     changeBackgroundColor4Secenek(questionsAnswer)
                 }
-                sinavTur == "2" -> changeBackgroundColor4Secenek(questionsAnswer)
+                sinavTur == "4" -> changeBackgroundColor4Secenek(questionsAnswer)
                 else -> changeBackgroundColor4Selected(questionsAnswer)
             }
 
@@ -475,72 +475,93 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                     )
                 )
 
-                when (questionsAnswer) {
-                    "B" -> {
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
-                            )
+                if(questionsAnswer == "A"){
+                    cv_seceneklerB.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
                         )
+                    )
+                    cv_seceneklerC.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                    cv_seceneklerD.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                } else {
+                    when (questionsAnswer) {
+                        "B" -> {
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
 
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "C" -> {
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "C" -> {
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "D" -> {
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "D" -> {
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "-" -> {
-                        goFirstColorBGForSecenek()
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
                     }
                 }
 
@@ -553,75 +574,95 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                     )
                 )
 
-                when (questionsAnswer) {
-                    "A" -> {
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
-                            )
+                if(questionsAnswer == "B"){
+                    cv_seceneklerA.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
                         )
+                    )
+                    cv_seceneklerC.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                    cv_seceneklerD.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                } else {
+                    when (questionsAnswer) {
+                        "A" -> {
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
 
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "C" -> {
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "C" -> {
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "D" -> {
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "D" -> {
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "-" -> {
-                        goFirstColorBGForSecenek()
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
                     }
                 }
-
             }
             2 -> {
                 cv_seceneklerC.setCardBackgroundColor(
@@ -631,72 +672,93 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                     )
                 )
 
-                when (questionsAnswer) {
-                    "A" -> {
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
-                            )
+                if(questionsAnswer == "C"){
+                    cv_seceneklerA.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
                         )
+                    )
+                    cv_seceneklerB.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                    cv_seceneklerD.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                } else {
+                    when (questionsAnswer) {
+                        "A" -> {
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
 
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "B" -> {
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "B" -> {
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "D" -> {
-                        cv_seceneklerD.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "D" -> {
+                            cv_seceneklerD.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "-" -> {
-                        goFirstColorBGForSecenek()
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
                     }
                 }
 
@@ -709,72 +771,93 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                     )
                 )
 
-                when (questionsAnswer) {
-                    "A" -> {
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
-                            )
+                if(questionsAnswer == "D"){
+                    cv_seceneklerA.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
                         )
+                    )
+                    cv_seceneklerB.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                    cv_seceneklerC.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.titleBackground
+                        )
+                    )
+                } else {
+                    when (questionsAnswer) {
+                        "A" -> {
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
+                            )
 
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "B" -> {
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "B" -> {
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "C" -> {
-                        cv_seceneklerC.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.wrong_answer
+                        }
+                        "C" -> {
+                            cv_seceneklerC.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.wrong_answer
+                                )
                             )
-                        )
 
-                        cv_seceneklerA.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerA.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                        cv_seceneklerB.setCardBackgroundColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.titleBackground
+                            cv_seceneklerB.setCardBackgroundColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.titleBackground
+                                )
                             )
-                        )
-                    }
-                    "-" -> {
-                        goFirstColorBGForSecenek()
+                        }
+                        "-" -> {
+                            goFirstColorBGForSecenek()
+                        }
                     }
                 }
             }
@@ -999,7 +1082,11 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         tv_sinavAdi.text = "Sınav Sonuçları"
     }
 
-    private fun changeVisibility(isQuestionVisible: Int, isResultVisible: Int) {
+    private fun changeVisibility(
+        isQuestionVisible: Int,
+        isResultVisible: Int,
+        isItemClick: Boolean? = false
+    ) {
         tv_seekbarValue.visibility = isQuestionVisible
         sb_questionsLength.visibility = isQuestionVisible
         tv_qKategoriName.visibility = isQuestionVisible
@@ -1012,13 +1099,19 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         cv_oncekiSoru.visibility = isQuestionVisible
         cv_sonrakiSoru.visibility = isQuestionVisible
         cv_remainingTime.visibility = isQuestionVisible
-        btn_finisExam.visibility = isQuestionVisible
+        iv_hataliSoru.visibility = isQuestionVisible
 
         cv_sinavSonuc.visibility = isResultVisible
         cv_sinavSonucPuan.visibility = isResultVisible
         tv_chooseAgain.visibility = isResultVisible
 
         cdv_remainingTime.stop()
+
+        if (isItemClick!!)
+            btn_finisExam.visibility = isResultVisible
+        else
+            btn_finisExam.visibility = isQuestionVisible
+
     }
 
     private fun changeConstraint(topConstraintID: Int) {
@@ -1075,7 +1168,10 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
     override fun onItemClick(answerModel: AnswerModel, position: Int) {
         currentQuizIndex = position
 
-        changeVisibility(View.VISIBLE, View.GONE)
+        if (isFinishExam)
+            changeVisibility(View.VISIBLE, View.GONE, true)
+        else
+            changeVisibility(View.VISIBLE, View.GONE)
         changeConstraint(R.id.cv_sonrakiSoru)
         goFirstColorBGForSecenek()
         NextQuestion(currentQuizIndex, true, answerModel.questionAnswe)

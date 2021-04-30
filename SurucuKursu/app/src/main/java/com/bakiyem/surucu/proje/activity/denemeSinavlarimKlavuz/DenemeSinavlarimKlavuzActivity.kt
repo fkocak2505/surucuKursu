@@ -106,7 +106,7 @@ class DenemeSinavlarimKlavuzActivity : BaseActivity() {
                 pDialog.show()*/
             } else
             //startActivity(Intent(this, DenemeSinaviActivity::class.java))
-                DenemeSinaviActivity.start(this, "4", "", false, "Deneme Sınavı", mutableListOf())
+                DenemeSinaviActivity.start(this, "2", "", false, "Deneme Sınavı", mutableListOf())
         }
     }
 }

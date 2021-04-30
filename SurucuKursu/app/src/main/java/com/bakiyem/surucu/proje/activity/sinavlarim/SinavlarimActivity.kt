@@ -96,7 +96,7 @@ class SinavlarimActivity: BaseActivity(), CListener<String> {
                 startActivity(Intent(this, SinifSinavlariActivity::class.java))
             }
             "Hazır Cevap Sınavlar" -> {
-                DenemeSinaviActivity.start(this, "2", "", true, "Hazır Cevap Sınavlar", mutableListOf())
+                DenemeSinaviActivity.start(this, "4", "", true, "Hazır Cevap Sınavlar", mutableListOf())
             }
         }
     }
