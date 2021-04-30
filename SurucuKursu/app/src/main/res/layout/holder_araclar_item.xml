@@ -37,17 +37,22 @@
 
             <TextView
                 android:id="@+id/tv_aracMarkaModel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:text="awfawfawf"
-                android:textSize="@dimen/titleTextSize"
+                android:layout_marginEnd="160dp"
+                android:layout_marginStart="10dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="@dimen/descTextSize"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.8" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
                 android:layout_width="140dp"
                 android:layout_height="70dp"
                 android:layout_marginEnd="10dp"

@@ -295,10 +295,38 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
         tv_qSoru.text = questions[num].soru
 
 
-        tv_secenekA.text = questions[num].secenekler!![0]?.cevap
-        tv_secenekB.text = questions[num].secenekler!![1]?.cevap
-        tv_secenekC.text = questions[num].secenekler!![2]?.cevap
-        tv_secenekD.text = questions[num].secenekler!![3]?.cevap
+        if(questions[num].secenekler!![0]?.cevap?.isEmpty()!!){
+            iv_secenekA.visibility = View.VISIBLE
+            iv_secenekB.visibility = View.VISIBLE
+            iv_secenekC.visibility = View.VISIBLE
+            iv_secenekD.visibility = View.VISIBLE
+
+            tv_secenekA.visibility = View.GONE
+            tv_secenekB.visibility = View.GONE
+            tv_secenekC.visibility = View.GONE
+            tv_secenekD.visibility = View.GONE
+
+            iv_secenekA.loadImage(questions[num].secenekler!![0]?.cevapFoto)
+            iv_secenekB.loadImage(questions[num].secenekler!![1]?.cevapFoto)
+            iv_secenekC.loadImage(questions[num].secenekler!![2]?.cevapFoto)
+            iv_secenekD.loadImage(questions[num].secenekler!![3]?.cevapFoto)
+
+        }else {
+            iv_secenekA.visibility = View.GONE
+            iv_secenekB.visibility = View.GONE
+            iv_secenekC.visibility = View.GONE
+            iv_secenekD.visibility = View.GONE
+
+            tv_secenekA.visibility = View.VISIBLE
+            tv_secenekB.visibility = View.VISIBLE
+            tv_secenekC.visibility = View.VISIBLE
+            tv_secenekD.visibility = View.VISIBLE
+
+            tv_secenekA.text = questions[num].secenekler!![0]?.cevap
+            tv_secenekB.text = questions[num].secenekler!![1]?.cevap
+            tv_secenekC.text = questions[num].secenekler!![2]?.cevap
+            tv_secenekD.text = questions[num].secenekler!![3]?.cevap
+        }
 
 
         questions[num].secenekler?.forEachIndexed { index, seceneklerItem ->
@@ -1040,7 +1068,8 @@ class DenemeSinaviActivity : BaseActivity(), DenemeSinaviQuizAnswerAdapter.ItemC
                 ) { dialogInterface, which -> dialogInterface.dismiss() }
                 .build()
             mDialog.show()
-        }
+        } else
+            onBackPressed()
     }
 
     override fun onItemClick(answerModel: AnswerModel, position: Int) {

@@ -53,7 +53,6 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
                 prepareRandevularimERV(it)
             } ?: run {
                 toast("Error fetch randevularim")
-                onBackPressed()
             }
         })
 
@@ -79,6 +78,11 @@ class RandevularimActivity : BaseActivity(), CListener<Response4Randevularim> {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onRefreshActivity(isRefresh: String) {
         isComingRandevuEkle = isRefresh
+        randevularimVM.getRandevularim()
+    }
+
+    override fun onResume() {
+        super.onResume()
         randevularimVM.getRandevularim()
     }
 
