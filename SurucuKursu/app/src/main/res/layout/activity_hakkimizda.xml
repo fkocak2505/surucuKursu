@@ -120,9 +120,11 @@
                     android:textSize="@dimen/descTextSize"
                     android:layout_marginTop="10dp"
                     android:layout_margin="10dp"
+                    android:justificationMode="inter_word"
                     app:layout_constraintTop_toBottomOf="@+id/tv_hakkimizdaTitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="UnusedAttribute" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
