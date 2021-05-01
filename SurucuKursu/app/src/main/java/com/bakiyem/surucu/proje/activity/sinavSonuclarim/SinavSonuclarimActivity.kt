@@ -47,14 +47,14 @@ class SinavSonuclarimActivity: BaseActivity() {
         sinavSonuclarimVM.sinavSonuclarimLD.observe(this, {
             it?.let {
                 sinavSonuclarimList.add(it)
-                sinifSinaviVM.getSinifSinavi()
+                sinifSinaviVM.getGirilenSinav()
             }?: run{
                 toast("Error sinav sonuçlarım..")
                 onBackPressed()
             }
         })
 
-        sinifSinaviVM.sinifSinaviLD.observe(this, {
+        sinifSinaviVM.sinifSonuclarimListLD.observe(this, {
             it?.let {
                 girdigimSinavlarList = it
                 prepareEpoxy()

@@ -1,5 +1,6 @@
 package com.bakiyem.surucu.proje.activity.sinifSinavlari.epoxy.model
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -23,17 +24,30 @@ abstract class SinifSinaviListItemModel : EpoxyModelWithHolder<SinifSinaviListIt
     lateinit var listener: (Response4SinifSinavi) -> Unit
 
 
+    @SuppressLint("SetTextI18n")
     override fun bind(holder: Holder) {
         super.bind(holder)
 
         with(sinifSinavi) {
-            holder.tvQuestionNumber.text = getQuestionsNumber(this).toString()
+
+            soruSayisi?.let {
+                holder.tvQuestionNumber.text = it
+            }?: run{
+                holder.tvQuestionNumber.text = getQuestionsNumber(this).toString()
+            }
+
+
             holder.tvCorrectNumber.text = getCorrectNumber(this).toString()
             holder.tvWrongNumber.text = getWrongNumber(this).toString()
             holder.tvEmptyNumber.text = getEmptyNumber(this).toString()
 
             holder.tvScoreNumber.text = puan
             holder.tvBaslik.text = baslik
+
+            if(sure == "00:00:00")
+                holder.tvAgainResolve.text = "Başla"
+            else
+                holder.tvAgainResolve.text = "Tekrar Çöz"
         }
 
         holder.tvScoreNumber.semibold()

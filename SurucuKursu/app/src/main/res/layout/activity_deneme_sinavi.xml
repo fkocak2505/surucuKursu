@@ -260,8 +260,8 @@
 
                         <ImageView
                             android:id="@+id/iv_secenekA"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginTop="5dp"
@@ -322,8 +322,8 @@
 
                         <ImageView
                             android:id="@+id/iv_secenekB"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginTop="5dp"
@@ -384,8 +384,8 @@
 
                         <ImageView
                             android:id="@+id/iv_secenekC"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginTop="5dp"
@@ -446,8 +446,8 @@
 
                         <ImageView
                             android:id="@+id/iv_secenekD"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginTop="5dp"

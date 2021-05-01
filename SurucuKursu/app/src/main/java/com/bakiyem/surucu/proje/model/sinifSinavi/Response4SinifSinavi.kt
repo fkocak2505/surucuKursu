@@ -56,5 +56,10 @@ data class Response4SinifSinavi(
 	val ilkYrdmDogru: String? = null,
 
 	@field:SerializedName("TrafikBos")
-	val trafikBos: String? = null
+	val trafikBos: String? = null,
+
+	@field:SerializedName("SoruSayisi")
+	val soruSayisi: String? = null
+
+
 )

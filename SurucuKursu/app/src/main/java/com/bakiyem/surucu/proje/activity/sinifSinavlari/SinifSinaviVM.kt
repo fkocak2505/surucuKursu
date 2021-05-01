@@ -29,6 +29,29 @@ class SinifSinaviVM : BaseVM() {
         )
     }
 
+    val sinifSonuclarimListLD = MutableLiveData<MutableList<Response4SinifSinavi>>()
+    fun getGirilenSinav() {
+        loadingHUD.value = true
+        addDisposable(
+            RxUtils.androidDefaults(
+                sApiService.getGirilenSinav()
+            ).subscribe({ rr ->
+                loadingHUD.value = false
+                checkServiceStatusArr(rr)?.let {
+                    sinifSonuclarimListLD.value = it
+                } ?: run {
+                    sinifSonuclarimListLD.value = null
+                }
+
+            }, {
+                loadingHUD.value = false
+                sinifSonuclarimListLD.value = null
+            })
+        )
+    }
+
+
+
     val sinifSinaviQuizLD = MutableLiveData<MutableList<Response4DenemeSinavi>>()
     fun getSinifSinaviQuiz(sinavId: String) {
         loadingHUD.value = true

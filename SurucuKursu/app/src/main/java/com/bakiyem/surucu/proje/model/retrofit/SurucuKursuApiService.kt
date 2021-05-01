@@ -286,6 +286,18 @@ class SurucuKursuApiService {
         return api.getSinifSinavi(tokenBody, kursiyerBody)
     }
 
+    fun getGirilenSinav(): Observable<ResResultArray<Response4SinifSinavi>> {
+        val token = Hawk.get<String>("token")
+        val kursiyerKey = Hawk.get<Response4Login>("loginResponse").kursiyerKey!!
+
+        val tokenBody = RequestBody.create(MediaType.parse("text/plain"), token)
+        val kursiyerBody = RequestBody.create(MediaType.parse("text/plain"), kursiyerKey)
+
+        return api.getGirilenSinav(tokenBody, kursiyerBody)
+    }
+
+
+
     fun getSinifSinaviQuiz(sinavId: String): Observable<ResResultArray<Response4DenemeSinavi>> {
         val token = Hawk.get<String>("token")
 

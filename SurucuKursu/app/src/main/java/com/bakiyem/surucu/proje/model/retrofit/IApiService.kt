@@ -187,6 +187,13 @@ interface IApiService {
     ): Observable<ResResultArray<Response4SinifSinavi>>
 
     @Multipart
+    @POST("/KursumAPI/girilen-sinavlar/index.php")
+    fun getGirilenSinav(
+        @Part("token") token: RequestBody,
+        @Part("kursiyerKey") kursiyerKey: RequestBody
+    ): Observable<ResResultArray<Response4SinifSinavi>>
+
+    @Multipart
     @POST("/KursumAPI/sinif-sinavlar/index.php")
     fun getSinifSinaviQuiz(
         @Part("token") token: RequestBody,
