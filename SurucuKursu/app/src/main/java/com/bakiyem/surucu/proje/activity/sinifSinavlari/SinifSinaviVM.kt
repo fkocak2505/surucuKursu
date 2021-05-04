@@ -50,8 +50,6 @@ class SinifSinaviVM : BaseVM() {
         )
     }
 
-
-
     val sinifSinaviQuizLD = MutableLiveData<MutableList<Response4DenemeSinavi>>()
     fun getSinifSinaviQuiz(sinavId: String) {
         loadingHUD.value = true

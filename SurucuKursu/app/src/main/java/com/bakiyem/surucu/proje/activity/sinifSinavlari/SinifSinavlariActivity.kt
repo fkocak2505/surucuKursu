@@ -20,6 +20,8 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
 
     lateinit var sinifSinavi: SinifSinaviVM
 
+    lateinit var sinavId: String
+
     override fun getLayoutID(): Int = R.layout.activity_sinif_sinavlari
 
     override fun initVM() {
@@ -50,7 +52,7 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
         sinifSinavi.sinifSinaviQuizLD.observe(this, {
             it?.let {
                 if (it.size != 0)
-                    DenemeSinaviActivity.start(this, "1", "2", false,"Sınıf Sınavı",  it)
+                    DenemeSinaviActivity.start(this, "1", sinavId, false,"Sınıf Sınavı",  it)
                 else
                     toast("Deneme sinavi size 0")
             } ?: run {
@@ -90,6 +92,7 @@ class SinifSinavlariActivity : BaseActivity(), CListener<Response4SinifSinavi> {
         placeHolder: ImageView?,
         playIcon: ImageView?
     ) {
-        sinifSinavi.getSinifSinaviQuiz(data.sinavId!!)
+        sinavId = data.sinavId!!
+        sinifSinavi.getSinifSinaviQuiz(sinavId)
     }
 }
