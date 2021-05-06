@@ -90,7 +90,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
 
-                    <com.bakiyem.surucu.proje.activity.odemeYap.CurrencyEditText
+                    <com.bakiyem.surucu.project.activity.odemeYap.CurrencyEditText
                         android:id="@+id/et_tutar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

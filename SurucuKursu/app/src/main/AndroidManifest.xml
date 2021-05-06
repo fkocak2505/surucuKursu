@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bakiyem.surucu.proje">
+    package="com.bakiyem.surucu.project">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
-        android:name=".SurucuKursuApplication"
+        android:name="com.bakiyem.surucu.project.SurucuKursuApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_app_icon"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
         <activity
-            android:name=".activity.splash.SplashScreenActivity"
+            android:name="com.bakiyem.surucu.project.activity.splash.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,91 +27,91 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name="com.bakiyem.surucu.project.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.duyuruDetay.DuyuruDetayActivity"
+            android:name="com.bakiyem.surucu.project.activity.duyuruDetay.DuyuruDetayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.login.LoginActivity"
+            android:name="com.bakiyem.surucu.project.activity.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.hakkimizda.HakkimizdaActivity"
+            android:name="com.bakiyem.surucu.project.activity.hakkimizda.HakkimizdaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.araclarimiz.view.AraclarimizActivity"
+            android:name="com.bakiyem.surucu.project.activity.araclarimiz.view.AraclarimizActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.galeri.GaleriActivity"
+            android:name="com.bakiyem.surucu.project.activity.galeri.GaleriActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.kadromuz.KadromuzActivity"
+            android:name="com.bakiyem.surucu.project.activity.kadromuz.KadromuzActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.profil.ProfilimActivity"
+            android:name="com.bakiyem.surucu.project.activity.profil.ProfilimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.dersKategorileri.DerslerimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.dersKategorileri.DerslerimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.dersListesi.DersListesiActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.dersListesi.DersListesiActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.dersIcerik.DersIcerikActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.dersIcerik.DersIcerikActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.sinavlarim.SinavlarimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.sinavlarim.SinavlarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.denemeSinavlarimKlavuz.DenemeSinavlarimKlavuzActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.denemeSinavi.DenemeSinaviActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.denemeSinavi.DenemeSinaviActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.ozelSinavlarim.OzelSinavlarimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.ozelSinavlarim.OzelSinavlarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.sinifSinavlari.SinifSinavlariActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.sinifSinavlari.SinifSinavlariActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.sinavSonuclarim.SinavSonuclarimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.sinavSonuclarim.SinavSonuclarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.odemeBilgilerim.OdemeBilgilerimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.odemeBilgilerim.OdemeBilgilerimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.randevular.RandevularimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.randevular.RandevularimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.faydaliBilgiler.FaydaliBilgilerActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.faydaliBilgiler.FaydaliBilgilerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.faydaliBilgilerDetay.FaydaliBilgilerDetayActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.faydaliBilgilerDetay.FaydaliBilgilerDetayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.randevuEkle.RandevuEkleActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.randevuEkle.RandevuEkleActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.odemeYap.OdemeYap"
+        <activity android:name="com.bakiyem.surucu.project.activity.odemeYap.OdemeYap"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name=".activity.webView3D.CheckoutPaymentWVActivityNew"
+        <activity android:name="com.bakiyem.surucu.project.activity.webView3D.CheckoutPaymentWVActivityNew"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".activity.video.VideolarimActivity"
+        <activity android:name="com.bakiyem.surucu.project.activity.video.VideolarimActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".notif.MyFirebaseMessagingService"
+            android:name="com.bakiyem.surucu.project.notif.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
@@ -120,7 +120,7 @@
         </service>
 
         <service
-            android:name=".notif.TokenService">
+            android:name="com.bakiyem.surucu.project.notif.TokenService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
